@@ -33,7 +33,7 @@ export default function Education() {
           <span className="reveal-on-scroll section-badge mb-4 inline-flex">
             Education
           </span>
-          <h2 className="reveal-on-scroll section-title text-pearl mt-4 whitespace-nowrap">
+          <h2 className="reveal-on-scroll section-title text-pearl mt-4">
             Academic <span className="text-gradient-animated">background</span>
           </h2>
         </div>

@@ -6,10 +6,12 @@ export default function ParticlesBackground() {
   useEffect(() => {
     const containerId = 'particles-bg';
 
+    const isMobile = window.innerWidth < 768;
+
     const config = {
       particles: {
         number: {
-          value: 80,
+          value: isMobile ? 35 : 80,
           density: {
             enable: true,
             value_area: 800,
@@ -74,7 +76,7 @@ export default function ParticlesBackground() {
         detect_on: 'window',
         events: {
           onhover: {
-            enable: true,
+            enable: !isMobile,
             mode: 'grab',
           },
           onclick: {

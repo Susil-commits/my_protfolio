@@ -1,18 +1,69 @@
-# React + Vite
+# Susil Kumar Nayak · Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, animated personal portfolio built with React, Vite, and Tailwind CSS — showcasing full-stack projects, experience, education, achievements, and certifications.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **Vite 8** (React Compiler enabled)
+- **Tailwind CSS 4** (via `@tailwindcss/vite`)
+- **tsparticles** for the animated particle background
+- **Web3Forms** for the contact form (serverless, no backend required)
 
-## React Compiler
+## Sections
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **Hero** — animated name reveal, rotating roles, count-up stats
+- **About** — recruiter-focused narrative + highlight chips
+- **Skills** — categorized tech stack cards
+- **Projects** — full-stack platforms with GitHub & live-demo links
+- **Experience** — timeline with expandable certificate previews
+- **Education** — academic background cards
+- **Achievements** — awards with certificate lightbox
+- **Certifications** — bootcamp certificates with image preview
+- **Contact** — validated form + direct contact info
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the ESLint configuration
+```bash
+# Install dependencies
+npm install
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Start the dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview the production build
+npm run preview
+```
+
+## Environment Variables
+
+The contact form uses [Web3Forms](https://web3forms.com) for serverless email delivery. Copy the example file and add your access key:
+
+```bash
+cp .env.example .env.local
+```
+
+```
+VITE_WEB3FORMS_ACCESS_KEY=your-access-key-here
+```
+
+> Get a free key at https://web3forms.com — enter your email and they mail it to you. No account needed.
+
+## Deployment
+
+The project is configured for **Vercel** via `vercel.json` (SPA rewrites + cache headers). Set `VITE_WEB3FORMS_ACCESS_KEY` in the Vercel project settings under Environment Variables.
+
+## Project Structure
+
+```
+src/
+├── components/      # UI sections (Hero, About, Projects, etc.)
+├── context/         # Lightbox provider
+├── data/            # Centralized portfolio content (portfolio.js)
+├── hooks/           # useMagnetic hook
+└── index.css        # Tailwind + custom utilities & animations
+```
+
+All personal content (name, projects, experience, skills) lives in `src/data/portfolio.js` — edit that file to update the site.

@@ -29,7 +29,32 @@ export default function Hero() {
     return () => observer.disconnect();
   }, []);
 
-  const nameChars = personal.name.split('');
+  // Group chars into words so the name can wrap on narrow screens
+  // (each word stays together via whitespace-nowrap; breakable spaces between)
+  const nameParts = [];
+  let nameCharIdx = 0;
+  personal.name.split(' ').forEach((word, wi, arr) => {
+    nameParts.push(
+      <span key={`w${wi}`} className="whitespace-nowrap">
+        {word.split('').map((ch) => {
+          const idx = nameCharIdx++;
+          return (
+            <span
+              key={idx}
+              className="char-stagger"
+              style={{ transitionDelay: `${0.3 + idx * 0.035}s` }}
+            >
+              {ch}
+            </span>
+          );
+        })}
+      </span>
+    );
+    if (wi < arr.length - 1) {
+      nameParts.push(' ');
+      nameCharIdx++;
+    }
+  });
 
   const stats = [
     { label: 'Projects', end: 3, suffix: '' },
@@ -90,17 +115,7 @@ export default function Hero() {
 
         {/* Main heading — staggered char reveal */}
         <h1 className="section-title text-pearl mb-6">
-          <span className="text-gradient-animated">
-            {nameChars.map((ch, i) => (
-              <span
-                key={i}
-                className="char-stagger"
-                style={{ transitionDelay: `${0.3 + i * 0.035}s` }}
-              >
-                {ch === ' ' ? '\u00A0' : ch}
-              </span>
-            ))}
-          </span>
+          <span className="text-gradient-animated">{nameParts}</span>
         </h1>
 
         {/* Description */}
@@ -109,7 +124,7 @@ export default function Hero() {
         </p>
 
         {/* CTA Buttons */}
-        <div className="reveal-on-scroll flex items-center justify-center gap-4 mb-16">
+        <div className="reveal-on-scroll flex flex-wrap items-center justify-center gap-4 mb-16">
           <a href="#projects" className="btn-primary group" {...viewWork}>
             View Work
             <svg

@@ -74,7 +74,7 @@ export default function Projects() {
           <span className="reveal-on-scroll section-badge mb-4 inline-flex">
             Projects
           </span>
-          <h2 className="reveal-on-scroll section-title text-pearl mt-4 whitespace-nowrap">
+          <h2 className="reveal-on-scroll section-title text-pearl mt-4">
             Selected <span className="text-gradient-animated">work</span>
           </h2>
           <p className="reveal-on-scroll text-mist mt-4 max-w-lg mx-auto text-sm">
