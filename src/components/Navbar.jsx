@@ -18,6 +18,27 @@ const DownloadIcon = (
     <line x1="12" y1="15" x2="12" y2="3" />
   </svg>
 );
+const ChevronIcon = ({ className = '' }) => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-300 ${className}`}>
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+);
+const MernIcon = (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="16 18 22 12 16 6" />
+    <polyline points="8 6 2 12 8 18" />
+  </svg>
+);
+const AiIcon = (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="3" />
+    <path d="M9 9h.01M15 9h.01M9 15c1 1 2 1.5 3 1.5s2-.5 3-1.5" />
+  </svg>
+);
+
+function ResumeIcon({ name }) {
+  return name === 'mern' ? MernIcon : AiIcon;
+}
 
 function SocialLinks({ className = '' }) {
   const items = [
@@ -45,20 +66,175 @@ function SocialLinks({ className = '' }) {
 }
 
 function CvButton({ className = '', onClick }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
+
   return (
-    <a
-      href={personal.resumeUrl || '#'}
-      target={personal.resumeUrl ? '_blank' : undefined}
-      rel={personal.resumeUrl ? 'noopener noreferrer' : undefined}
-      onClick={onClick}
-      className={`btn-primary !py-2 !px-4 text-xs gap-1.5 ${className}`}
-    >
-      {DownloadIcon}
-      <span>CV</span>
-    </a>
+    <div ref={ref} className={`relative ${className}`}>
+      <button
+        type="button"
+        onClick={() => {
+          setOpen((v) => !v);
+          onClick?.();
+        }}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        className="btn-primary !py-2 !px-4 text-xs gap-1.5"
+      >
+        {DownloadIcon}
+        <span>CV</span>
+        <ChevronIcon className={open ? 'rotate-180' : ''} />
+      </button>
+
+      {/* Dropdown panel */}
+      <div
+        role="menu"
+        className={`absolute right-0 top-full mt-2 w-64 origin-top-right z-50 transition-all duration-200 ${
+          open ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' : 'opacity-0 scale-95 -translate-y-1 pointer-events-none'
+        }`}
+      >
+        <div className="rounded-2xl border border-pearl/15 bg-white/90 backdrop-blur-xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)] p-2 overflow-hidden">
+          <p className="px-3 pt-2 pb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate">
+            Select resume
+          </p>
+          {personal.resumes.map((r) => {
+            const disabled = !r.url;
+            const content = (
+              <>
+                <span className="w-9 h-9 shrink-0 rounded-lg bg-pearl/[0.04] border border-pearl/10 flex items-center justify-center text-pearl/60 group-hover:text-pearl group-hover:border-pearl/20 transition-colors duration-300">
+                  <ResumeIcon name={r.icon} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-semibold text-pearl truncate">{r.role}</span>
+                  <span className="block text-[11px] text-slate truncate">{r.subtitle}</span>
+                </span>
+                {disabled ? (
+                  <span className="shrink-0 text-[9px] font-bold uppercase tracking-wider text-amber-700 bg-amber-500/10 border border-amber-500/20 px-2 py-1 rounded-full">
+                    Soon
+                  </span>
+                ) : (
+                  <span className="shrink-0 text-mist group-hover:text-pearl transition-colors duration-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-0.5">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </span>
+                )}
+              </>
+            );
+            return disabled ? (
+              <div
+                key={r.role}
+                role="menuitem"
+                aria-disabled="true"
+                className="group flex items-center gap-3 px-3 py-2.5 rounded-xl opacity-60 cursor-not-allowed"
+              >
+                {content}
+              </div>
+            ) : (
+              <a
+                key={r.role}
+                role="menuitem"
+                href={r.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="group flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-pearl/[0.04] transition-colors duration-300"
+              >
+                {content}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 }
 
+function MobileCv({ onNavigate }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="w-full">
+      <div className="flex items-center justify-between">
+        <span className="text-[10px] uppercase tracking-[0.18em] text-slate">Resume</span>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="btn-primary !py-2 !px-4 text-xs gap-1.5"
+        >
+          {DownloadIcon}
+          <span>CV</span>
+          <ChevronIcon className={open ? 'rotate-180' : ''} />
+        </button>
+      </div>
+
+      <div
+        className={`grid transition-all duration-300 ${
+          open ? 'grid-rows-[1fr] opacity-100 mt-2' : 'grid-rows-[0fr] opacity-0'
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="rounded-2xl border border-pearl/15 bg-white/80 backdrop-blur-xl p-2 space-y-1">
+            {personal.resumes.map((r) => {
+              const disabled = !r.url;
+              const content = (
+                <>
+                  <span className="w-9 h-9 shrink-0 rounded-lg bg-pearl/[0.04] border border-pearl/10 flex items-center justify-center text-pearl/60">
+                    <ResumeIcon name={r.icon} />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-sm font-semibold text-pearl truncate">{r.role}</span>
+                    <span className="block text-[11px] text-slate truncate">{r.subtitle}</span>
+                  </span>
+                  {disabled ? (
+                    <span className="shrink-0 text-[9px] font-bold uppercase tracking-wider text-amber-700 bg-amber-500/10 border border-amber-500/20 px-2 py-1 rounded-full">
+                      Soon
+                    </span>
+                  ) : null}
+                </>
+              );
+              return disabled ? (
+                <div
+                  key={r.role}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl opacity-60 cursor-not-allowed"
+                >
+                  {content}
+                </div>
+              ) : (
+                <a
+                  key={r.role}
+                  href={r.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onNavigate}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-pearl/[0.04] transition-colors duration-300"
+                >
+                  {content}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -192,9 +368,9 @@ export default function Navbar() {
           })}
 
           {/* Mobile actions: socials + CV */}
-          <div className="flex items-center justify-between pt-3 mt-2 border-t border-pearl/10">
+          <div className="pt-3 mt-2 border-t border-pearl/10 space-y-3">
             <SocialLinks />
-            <CvButton onClick={() => setMobileOpen(false)} />
+            <MobileCv onNavigate={() => setMobileOpen(false)} />
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { skills } from '../data/portfolio';
 import SpotlightCard from './SpotlightCard';
+import TechPill from './TechPill';
 
 export default function Skills() {
   const sectionRef = useRef(null);
@@ -57,14 +58,8 @@ export default function Skills() {
                 {group.category}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {group.items.map((item, j) => (
-                  <span
-                    key={item}
-                    className="px-3 py-1.5 text-xs font-medium rounded-full bg-smoke border border-pearl/15 text-mist hover:text-pearl hover:border-pearl/30 hover:bg-ash transition-all duration-300 cursor-default"
-                    style={{ transitionDelay: `${j * 0.03}s` }}
-                  >
-                    {item}
-                  </span>
+                {group.items.map((item) => (
+                  <TechPill key={item} name={item} />
                 ))}
               </div>
             </SpotlightCard>

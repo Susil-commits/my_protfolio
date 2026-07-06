@@ -27,7 +27,20 @@ export const personal = {
   location: 'Odisha, India',
   email: 'nayaksusil963@gmail.com',
   phone: '+91 8984339007',
-  resumeUrl: '',
+  resumes: [
+    {
+      role: 'MERN Stack',
+      subtitle: 'Full-Stack Web Development',
+      url: 'https://drive.google.com/file/d/1QTnrAlBT3iJO3OQn_L1PXAsuRYv2LkC-/view',
+      icon: 'mern',
+    },
+    {
+      role: 'AI / ML & Data Science',
+      subtitle: 'Coming soon',
+      url: '',
+      icon: 'ai',
+    },
+  ],
   logo: 'Portfolio',
   avatar: profilePic,
   social: {
