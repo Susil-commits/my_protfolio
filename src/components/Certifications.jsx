@@ -59,7 +59,7 @@ export default function Certifications() {
                   <div className="text-3xl opacity-80 group-hover:scale-110 transition-transform duration-500">
                     {item.icon}
                   </div>
-                  <span className="w-9 h-9 rounded-lg bg-pearl/[0.04] border border-pearl/[0.06] flex items-center justify-center text-mist group-hover:text-pearl group-hover:border-pearl/20 transition-all duration-300">
+                  <span className="w-9 h-9 rounded-lg bg-pearl/[0.04] border border-pearl/15 flex items-center justify-center text-mist group-hover:text-pearl group-hover:border-pearl/30 transition-all duration-300">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:scale-110">
                       <circle cx="11" cy="11" r="8" />
                       <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -70,7 +70,7 @@ export default function Certifications() {
                 </div>
 
                 {/* Certificate thumbnail */}
-                <div className="relative mb-4 aspect-[4/3] rounded-xl overflow-hidden border border-pearl/[0.06] group-hover:border-pearl/15 transition-colors duration-500">
+                <div className="relative mb-4 aspect-[4/3] rounded-xl overflow-hidden border border-pearl/15 group-hover:border-pearl/25 transition-colors duration-500">
                   <img
                     src={item.certificate}
                     alt={`${item.title} certificate`}

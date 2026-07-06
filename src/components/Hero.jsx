@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { personal, hero } from '../data/portfolio';
 import { useMagnetic } from '../hooks/useMagnetic';
-import CountUp from './CountUp';
 import RotatingText from './RotatingText';
 
 export default function Hero() {
@@ -56,18 +55,11 @@ export default function Hero() {
     }
   });
 
-  const stats = [
-    { label: 'Projects', end: 3, suffix: '' },
-    { label: 'Internships', end: 3, suffix: '' },
-    { label: 'Certifications', end: 13, suffix: '+' },
-    { label: 'CGPA', end: 7.77, decimals: 2 },
-  ];
-
   return (
     <section
       ref={sectionRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-6"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-28 pb-16"
     >
       {/* Animated mesh background */}
       <div className="mesh-bg" />
@@ -147,25 +139,6 @@ export default function Hero() {
               <polyline points="22,6 12,13 2,6" />
             </svg>
           </a>
-        </div>
-
-        {/* Stats strip with count-up */}
-        <div className="reveal-on-scroll grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="card-morph-border py-5 px-3 group hover:-translate-y-1 transition-transform duration-400"
-            >
-              <div className="relative z-10">
-                <div className="text-2xl sm:text-3xl font-bold text-pearl tabular-nums">
-                  <CountUp end={s.end} decimals={s.decimals || 0} suffix={s.suffix || ''} />
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-slate mt-1">
-                  {s.label}
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Scroll indicator */}

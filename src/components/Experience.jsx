@@ -69,7 +69,7 @@ export default function Experience() {
                   }`}
                 >
                   <SpotlightCard className="card-morph-border p-6 group hover:border-white/10">
-                    <span className="text-xs font-semibold text-pearl/50 uppercase tracking-[0.15em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-white/[0.04]">
+                    <span className="text-xs font-semibold text-pearl/50 uppercase tracking-[0.15em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-pearl/10">
                       {exp.period}
                     </span>
                     <h3 className="text-pearl font-semibold text-lg mt-3 group-hover:text-black transition-colors duration-300">
@@ -83,7 +83,7 @@ export default function Experience() {
                       {exp.highlights.map((h) => (
                         <span
                           key={h}
-                          className="text-[10px] font-medium text-pearl/40 bg-pearl/[0.02] px-2 py-0.5 rounded border border-white/[0.04]"
+                          className="text-[10px] font-medium text-pearl/40 bg-pearl/[0.02] px-2 py-0.5 rounded border border-pearl/10"
                         >
                           {h}
                         </span>
@@ -95,9 +95,9 @@ export default function Experience() {
                         onClick={() => open(exp.certificate, `${exp.role} — ${exp.certificateLabel || 'Certificate'}`)}
                         aria-label={`View ${exp.certificateLabel || 'certificate'} for ${exp.company}`}
                         title="Click to preview certificate"
-                        className="mt-5 group/cert flex items-center gap-3 w-full text-left p-2 rounded-xl border border-pearl/[0.06] hover:border-pearl/20 hover:bg-pearl/[0.02] transition-all duration-300"
+                        className="mt-5 group/cert flex items-center gap-3 w-full text-left p-2 rounded-xl border border-pearl/15 hover:border-pearl/30 hover:bg-pearl/[0.02] transition-all duration-300"
                       >
-                        <span className="relative w-14 h-14 rounded-lg overflow-hidden border border-pearl/[0.08] shrink-0">
+                        <span className="relative w-14 h-14 rounded-lg overflow-hidden border border-pearl/15 shrink-0">
                           <img
                             src={exp.certificate}
                             alt={`${exp.company} certificate`}

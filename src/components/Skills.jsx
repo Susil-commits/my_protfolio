@@ -60,7 +60,7 @@ export default function Skills() {
                 {group.items.map((item, j) => (
                   <span
                     key={item}
-                    className="px-3 py-1.5 text-xs font-medium rounded-full bg-smoke border border-pearl/[0.06] text-mist hover:text-pearl hover:border-pearl/20 hover:bg-ash transition-all duration-300 cursor-default"
+                    className="px-3 py-1.5 text-xs font-medium rounded-full bg-smoke border border-pearl/15 text-mist hover:text-pearl hover:border-pearl/30 hover:bg-ash transition-all duration-300 cursor-default"
                     style={{ transitionDelay: `${j * 0.03}s` }}
                   >
                     {item}

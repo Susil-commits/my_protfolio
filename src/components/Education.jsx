@@ -47,13 +47,13 @@ export default function Education() {
             >
               <div className="relative z-10 tilt-pop">
                 <div className="flex items-start justify-between gap-4 mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-pearl/[0.04] border border-pearl/[0.06] flex items-center justify-center text-pearl/50 group-hover:text-pearl transition-colors duration-500">
+                  <div className="w-11 h-11 rounded-xl bg-pearl/[0.04] border border-pearl/15 flex items-center justify-center text-pearl/50 group-hover:text-pearl transition-colors duration-500">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                       <path d="M6 12v5c3 3 9 3 12 0v-5" />
                     </svg>
                   </div>
-                  <span className="text-xs font-semibold text-pearl/50 uppercase tracking-[0.12em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-white/[0.04] shrink-0">
+                  <span className="text-xs font-semibold text-pearl/50 uppercase tracking-[0.12em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-pearl/10 shrink-0">
                     {edu.period}
                   </span>
                 </div>
@@ -71,7 +71,7 @@ export default function Education() {
                 </div>
 
                 <div className="mt-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-pearl bg-pearl/[0.04] px-3 py-1.5 rounded-lg border border-pearl/[0.06]">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-pearl bg-pearl/[0.04] px-3 py-1.5 rounded-lg border border-pearl/15">
                     {edu.score}
                   </span>
                 </div>

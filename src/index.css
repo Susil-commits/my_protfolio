@@ -205,7 +205,7 @@
     font-weight: 600;
     font-size: 0.95rem;
     border-radius: 9999px;
-    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    border: 1.5px solid rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     letter-spacing: -0.01em;
@@ -272,6 +272,7 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
   .card-morph-border::before {
@@ -282,9 +283,9 @@
     padding: 1px;
     background: linear-gradient(
       135deg,
+      rgba(0, 0, 0, 0.22),
       rgba(0, 0, 0, 0.08),
-      rgba(0, 0, 0, 0.02),
-      rgba(0, 0, 0, 0.08)
+      rgba(0, 0, 0, 0.22)
     );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);

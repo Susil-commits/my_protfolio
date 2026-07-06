@@ -31,8 +31,8 @@ export const personal = {
   logo: 'Portfolio',
   avatar: profilePic,
   social: {
-    linkedin: '',
-    github: '',
+    linkedin: 'https://www.linkedin.com/in/susil-kumar-nayak-5180472b6/',
+    github: 'https://github.com/Susil-commits',
     twitter: '',
   },
 };
