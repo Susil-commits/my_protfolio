@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
-
-const experiences = [];
+import { experiences } from '../data/portfolio';
+import { useLightbox } from '../context/LightboxContext';
+import SpotlightCard from './SpotlightCard';
 
 export default function Experience() {
   const sectionRef = useRef(null);
+  const { open } = useLightbox();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -66,7 +68,7 @@ export default function Experience() {
                     i % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'
                   }`}
                 >
-                  <div className="card-morph-border p-6 group hover:border-white/10 transition-all duration-500">
+                  <SpotlightCard className="card-morph-border p-6 group hover:border-white/10">
                     <span className="text-xs font-semibold text-pearl/50 uppercase tracking-[0.15em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-white/[0.04]">
                       {exp.period}
                     </span>
@@ -87,7 +89,37 @@ export default function Experience() {
                         </span>
                       ))}
                     </div>
-                  </div>
+
+                    {exp.certificate && (
+                      <button
+                        onClick={() => open(exp.certificate, `${exp.role} — ${exp.certificateLabel || 'Certificate'}`)}
+                        aria-label={`View ${exp.certificateLabel || 'certificate'} for ${exp.company}`}
+                        title="Click to preview certificate"
+                        className="mt-5 group/cert flex items-center gap-3 w-full text-left p-2 rounded-xl border border-pearl/[0.06] hover:border-pearl/20 hover:bg-pearl/[0.02] transition-all duration-300"
+                      >
+                        <span className="relative w-14 h-14 rounded-lg overflow-hidden border border-pearl/[0.08] shrink-0">
+                          <img
+                            src={exp.certificate}
+                            alt={`${exp.company} certificate`}
+                            loading="lazy"
+                            className="w-full h-full object-cover"
+                          />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block text-[10px] font-semibold text-pearl/50 uppercase tracking-[0.12em]">
+                            {exp.certificateLabel || 'Certificate'}
+                          </span>
+                          <span className="inline-flex items-center gap-1 text-xs font-medium text-pearl group-hover/cert:text-black transition-colors duration-300">
+                            View certificate
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover/cert:translate-x-0.5">
+                              <line x1="5" y1="12" x2="19" y2="12" />
+                              <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                          </span>
+                        </span>
+                      </button>
+                    )}
+                  </SpotlightCard>
                 </div>
 
                 {/* Empty spacer for the other side */}

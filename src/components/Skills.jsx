@@ -1,27 +1,6 @@
 import { useEffect, useRef } from 'react';
-
-const skills = [
-  {
-    category: 'Frontend',
-    icon: '▣',
-    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Redux', 'Framer Motion'],
-  },
-  {
-    category: 'Backend',
-    icon: '◈',
-    items: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'REST APIs', 'GraphQL'],
-  },
-  {
-    category: 'DevOps',
-    icon: '⚙',
-    items: ['Git', 'Docker', 'AWS', 'Vercel', 'CI/CD', 'Linux'],
-  },
-  {
-    category: 'Design',
-    icon: '◇',
-    items: ['Figma', 'System Design', 'Agile/Scrum', 'Testing', 'SEO', 'Performance'],
-  },
-];
+import { skills } from '../data/portfolio';
+import SpotlightCard from './SpotlightCard';
 
 export default function Skills() {
   const sectionRef = useRef(null);
@@ -64,7 +43,7 @@ export default function Skills() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {skills.map((group, i) => (
-            <div
+            <SpotlightCard
               key={group.category}
               className="reveal-scale card-morph-border p-6 group cursor-default"
               style={{ transitionDelay: `${i * 0.08}s` }}
@@ -88,7 +67,7 @@ export default function Skills() {
                   </span>
                 ))}
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
 

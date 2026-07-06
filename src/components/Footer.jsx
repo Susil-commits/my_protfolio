@@ -1,3 +1,5 @@
+import { personal } from '../data/portfolio';
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -13,13 +15,13 @@ export default function Footer() {
             href="#home"
             className="text-xl font-bold tracking-tight text-pearl group relative"
           >
-            Portfolio<span className="text-mist group-hover:text-pearl/70 transition-colors duration-300">.</span>
+            {personal.logo}<span className="text-mist group-hover:text-pearl/70 transition-colors duration-300">.</span>
             <span className="absolute -bottom-1 left-0 w-0 h-px bg-pearl/30 group-hover:w-full transition-all duration-500" />
           </a>
 
           {/* Navigation links */}
-          <div className="flex items-center gap-8">
-            {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((link) => (
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {['Home', 'About', 'Skills', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'].map((link) => (
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
