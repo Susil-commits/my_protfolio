@@ -30,8 +30,8 @@ export const personal = {
   resumes: [
     {
       role: 'MERN Stack',
-      subtitle: 'Removed For Changing',
-      url: '',
+      subtitle: 'Development',
+      url: 'https://drive.google.com/file/d/1rrYV-sj7DSbbHSdxM8qqUIwtuuWpX_Sw/view?usp=sharing',
       icon: 'mern',
     },
     {
