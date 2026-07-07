@@ -11,7 +11,7 @@ export default function ParticlesBackground() {
     const config = {
       particles: {
         number: {
-          value: isMobile ? 35 : 80,
+          value: isMobile ? 18 : 80,
           density: {
             enable: true,
             value_area: 800,
@@ -34,7 +34,7 @@ export default function ParticlesBackground() {
           value: 0.6,
           random: true,
           anim: {
-            enable: true,
+            enable: !isMobile,
             speed: 0.5,
             opacity_min: 0.15,
             sync: false,
@@ -44,14 +44,14 @@ export default function ParticlesBackground() {
           value: 4,
           random: true,
           anim: {
-            enable: true,
+            enable: !isMobile,
             speed: 2,
             size_min: 1.5,
             sync: false,
           },
         },
         line_linked: {
-          enable: true,
+          enable: !isMobile,
           distance: 150,
           color: '#444466',
           opacity: 0.2,
@@ -66,7 +66,7 @@ export default function ParticlesBackground() {
           out_mode: 'bounce',
           bounce: false,
           attract: {
-            enable: true,
+            enable: !isMobile,
             rotateX: 600,
             rotateY: 1200,
           },
