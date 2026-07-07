@@ -11,7 +11,7 @@ export default function ParticlesBackground() {
     const config = {
       particles: {
         number: {
-          value: isMobile ? 18 : 80,
+          value: isMobile ? 35 : 80,
           density: {
             enable: true,
             value_area: 800,
@@ -34,7 +34,7 @@ export default function ParticlesBackground() {
           value: 0.6,
           random: true,
           anim: {
-            enable: !isMobile,
+            enable: true,
             speed: 0.5,
             opacity_min: 0.15,
             sync: false,
@@ -44,14 +44,14 @@ export default function ParticlesBackground() {
           value: 4,
           random: true,
           anim: {
-            enable: !isMobile,
+            enable: true,
             speed: 2,
             size_min: 1.5,
             sync: false,
           },
         },
         line_linked: {
-          enable: !isMobile,
+          enable: true,
           distance: 150,
           color: '#444466',
           opacity: 0.2,
@@ -59,14 +59,14 @@ export default function ParticlesBackground() {
         },
         move: {
           enable: true,
-          speed: 0.8,
+          speed: isMobile ? 0.5 : 0.8,
           direction: 'none',
           random: true,
           straight: false,
           out_mode: 'bounce',
           bounce: false,
           attract: {
-            enable: !isMobile,
+            enable: true,
             rotateX: 600,
             rotateY: 1200,
           },
@@ -76,7 +76,7 @@ export default function ParticlesBackground() {
         detect_on: 'window',
         events: {
           onhover: {
-            enable: !isMobile,
+            enable: true,
             mode: 'grab',
           },
           onclick: {
@@ -103,7 +103,7 @@ export default function ParticlesBackground() {
           },
         },
       },
-      retina_detect: true,
+      retina_detect: !isMobile,
     };
 
     if (typeof window.particlesJS === 'function') {
