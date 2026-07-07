@@ -116,9 +116,9 @@ export const projects = [
     description:
       'Full-stack platform connecting food donors, NGOs, volunteers, and administrators to reduce food waste by redistributing surplus food. Includes food listing, reservation, collection tracking, real-time status updates, JWT auth, role-based access control (RBAC), and an admin dashboard for donation management.',
     tags: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'Tailwind CSS', 'JWT', 'RBAC', 'Cloudinary'],
-    link: '',
+    link: 'https://left2-serve.vercel.app/',
     github: 'https://github.com/Susil-commits/Left2Serve',
-    highlight: false,
+    highlight: true,
   },
   {
     title: 'MyMate',
