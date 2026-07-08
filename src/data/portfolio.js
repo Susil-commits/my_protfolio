@@ -128,9 +128,9 @@ export const projects = [
     description:
       'Full-stack driver hiring platform allowing users to search, compare, book, and pay professional drivers for temporary or permanent requirements. Built secure REST APIs with JWT authentication, Cloudinary media storage, email notifications, and security features including Helmet, rate limiting, input validation, bcrypt, and Winston logging.',
     tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Cloudinary', 'Helmet', 'Winston'],
-    link: '',
+    link: 'https://my-mate-tawny.vercel.app/',
     github: 'https://github.com/Susil-commits/MyMate',
-    highlight: false,
+    highlight: true,
   },
 ];
 
