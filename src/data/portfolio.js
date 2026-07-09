@@ -31,7 +31,7 @@ export const personal = {
     {
       role: 'MERN Stack',
       subtitle: 'Development',
-      url: 'https://drive.google.com/file/d/1rrYV-sj7DSbbHSdxM8qqUIwtuuWpX_Sw/view?usp=sharing',
+      url: 'https://drive.google.com/file/d/115C_eCyCPJMesMct73sY0ddUSJlz43sx/view?usp=drive_link',
       icon: 'mern',
     },
     {
