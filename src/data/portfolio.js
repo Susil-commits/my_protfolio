@@ -31,7 +31,7 @@ export const personal = {
     {
       role: 'Full Stack',
       subtitle: 'Development',
-      url: 'https://drive.google.com/file/d/1FxK3Os7LjGTWtSUbCzGi_QKKcLtDbc_M/view?usp=sharing',
+      url: 'https://drive.google.com/file/d/13UNSY2F_EXuWJuI8O5yb3dY-JXnm6WE7/view?usp=drive_link',
       icon: 'mern',
     },
     {
