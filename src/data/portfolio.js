@@ -29,14 +29,14 @@ export const personal = {
   phone: '+91 8984339007',
   resumes: [
     {
-      role: 'MERN Stack',
+      role: 'Full Stack',
       subtitle: 'Development',
-      url: 'https://drive.google.com/file/d/115C_eCyCPJMesMct73sY0ddUSJlz43sx/view?usp=drive_link',
+      url: 'https://drive.google.com/file/d/1FxK3Os7LjGTWtSUbCzGi_QKKcLtDbc_M/view?usp=sharing',
       icon: 'mern',
     },
     {
       role: 'AI / ML & Data Science',
-      subtitle: 'Coming soon',
+      subtitle: 'Exploring',
       url: '',
       icon: 'ai',
     },
