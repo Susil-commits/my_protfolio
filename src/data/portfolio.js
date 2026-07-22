@@ -29,7 +29,7 @@ export const personal = {
   phone: '+91 8984339007',
   resumes: [
     {
-      role: 'Full Stack',
+      role: 'Full Stack Engineer',
       subtitle: 'Development',
       url: 'https://drive.google.com/file/d/13UNSY2F_EXuWJuI8O5yb3dY-JXnm6WE7/view?usp=drive_link',
       icon: 'mern',
