@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { personal } from '../data/portfolio';
 import { useMagnetic } from '../hooks/useMagnetic';
+import { useTheme } from '../context/ThemeContext';
 
 const LinkedinIcon = (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -246,6 +247,40 @@ function MobileCv({ onNavigate }) {
   );
 }
 
+function ThemeToggle({ className = '' }) {
+  const { theme, toggleTheme } = useTheme();
+  const magnetic = useMagnetic(0.2);
+  
+  return (
+    <button
+      onClick={toggleTheme}
+      aria-label="Toggle Theme"
+      className={`w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300 ${magnetic.className} ${className}`}
+      ref={magnetic.ref}
+      onMouseMove={magnetic.onMouseMove}
+      onMouseLeave={magnetic.onMouseLeave}
+    >
+      {theme === 'dark' ? (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      ) : (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      )}
+    </button>
+  );
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -321,6 +356,7 @@ export default function Navbar() {
 
         {/* Desktop actions: socials + CV */}
         <div className="hidden lg:flex items-center gap-3">
+          <ThemeToggle />
           <SocialLinks />
           <CvButton />
         </div>
@@ -351,14 +387,14 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-          mobileOpen ? 'max-h-[40rem] opacity-100' : 'max-h-0 opacity-0'
+        className={`fixed inset-0 z-40 bg-obsidian/95 backdrop-blur-2xl transition-all duration-500 flex flex-col lg:hidden ${
+          mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <div className="px-6 py-4 nav-blur flex flex-col gap-2">
-          {links.map((l) => {
+        <div className="flex-1 flex flex-col justify-center px-8 gap-6 mt-16 overflow-y-auto">
+          {links.map((l, i) => {
             const sectionId = l.toLowerCase();
             const isActive = activeSection === sectionId;
             return (
@@ -366,20 +402,28 @@ export default function Navbar() {
                 key={l}
                 href={`#${sectionId}`}
                 onClick={() => setMobileOpen(false)}
-                className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 uppercase tracking-wide ${
-                  isActive
-                    ? 'text-pearl bg-pearl/[0.06]'
-                    : 'text-mist hover:text-pearl hover:bg-pearl/[0.03]'
+                className={`text-4xl font-bold tracking-tighter uppercase transition-all duration-500 transform ${
+                  mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                } ${
+                  isActive ? 'text-pearl' : 'text-mist hover:text-pearl'
                 }`}
+                style={{ transitionDelay: `${mobileOpen ? i * 0.05 + 0.1 : 0}s` }}
               >
                 {l}
               </a>
             );
           })}
 
-          {/* Mobile actions: socials + CV */}
-          <div className="pt-3 mt-2 border-t border-pearl/10 space-y-3">
-            <SocialLinks />
+          {/* Mobile bottom actions */}
+          <div 
+            className={`mt-8 pb-8 flex flex-col gap-6 transition-all duration-500 delay-500 transform ${
+              mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}
+          >
+            <div className="flex items-center justify-between border-t border-pearl/10 pt-6">
+              <ThemeToggle />
+              <SocialLinks />
+            </div>
             <MobileCv onNavigate={() => setMobileOpen(false)} />
           </div>
         </div>

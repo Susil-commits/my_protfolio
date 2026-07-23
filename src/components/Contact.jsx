@@ -154,7 +154,7 @@ export default function Contact() {
           />
           <div className="grid sm:grid-cols-2 gap-5">
             <div className="group">
-              <label className="block text-sm text-mist mb-2 ml-1 group-focus-within:text-pearl transition-colors duration-300">
+              <label className="block text-sm text-mist mb-2 ml-1 group-focus-within:text-pearl group-focus-within:-translate-y-1 transition-all duration-300 inline-block">
                 Name
               </label>
               <input
@@ -168,7 +168,7 @@ export default function Contact() {
               />
             </div>
             <div className="group">
-              <label className="block text-sm text-mist mb-2 ml-1 group-focus-within:text-pearl transition-colors duration-300">
+              <label className="block text-sm text-mist mb-2 ml-1 group-focus-within:text-pearl group-focus-within:-translate-y-1 transition-all duration-300 inline-block">
                 Email
               </label>
               <input

@@ -104,31 +104,31 @@ export default function Projects() {
                 </div>
               )}
 
-              <div className="relative z-10 tilt-pop">
+              <div className="relative z-10 tilt-pop transition-transform duration-500 group-hover:translate-z-10">
                 {/* Icon */}
-                <div className="text-3xl mb-4 opacity-70 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500">
+                <div className="text-3xl mb-4 opacity-70 group-hover:scale-110 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500">
                   {project.icon}
                 </div>
 
-                <div className="mb-3">
-                  <h3 className="text-pearl font-semibold text-xl group-hover:text-black transition-colors duration-300">
+                <div className="mb-3 group-hover:-translate-y-1 transition-transform duration-500 delay-75">
+                  <h3 className="text-pearl font-semibold text-xl drop-shadow-sm transition-colors duration-300">
                     {project.title}
                   </h3>
                   <p className="text-slate text-xs mt-0.5">{project.subtitle}</p>
                 </div>
 
-                <p className="text-mist text-sm leading-relaxed mb-6 group-hover:text-mist/80 transition-colors duration-300">
+                <p className="text-mist text-sm leading-relaxed mb-6 group-hover:text-pearl transition-colors duration-300 group-hover:-translate-y-1 delay-150">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-5">
+                <div className="flex flex-wrap gap-2 mb-5 group-hover:-translate-y-1 transition-transform duration-500 delay-200">
                   {project.tags.map((tag) => (
                     <TechPill key={tag} name={tag} compact />
                   ))}
                 </div>
 
                 {/* Link icons — deployment + source always present */}
-                <div className="flex items-center gap-4 pt-4 border-t border-pearl/[0.04]">
+                <div className="flex items-center gap-4 pt-4 border-t border-pearl/[0.04] group-hover:-translate-y-1 transition-transform duration-500 delay-300">
                   <ProjectLink url={project.link} label="Live Demo" icon={DeployIcon} />
                   <ProjectLink url={project.github} label="Source" icon={GithubIcon} />
                 </div>

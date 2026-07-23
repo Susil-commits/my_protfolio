@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import ParticlesBackground from './components/ParticlesBackground';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
@@ -12,10 +13,24 @@ import Achievements from './components/Achievements';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Loader from './components/Loader';
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+
+  // Prevent scroll while loading
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [loading]);
+
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="relative min-h-screen bg-obsidian transition-colors duration-500">
+      {loading && <Loader onComplete={() => setLoading(false)} />}
+      
       {/* Animated particle background */}
       <ParticlesBackground />
       <CustomCursor />
