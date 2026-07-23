@@ -75,19 +75,21 @@
 
   /* ── Cards ── */
   .card-premium {
-    background: rgba(245, 245, 245, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(245, 245, 245, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 1.25rem;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .card-premium:hover {
-    border-color: rgba(0, 0, 0, 0.15);
-    background: rgba(235, 235, 235, 0.6);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.15),
-                0 0 40px -10px rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.18);
+    background: rgba(235, 235, 235, 0.7);
+    transform: translateY(-5px);
+    box-shadow: 0 22px 65px -20px rgba(0, 0, 0, 0.18),
+                0 0 45px -10px rgba(0, 0, 0, 0.08),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.6);
   }
   .card-premium-hover-lift {
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -130,6 +132,7 @@
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.1;
+    text-shadow: 0 0 40px rgba(0, 0, 0, 0.15), 0 0 80px rgba(0, 0, 0, 0.1);
   }
 
   /* ── Text Gradients ── */
@@ -143,9 +146,9 @@
     background: linear-gradient(
       135deg,
       #111111 0%,
-      #3a3a3a 25%,
-      #5e5e5e 50%,
-      #3a3a3a 75%,
+      #3a3a3a 20%,
+      #8a8a8a 50%,
+      #3a3a3a 80%,
       #111111 100%
     );
     background-size: 300% 300%;
@@ -624,6 +627,7 @@
       radial-gradient(35% 45% at 80% 20%, rgba(0, 0, 0, 0.05), transparent 60%),
       radial-gradient(45% 55% at 60% 80%, rgba(0, 0, 0, 0.04), transparent 60%);
     animation: meshFloat 18s ease-in-out infinite;
+    will-change: transform;
   }
   @keyframes meshFloat {
     0%, 100% { transform: translate3d(0, 0, 0) scale(1); }

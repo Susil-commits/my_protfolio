@@ -5,7 +5,7 @@ export default function CustomCursor() {
   const ringRef = useRef(null);
 
   useEffect(() => {
-    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches || window.innerWidth < 768) return;
 
     document.body.classList.add('premium-cursor');
 

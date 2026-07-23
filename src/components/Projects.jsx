@@ -28,7 +28,7 @@ function ProjectLink({ url, label, icon }) {
         className="inline-flex items-center gap-1.5 text-xs font-medium text-pearl hover:text-black transition-colors duration-300"
       >
         {icon}
-        <span className="hidden sm:inline">{label}</span>
+        <span>{label}</span>
       </a>
     );
   }

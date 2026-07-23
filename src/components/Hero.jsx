@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { personal, hero } from '../data/portfolio';
+import { personal, hero, skills } from '../data/portfolio';
 import { useMagnetic } from '../hooks/useMagnetic';
 import RotatingText from './RotatingText';
 
@@ -106,7 +106,7 @@ export default function Hero() {
         </div>
 
         {/* Main heading — staggered char reveal */}
-        <h1 className="section-title text-pearl mb-6">
+        <h1 className="section-title text-pearl mb-6 text-glow-strong">
           <span className="text-gradient-animated">{nameParts}</span>
         </h1>
 
@@ -156,6 +156,20 @@ export default function Hero() {
       {/* Corner decorations */}
       <div className="absolute top-12 left-12 w-20 h-20 border-t border-l border-pearl/[0.04] rounded-tl-2xl hidden lg:block" />
       <div className="absolute bottom-12 right-12 w-20 h-20 border-b border-r border-pearl/[0.04] rounded-br-2xl hidden lg:block" />
+      {/* Infinite Tech Marquee */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden border-t border-pearl/[0.04] bg-pearl/[0.02] py-4 backdrop-blur-sm z-20">
+        <div className="marquee-track">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center gap-12 px-6">
+              {skills.flatMap((s) => s.items).map((tech, idx) => (
+                <span key={`${i}-${idx}`} className="text-mist/70 text-xs font-semibold tracking-[0.2em] uppercase whitespace-nowrap">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

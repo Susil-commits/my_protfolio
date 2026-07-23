@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { personal } from '../data/portfolio';
+import { useMagnetic } from '../hooks/useMagnetic';
 
 const LinkedinIcon = (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -40,6 +41,25 @@ function ResumeIcon({ name }) {
   return name === 'mern' ? MernIcon : AiIcon;
 }
 
+function MagneticSocialLink({ url, label, icon }) {
+  const magnetic = useMagnetic(0.2);
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      title={label}
+      className={`w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300 ${magnetic.className}`}
+      ref={magnetic.ref}
+      onMouseMove={magnetic.onMouseMove}
+      onMouseLeave={magnetic.onMouseLeave}
+    >
+      {icon}
+    </a>
+  );
+}
+
 function SocialLinks({ className = '' }) {
   const items = [
     { label: 'LinkedIn', url: personal.social.linkedin, icon: LinkedinIcon },
@@ -49,17 +69,7 @@ function SocialLinks({ className = '' }) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       {items.map((s) => (
-        <a
-          key={s.label}
-          href={s.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={s.label}
-          title={s.label}
-          className="w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300"
-        >
-          {s.icon}
-        </a>
+        <MagneticSocialLink key={s.label} {...s} />
       ))}
     </div>
   );
