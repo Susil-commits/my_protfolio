@@ -76,7 +76,7 @@ export const skills = [
   {
     category: 'Programming',
     icon: '⌘',
-    items: ['C++', 'Java', 'Python', 'JavaScript'],
+    items: ['C++', 'Java', 'Python', 'JavaScript', 'TypeScript'],
   },
   {
     category: 'Frontend',
@@ -91,7 +91,7 @@ export const skills = [
   {
     category: 'Tools & Cloud',
     icon: '⚙',
-    items: ['Git', 'GitHub', 'Vercel', 'Render', 'Jira', 'Cloudinary'],
+    items: ['Git', 'GitHub', 'Vercel', 'Render', 'Jira', 'Cloudinary', 'Docker', 'CI/CD', 'AWS'],
   },
 ];
 
@@ -103,7 +103,7 @@ export const projects = [
     gradient: 'from-emerald-500/10 to-green-500/5',
     description:
       'Full-stack marketplace enabling farmers to sell agricultural products directly to consumers, eliminating intermediaries and increasing profits. Features secure JWT authentication, real-time order updates via Socket.IO, Cloudinary image uploads, React Query API caching, and analytics dashboards.',
-    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'JWT', 'Cloudinary', 'React Query'],
+    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'JWT', 'Cloudinary', 'React Query', 'TypeScript'],
     link: 'https://farm-direct-marketplace-eta.vercel.app/',
     github: 'https://github.com/Susil-commits/FarmDirect',
     highlight: true,
@@ -115,7 +115,7 @@ export const projects = [
     gradient: 'from-orange-500/10 to-amber-500/5',
     description:
       'Full-stack platform connecting food donors, NGOs, volunteers, and administrators to reduce food waste by redistributing surplus food. Includes food listing, reservation, collection tracking, real-time status updates, JWT auth, role-based access control (RBAC), and an admin dashboard for donation management.',
-    tags: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'Tailwind CSS', 'JWT', 'RBAC', 'Cloudinary'],
+    tags: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'Tailwind CSS', 'JWT', 'RBAC', 'Cloudinary', 'TypeScript'],
     link: 'https://left2-serve.vercel.app/',
     github: 'https://github.com/Susil-commits/Left2Serve',
     highlight: true,
@@ -127,7 +127,7 @@ export const projects = [
     gradient: 'from-blue-500/10 to-indigo-500/5',
     description:
       'Full-stack driver hiring platform allowing users to search, compare, book, and pay professional drivers for temporary or permanent requirements. Built secure REST APIs with JWT authentication, Cloudinary media storage, email notifications, and security features including Helmet, rate limiting, input validation, bcrypt, and Winston logging.',
-    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Cloudinary', 'Helmet', 'Winston'],
+    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Cloudinary', 'Helmet', 'Winston', 'TypeScript'],
     link: 'https://my-mate-tawny.vercel.app/',
     github: 'https://github.com/Susil-commits/MyMate',
     highlight: true,
