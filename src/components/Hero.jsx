@@ -106,7 +106,7 @@ export default function Hero() {
         </div>
 
         {/* Main heading — staggered char reveal */}
-        <h1 className="section-title text-pearl mb-6 text-glow-accent">
+        <h1 className="text-[clamp(1.75rem,5vw,3.25rem)] font-bold tracking-tight mb-6">
           <span className="text-gradient-accent">{nameParts}</span>
         </h1>
 
