@@ -118,7 +118,7 @@ function CvButton({ className = '', onClick }) {
           open ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' : 'opacity-0 scale-95 -translate-y-1 pointer-events-none'
         }`}
       >
-        <div className="rounded-2xl border border-pearl/15 bg-white/90 backdrop-blur-xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)] p-2 overflow-hidden">
+        <div className="rounded-2xl border border-pearl/15 bg-obsidian/90 backdrop-blur-xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)] p-2 overflow-hidden">
           <p className="px-3 pt-2 pb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate">
             Select resume
           </p>
@@ -201,7 +201,7 @@ function MobileCv({ onNavigate }) {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="rounded-2xl border border-pearl/15 bg-white/80 backdrop-blur-xl p-2 space-y-1">
+          <div className="rounded-2xl border border-pearl/15 bg-obsidian/80 backdrop-blur-xl p-2 space-y-1">
             {personal.resumes.map((r) => {
               const disabled = !r.url;
               const content = (

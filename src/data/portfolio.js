@@ -54,7 +54,7 @@ export const hero = {
   eyebrow: 'Full-Stack Development',
   roles: ['Full-Stack Development', 'Data Science', 'AI / ML'],
   tagline:
-    'Engineering secure, scalable web platforms end-to-end — from real-time APIs to polished, responsive interfaces that ship.',
+    'Engineering secure, scalable web platforms end-to-end — from schema design, REST APIs, and real-time systems to query optimization, load-tested deployments, and polished, responsive interfaces that ship.',
 };
 
 export const about = {
@@ -86,7 +86,7 @@ export const skills = [
   {
     category: 'Backend',
     icon: '◈',
-    items: ['Node.js', 'Express.js', 'REST APIs', 'SQL', 'MongoDB'],
+    items: ['Node.js', 'Express.js', 'REST APIs', 'SQL', 'MongoDB', 'PostgreSQL'],
   },
   {
     category: 'Tools & Cloud',
@@ -102,7 +102,7 @@ export const projects = [
     icon: '🌾',
     gradient: 'from-emerald-500/10 to-green-500/5',
     description:
-      'Full-stack marketplace enabling farmers to sell agricultural products directly to consumers, eliminating intermediaries and increasing profits. Features secure JWT authentication, real-time order updates via Socket.IO, Cloudinary image uploads, React Query API caching, and analytics dashboards.',
+      'Full-stack marketplace enabling farmers to sell agricultural products directly to consumers. Optimized MongoDB queries with compound indexing to cut filter latency by 95% (~240ms to ~12ms). Load-tested the REST API with Artillery (200 concurrent users), sustaining sub-150ms p95 latency at 0% errors.',
     tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'JWT', 'Cloudinary', 'React Query', 'TypeScript'],
     link: 'https://farm-direct-marketplace-eta.vercel.app/',
     github: 'https://github.com/Susil-commits/FarmDirect',
@@ -114,7 +114,7 @@ export const projects = [
     icon: '🍲',
     gradient: 'from-orange-500/10 to-amber-500/5',
     description:
-      'Full-stack platform connecting food donors, NGOs, volunteers, and administrators to reduce food waste by redistributing surplus food. Includes food listing, reservation, collection tracking, real-time status updates, JWT auth, role-based access control (RBAC), and an admin dashboard for donation management.',
+      'Full-stack food redistribution platform connecting donors and NGOs. Engineered a compound B-tree index in PostgreSQL to reduce average query latency from 340ms to 12ms. Load-tested the API with Artillery (19K+ requests at 187 req/sec), validating rate-limit defenses and maintaining 383ms median latency.',
     tags: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'Tailwind CSS', 'JWT', 'RBAC', 'Cloudinary', 'TypeScript'],
     link: 'https://left2-serve.vercel.app/',
     github: 'https://github.com/Susil-commits/Left2Serve',
@@ -126,7 +126,7 @@ export const projects = [
     icon: '🚗',
     gradient: 'from-blue-500/10 to-indigo-500/5',
     description:
-      'Full-stack driver hiring platform allowing users to search, compare, book, and pay professional drivers for temporary or permanent requirements. Built secure REST APIs with JWT authentication, Cloudinary media storage, email notifications, and security features including Helmet, rate limiting, input validation, bcrypt, and Winston logging.',
+      'Full-stack driver booking platform featuring real-time WebSocket location tracking, AI-heuristic driver matching, and Tesseract.js OCR. Implemented MongoDB compound indexing to cut execution time to ~1ms. Load-tested API at 200 concurrent users, sustaining 115 req/sec while resolving a Socket.IO chat race condition.',
     tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Cloudinary', 'Helmet', 'Winston', 'TypeScript'],
     link: 'https://my-mate-tawny.vercel.app/',
     github: 'https://github.com/Susil-commits/MyMate',
@@ -198,7 +198,7 @@ export const achievements = [
   {
     title: 'NASSCOM Gold — Big Data Technology',
     description:
-      'Awarded a Gold tag by NASSCOM for successfully clearing the assessment on Big Data Technology.',
+      'Gold-certified (70%+ score), assessed under IT-ITeS Sector Skills Council standards backed by the Ministry of Electronics & IT, Government of India.',
     icon: '🥇',
     certificates: [nasscomBigDataCert],
   },
@@ -217,9 +217,9 @@ export const achievements = [
     certificates: [nptelTestingCert, nptelIotCert],
   },
   {
-    title: 'Oracle Cloud Infrastructure — Gen AI & Data Science',
+    title: 'Oracle Certified Foundations Associate (Agentic AI)',
     description:
-      'Qualified the Gen AI and Data Science curriculum on Oracle Cloud Infrastructure.',
+      'Exam 1Z0-1157-26; passed with 88% (Jul \'26). Also qualified the Gen AI and Data Science curriculum on Oracle Cloud Infrastructure.',
     icon: '☁',
     certificates: [oracleGenAiCert, oracleGenAiScore, oracleDataScienceCert, oracleDataScienceScore, nasscomDataTag, nasscomAiTag],
   },

@@ -42,7 +42,7 @@ export default function Footer() {
           </p>
           <p className="text-slate text-xs flex items-center gap-1">
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-400/60 animate-pulse" />
-            Designed & Developed with care
+            Designed & Developed By Susil Kumar Nayak
           </p>
         </div>
       </div>

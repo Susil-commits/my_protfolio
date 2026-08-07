@@ -23,17 +23,21 @@
     --theme-frost: #2a2a2a;
     --theme-mist: #3a3a3a;
     --theme-slate: #5e5e5e;
+    --theme-accent1: #0ea5e9;
+    --theme-accent2: #8b5cf6;
   }
 
   :root.dark {
-    --theme-obsidian: #0a0a0a;
-    --theme-charcoal: #111111;
-    --theme-smoke: #1a1a1a;
+    --theme-obsidian: #050505;
+    --theme-charcoal: #0a0a0a;
+    --theme-smoke: #141414;
     --theme-ash: #2a2a2a;
     --theme-pearl: #f8f8f8;
     --theme-frost: #e0e0e0;
     --theme-mist: #a3a3a3;
     --theme-slate: #737373;
+    --theme-accent1: #38bdf8;
+    --theme-accent2: #a78bfa;
   }
 
   * {
@@ -90,6 +94,12 @@
   }
   .ambient-glow-white {
     background: #111111;
+  }
+  .ambient-glow-accent1 {
+    background: var(--theme-accent1);
+  }
+  .ambient-glow-accent2 {
+    background: var(--theme-accent2);
   }
   .ambient-glow-pulse {
     animation: glowPulse 4s ease-in-out infinite;
@@ -164,6 +174,12 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  .text-gradient-accent {
+    background: linear-gradient(135deg, var(--theme-accent1) 0%, var(--theme-accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
   .text-gradient-animated {
     background: linear-gradient(
       135deg,
@@ -215,9 +231,9 @@
     transform: translateX(100%);
   }
   .btn-primary:hover {
-    background: #333333;
+    background: color-mix(in srgb, var(--theme-accent1) 80%, black);
     transform: scale(1.05);
-    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 40px -10px color-mix(in srgb, var(--theme-accent1) 50%, transparent);
   }
 
   .btn-outline {
@@ -236,10 +252,11 @@
     letter-spacing: -0.01em;
   }
   .btn-outline:hover {
-    border-color: rgba(0, 0, 0, 0.5);
-    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--theme-accent2);
+    color: var(--theme-accent2);
+    background: color-mix(in srgb, var(--theme-accent2) 5%, transparent);
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--theme-accent2) 10%, transparent);
   }
 
   /* ── Input Fields ── */
@@ -267,10 +284,10 @@
 
   /* ── Navbar Blur ── */
   .nav-blur {
-    background: rgba(255, 255, 255, 0.75);
+    background: color-mix(in srgb, var(--theme-obsidian) 75%, transparent);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid color-mix(in srgb, var(--theme-pearl) 6%, transparent);
   }
 
   /* ── Section Badge ── */
@@ -530,6 +547,9 @@
   /* ── Text Shadow Glow ── */
   .text-glow {
     text-shadow: 0 0 30px color-mix(in srgb, var(--theme-pearl) 15%, transparent);
+  }
+  .text-glow-accent {
+    text-shadow: 0 0 30px color-mix(in srgb, var(--theme-accent1) 40%, transparent);
   }
   .text-glow-strong {
     text-shadow: 0 0 60px color-mix(in srgb, var(--theme-pearl) 20%, transparent), 0 0 120px color-mix(in srgb, var(--theme-pearl) 10%, transparent);

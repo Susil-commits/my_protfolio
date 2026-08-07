@@ -27,16 +27,16 @@ export default function Experience() {
 
   return (
     <section ref={sectionRef} className="relative py-32 px-6 overflow-hidden">
-      <div className="ambient-glow ambient-glow-white w-[400px] h-[400px] top-1/2 -left-20 opacity-8 animate-glow-pulse" />
-      <div className="ambient-glow ambient-glow-white w-[200px] h-[200px] bottom-20 right-10 opacity-5 animate-float-slow" />
+      <div className="ambient-glow ambient-glow-accent2 w-[400px] h-[400px] top-1/2 -left-20 opacity-15 animate-glow-pulse" />
+      <div className="ambient-glow ambient-glow-accent1 w-[200px] h-[200px] bottom-20 right-10 opacity-10 animate-float-slow" />
 
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <span className="reveal-on-scroll section-badge mb-4 inline-flex">
             Experience
           </span>
-          <h2 className="reveal-on-scroll section-title text-pearl mt-4">
-            Where I've <span className="text-gradient-animated">worked</span>
+          <h2 className="reveal-on-scroll section-title text-pearl mt-4 text-glow-accent">
+            Where I've <span className="text-gradient-accent">worked</span>
           </h2>
         </div>
 

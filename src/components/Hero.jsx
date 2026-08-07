@@ -65,9 +65,9 @@ export default function Hero() {
       <div className="mesh-bg" />
 
       {/* Ambient glows with pulse */}
-      <div className="ambient-glow ambient-glow-white ambient-glow-pulse w-[600px] h-[600px] -top-40 -right-40" />
-      <div className="ambient-glow ambient-glow-white w-[300px] h-[300px] top-1/2 left-1/4 opacity-5 animate-float-slow" />
-      <div className="ambient-glow ambient-glow-white w-[250px] h-[250px] -bottom-20 -left-20 opacity-10 animate-float" />
+      <div className="ambient-glow ambient-glow-accent1 ambient-glow-pulse w-[600px] h-[600px] -top-40 -right-40 opacity-20" />
+      <div className="ambient-glow ambient-glow-accent2 w-[300px] h-[300px] top-1/2 left-1/4 opacity-10 animate-float-slow" />
+      <div className="ambient-glow ambient-glow-accent1 w-[250px] h-[250px] -bottom-20 -left-20 opacity-15 animate-float" />
 
       {/* Subtle grid overlay */}
       <div
@@ -92,7 +92,7 @@ export default function Hero() {
             </div>
             {/* Rotating ring */}
             <div className="absolute -inset-1.5 rounded-full border border-pearl/[0.06] animate-spin-slow pointer-events-none" />
-            <div className="absolute -inset-1.5 rounded-full bg-pearl/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            <div className="absolute -inset-1.5 rounded-full bg-[var(--theme-accent1)] blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
           </div>
         </div>
 
@@ -106,8 +106,8 @@ export default function Hero() {
         </div>
 
         {/* Main heading — staggered char reveal */}
-        <h1 className="section-title text-pearl mb-6 text-glow-strong">
-          <span className="text-gradient-animated">{nameParts}</span>
+        <h1 className="section-title text-pearl mb-6 text-glow-accent">
+          <span className="text-gradient-accent">{nameParts}</span>
         </h1>
 
         {/* Description */}

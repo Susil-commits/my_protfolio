@@ -67,16 +67,16 @@ export default function Projects() {
 
   return (
     <section ref={sectionRef} id="projects" className="relative py-32 px-6 overflow-hidden">
-      <div className="ambient-glow ambient-glow-white w-[500px] h-[500px] top-20 -right-20 opacity-10 animate-glow-pulse" />
-      <div className="ambient-glow ambient-glow-white w-[250px] h-[250px] bottom-20 left-10 opacity-5 animate-float-slow" />
+      <div className="ambient-glow ambient-glow-accent1 w-[500px] h-[500px] top-20 -right-20 opacity-15 animate-glow-pulse" />
+      <div className="ambient-glow ambient-glow-accent2 w-[250px] h-[250px] bottom-20 left-10 opacity-10 animate-float-slow" />
 
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <span className="reveal-on-scroll section-badge mb-4 inline-flex">
             Projects
           </span>
-          <h2 className="reveal-on-scroll section-title text-pearl mt-4">
-            Selected <span className="text-gradient-animated">work</span>
+          <h2 className="reveal-on-scroll section-title text-pearl mt-4 text-glow-accent">
+            Selected <span className="text-gradient-accent">work</span>
           </h2>
           <p className="reveal-on-scroll text-mist mt-4 max-w-lg mx-auto text-sm">
             Full-stack platforms I've designed, built, and shipped end-to-end
