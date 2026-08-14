@@ -1,4 +1,4 @@
-import profilePic from '../../assets/Profile_pic.png';
+import profilePic from '../../assets/PF.jpeg';
 
 import nasscomBigDataCert from '../../assets/nasscombigdata.png';
 import nasscomDataTag from '../../assets/data_tag.jpg';

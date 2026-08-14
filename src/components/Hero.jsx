@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { personal, hero, skills } from '../data/portfolio';
 import { useMagnetic } from '../hooks/useMagnetic';
 import RotatingText from './RotatingText';
+import ProfileAvatar3D from './ProfileAvatar3D';
 
 export default function Hero() {
   const sectionRef = useRef(null);
@@ -81,21 +82,8 @@ export default function Hero() {
       />
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        {/* Profile avatar */}
-        <div className="reveal-scale flex justify-center mb-8">
-          <div className="relative group">
-            <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-pearl/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)] transition-all duration-500 group-hover:scale-105 group-hover:border-pearl/20">
-              <img
-                src={personal.avatar}
-                alt={personal.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {/* Rotating ring */}
-            <div className="absolute -inset-1.5 rounded-full border border-pearl/[0.06] animate-spin-slow pointer-events-none" />
-            <div className="absolute -inset-1.5 rounded-full bg-[var(--theme-accent1)] blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
-          </div>
-        </div>
+        {/* Interactive 3D Profile Avatar */}
+        <ProfileAvatar3D />
 
         {/* Subheading — rotating roles */}
         <div className="reveal-on-scroll flex items-center justify-center gap-3 mb-6">

@@ -785,6 +785,23 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spinSlow 20s linear infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+  }
 }
 
 /* ── Mobile performance: blur radius scales GPU cost, so on small screens
@@ -812,10 +829,10 @@
     padding-top: 5rem !important;
     padding-bottom: 5rem !important;
   }
-  .btn-primary, .btn-outline {
+  form .btn-primary, form .btn-outline {
     width: 100%;
     justify-content: center;
-    padding: 1rem;
+    padding: 0.9rem;
   }
 }
 
