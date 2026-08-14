@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { personal } from '../data/portfolio';
 import { useMagnetic } from '../hooks/useMagnetic';
 import { useTheme } from '../context/ThemeContext';
+import { useScrollSpy } from '../hooks/useScrollSpy';
 
 const LinkedinIcon = (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -277,26 +278,23 @@ function ThemeToggle({ className = '' }) {
   );
 }
 
+const SECTION_IDS = ['home', 'about', 'skills', 'architecture', 'projects', 'experience', 'education', 'achievements', 'certifications', 'contact'];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const activeSection = useScrollSpy(SECTION_IDS);
   const navRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
-
-      // Active section detection
-      const sections = ['home', 'about', 'skills', 'architecture', 'projects', 'experience', 'education', 'achievements', 'certifications', 'contact'];
-      for (const section of sections.reverse()) {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 200) {
-            setActiveSection(section);
-            break;
-          }
+      const isScrolled = window.scrollY > 40;
+      setScrolled(isScrolled);
+      if (navRef.current) {
+        if (isScrolled) {
+          navRef.current.classList.add('nav-blur');
+        } else {
+          navRef.current.classList.remove('nav-blur');
         }
       }
     };
@@ -304,7 +302,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = ['Home', 'About', 'Skills', 'Architecture', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'];
+  const desktopPrimaryLinks = ['Home', 'About', 'Skills', 'Architecture', 'Projects', 'Experience'];
+  const allLinks = ['Home', 'About', 'Skills', 'Architecture', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'];
 
   return (
     <nav
@@ -315,7 +314,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
         {/* Left: Logo with animation */}
-        <div className="flex-1 flex items-center justify-start min-w-0">
+        <div className="flex items-center justify-start shrink-0">
           <a
             href="#home"
             className="text-lg sm:text-xl font-bold tracking-tight text-pearl group relative shrink-0"
@@ -328,9 +327,9 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Center: Desktop Links (Perfect middle alignment) */}
-        <div className="hidden xl:flex items-center justify-center gap-0.5 2xl:gap-1 shrink-0">
-          {links.map((l) => {
+        {/* Center: Desktop Links (Never collides with right icons) */}
+        <div className="hidden lg:flex items-center justify-center gap-0.5 xl:gap-1 shrink-0">
+          {desktopPrimaryLinks.map((l) => {
             const sectionId = l.toLowerCase();
             const isActive = activeSection === sectionId;
             return (
@@ -350,19 +349,37 @@ export default function Navbar() {
               </a>
             );
           })}
+
+          {/* More Dropdown (Education, Achievements, Certifications) */}
+          <MoreDropdown activeSection={activeSection} />
+
+          {/* Contact Link */}
+          <a
+            href="#contact"
+            className={`relative px-2.5 py-1.5 2xl:px-3 2xl:py-2 text-[11px] 2xl:text-xs font-semibold transition-all duration-300 tracking-wider uppercase rounded-full ${
+              activeSection === 'contact'
+                ? 'text-pearl bg-pearl/[0.08]'
+                : 'text-mist hover:text-pearl hover:bg-pearl/[0.03]'
+            }`}
+          >
+            Contact
+            {activeSection === 'contact' && (
+              <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-pearl rounded-full animate-pulse" />
+            )}
+          </a>
         </div>
 
         {/* Right: Actions (Desktop socials + CV, Mobile toggle) */}
-        <div className="flex-1 flex items-center justify-end gap-2 2xl:gap-3 min-w-0">
+        <div className="flex items-center justify-end gap-2 2xl:gap-3 shrink-0">
           {/* Desktop actions: socials + CV */}
-          <div className="hidden xl:flex items-center gap-2 2xl:gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-2 2xl:gap-3 shrink-0">
             <ThemeToggle />
             <SocialLinks />
             <CvButton />
           </div>
 
-          {/* Mobile / Tablet toggle actions (< xl) */}
-          <div className="flex xl:hidden items-center gap-2 shrink-0">
+          {/* Mobile / Tablet toggle actions (< lg) */}
+          <div className="flex lg:hidden items-center gap-2 shrink-0">
             <ThemeToggle />
             <button
               className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 group cursor-pointer"
@@ -393,13 +410,13 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-obsidian/95 backdrop-blur-2xl transition-all duration-500 flex flex-col xl:hidden ${
+        className={`fixed inset-0 z-40 bg-obsidian/95 backdrop-blur-2xl transition-all duration-500 flex flex-col lg:hidden ${
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
         <div className="flex-1 flex flex-col px-6 sm:px-8 pt-24 pb-8 overflow-y-auto justify-between">
           <div className="flex flex-col gap-3 sm:gap-4">
-            {links.map((l, i) => {
+            {allLinks.map((l, i) => {
               const sectionId = l.toLowerCase();
               const isActive = activeSection === sectionId;
               return (
