@@ -113,7 +113,7 @@ export default function ProfileAvatar3D() {
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
             <span className="text-[10px] sm:text-xs font-bold text-pearl tracking-tight whitespace-nowrap">
-              Available for Hire
+              Software Engineer
             </span>
           </div>
 

@@ -40,7 +40,7 @@ const INITIAL_CATEGORIES = [
   {
     category: '📫 Resume & Contact',
     suggestions: [
-      { label: 'How to hire or contact Susil', query: 'How can I get in touch with Susil or hire him?' },
+      { label: 'How to contact Susil', query: 'How can I get in touch or connect with Susil?' },
       { label: 'Download Resume', query: 'Where can I find and download Susil\'s resume?' },
     ],
   },

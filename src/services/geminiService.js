@@ -182,7 +182,7 @@ export const getContextualSuggestions = (lastUserMsg = '', lastBotReply = '') =>
       '🌾 How did you optimize MongoDB in FaRm?',
       '💼 Tell me about your Techgeering internship',
       '🏆 What are your top achievements & certifications?',
-      '📫 How can I hire or contact you?',
+      '📫 How can I get in touch with you?',
     ];
   }
 
@@ -199,6 +199,6 @@ export const getContextualSuggestions = (lastUserMsg = '', lastBotReply = '') =>
     '🏛️ Explain your system architecture & performance optimizations',
     '🚀 What are your top full-stack projects?',
     '⚡ How did you cut database query latency by 95%?',
-    '📫 How can I contact or hire you?',
+    '📫 How can I connect or get in touch with you?',
   ];
 };
