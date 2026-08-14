@@ -1,94 +1,117 @@
 import { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 export default function ParticlesBackground() {
   const containerRef = useRef(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const containerId = 'particles-bg';
     const isMobile = window.innerWidth < 768;
+    const isDark = theme === 'dark' || document.documentElement.classList.contains('dark');
 
-    // High performance, lightweight particles configuration
     const config = {
       particles: {
         number: {
-          value: isMobile ? 12 : 32,
+          value: isMobile ? 25 : 60,
           density: {
             enable: true,
-            value_area: 1200,
+            value_area: 900,
           },
         },
         color: {
-          value: ['#1a1a2e', '#0f3460', '#38bdf8'],
+          value: isDark
+            ? ['#38bdf8', '#818cf8', '#c084fc', '#34d399', '#60a5fa']
+            : ['#0284c7', '#6366f1', '#9333ea', '#059669', '#2563eb'],
         },
         shape: {
           type: 'circle',
         },
         opacity: {
-          value: 0.4,
+          value: isDark ? 0.6 : 0.5,
           random: true,
           anim: {
-            enable: false,
+            enable: true,
+            speed: 1,
+            opacity_min: isDark ? 0.2 : 0.15,
+            sync: false,
           },
         },
         size: {
-          value: 3,
+          value: isMobile ? 3 : 4,
           random: true,
           anim: {
-            enable: false,
+            enable: true,
+            speed: 2,
+            size_min: 1.5,
+            sync: false,
           },
         },
         line_linked: {
-          enable: !isMobile,
-          distance: 100,
-          color: '#38bdf8',
-          opacity: 0.08,
-          width: 1,
+          enable: true,
+          distance: isMobile ? 100 : 135,
+          color: isDark ? '#38bdf8' : '#6366f1',
+          opacity: isDark ? 0.22 : 0.18,
+          width: 1.2,
         },
         move: {
           enable: true,
-          speed: isMobile ? 0.3 : 0.5,
+          speed: isMobile ? 0.6 : 1.0,
           direction: 'none',
-          random: false,
+          random: true,
           straight: false,
           out_mode: 'out',
           bounce: false,
         },
       },
       interactivity: {
-        detect_on: 'canvas',
+        detect_on: 'window',
         events: {
           onhover: {
-            enable: false,
+            enable: !isMobile,
+            mode: 'grab',
           },
           onclick: {
-            enable: false,
+            enable: true,
+            mode: 'push',
           },
           resize: true,
         },
+        modes: {
+          grab: {
+            distance: 180,
+            line_linked: {
+              opacity: 0.45,
+            },
+          },
+          push: {
+            particles_nb: 3,
+          },
+        },
       },
-      retina_detect: false, // Disables retina doubling to cut GPU canvas fill rate
+      retina_detect: true,
     };
 
-    if (typeof window.particlesJS === 'function') {
-      window.particlesJS(containerId, config);
-    }
-
-    // Pause particles when tab is hidden to save 100% CPU
-    const handleVisibilityChange = () => {
-      const pJS = window.pJSDom?.find((dom) => dom?.pJS?.canvas?.el?.parentNode?.id === containerId)?.pJS;
-      if (pJS && pJS.fn) {
-        if (document.hidden) {
-          if (pJS.fn.drawAnim) cancelAnimationFrame(pJS.fn.drawAnim);
-        } else {
-          if (pJS.fn.particlesDraw) pJS.fn.particlesDraw();
-        }
+    const initParticles = () => {
+      if (typeof window.particlesJS === 'function') {
+        window.particlesJS(containerId, config);
       }
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    // Initialize or retry if script is still loading
+    if (typeof window.particlesJS === 'function') {
+      initParticles();
+    } else {
+      const interval = setInterval(() => {
+        if (typeof window.particlesJS === 'function') {
+          clearInterval(interval);
+          initParticles();
+        }
+      }, 50);
+      return () => clearInterval(interval);
+    }
 
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
       const container = document.getElementById(containerId);
       if (container) {
         const canvas = container.querySelector('.particles-js-canvas-el');
@@ -102,13 +125,13 @@ export default function ParticlesBackground() {
         );
       }
     };
-  }, []);
+  }, [theme]);
 
   return (
     <div
       id="particles-bg"
       ref={containerRef}
-      className="absolute inset-0 z-0 pointer-events-none"
+      className="fixed inset-0 z-0 pointer-events-none"
     />
   );
 }
