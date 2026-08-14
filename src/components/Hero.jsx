@@ -7,6 +7,7 @@ export default function Hero() {
   const sectionRef = useRef(null);
   const viewWork = useMagnetic(0.4);
   const getInTouch = useMagnetic(0.4);
+  const askAi = useMagnetic(0.4);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -111,12 +112,12 @@ export default function Hero() {
         </h1>
 
         {/* Description */}
-        <p className="reveal-on-scroll text-mist text-lg max-w-xl mx-auto leading-relaxed mb-10">
+        <p className="reveal-on-scroll text-mist text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-8 sm:mb-10 px-2">
           {hero.tagline}
         </p>
 
         {/* CTA Buttons */}
-        <div className="reveal-on-scroll flex flex-wrap items-center justify-center gap-4 mb-16">
+        <div className="reveal-on-scroll flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16 px-2">
           <a href="#projects" className="btn-primary group" {...viewWork}>
             View Work
             <svg
@@ -139,6 +140,18 @@ export default function Hero() {
               <polyline points="22,6 12,13 2,6" />
             </svg>
           </a>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-portfolio-ai'))}
+            className="btn-outline group border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500/10 text-pearl cursor-pointer flex items-center gap-2"
+            {...askAi}
+          >
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span>Ask AI</span>
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400 font-mono font-bold">
+              Gemini
+            </span>
+          </button>
         </div>
 
         {/* Scroll indicator */}

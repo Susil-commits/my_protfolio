@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import SystemArchitecture from './components/SystemArchitecture';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -14,6 +15,8 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
+import Chatbot from './components/Chatbot';
+import ErrorBoundary from './components/ErrorBoundary';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -28,35 +31,40 @@ export default function App() {
   }, [loading]);
 
   return (
-    <div className="relative min-h-screen bg-obsidian transition-colors duration-500">
-      {loading && <Loader onComplete={() => setLoading(false)} />}
-      
-      {/* Animated particle background */}
-      <ParticlesBackground />
-      <CustomCursor />
-      <ScrollProgress />
+    <ErrorBoundary>
+      <div className="relative min-h-screen bg-obsidian transition-colors duration-500">
+        {loading && <Loader onComplete={() => setLoading(false)} />}
+        
+        {/* Animated particle background */}
+        <ParticlesBackground />
+        <CustomCursor />
+        <ScrollProgress />
 
-      <Navbar />
-      <main>
-        <Hero />
-        <div className="line-decoration max-w-4xl mx-auto" />
-        <About />
-        <div className="line-decoration max-w-4xl mx-auto" />
-        <Skills />
-        <div className="line-decoration max-w-4xl mx-auto" />
-        <Projects />
-        <div className="line-decoration max-w-4xl mx-auto" />
-        <Experience />
-        <div className="line-decoration max-w-4xl mx-auto" />
-        <Education />
-        <div className="line-decoration max-w-4xl mx-auto" />
-        <Achievements />
-        <div className="line-decoration max-w-4xl mx-auto" />
-        <Certifications />
-        <div className="line-decoration max-w-4xl mx-auto" />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+        <Navbar />
+        <main>
+          <Hero />
+          <div className="line-decoration max-w-4xl mx-auto" />
+          <About />
+          <div className="line-decoration max-w-4xl mx-auto" />
+          <Skills />
+          <div className="line-decoration max-w-4xl mx-auto" />
+          <SystemArchitecture />
+          <div className="line-decoration max-w-4xl mx-auto" />
+          <Projects />
+          <div className="line-decoration max-w-4xl mx-auto" />
+          <Experience />
+          <div className="line-decoration max-w-4xl mx-auto" />
+          <Education />
+          <div className="line-decoration max-w-4xl mx-auto" />
+          <Achievements />
+          <div className="line-decoration max-w-4xl mx-auto" />
+          <Certifications />
+          <div className="line-decoration max-w-4xl mx-auto" />
+          <Contact />
+        </main>
+        <Footer />
+        <Chatbot />
+      </div>
+    </ErrorBoundary>
   );
 }

@@ -53,8 +53,6 @@ function MagneticSocialLink({ url, label, icon }) {
       title={label}
       className={`w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300 ${magnetic.className}`}
       ref={magnetic.ref}
-      onMouseMove={magnetic.onMouseMove}
-      onMouseLeave={magnetic.onMouseLeave}
     >
       {icon}
     </a>
@@ -257,8 +255,6 @@ function ThemeToggle({ className = '' }) {
       aria-label="Toggle Theme"
       className={`w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300 ${magnetic.className} ${className}`}
       ref={magnetic.ref}
-      onMouseMove={magnetic.onMouseMove}
-      onMouseLeave={magnetic.onMouseLeave}
     >
       {theme === 'dark' ? (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -292,7 +288,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 40);
 
       // Active section detection
-      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'education', 'achievements', 'certifications', 'contact'];
+      const sections = ['home', 'about', 'skills', 'architecture', 'projects', 'experience', 'education', 'achievements', 'certifications', 'contact'];
       for (const section of sections.reverse()) {
         const el = document.getElementById(section);
         if (el) {
@@ -308,7 +304,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'];
+  const links = ['Home', 'About', 'Skills', 'Architecture', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'];
 
   return (
     <nav
@@ -393,36 +389,46 @@ export default function Navbar() {
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <div className="flex-1 flex flex-col justify-center px-8 gap-6 mt-16 overflow-y-auto">
-          {links.map((l, i) => {
-            const sectionId = l.toLowerCase();
-            const isActive = activeSection === sectionId;
-            return (
-              <a
-                key={l}
-                href={`#${sectionId}`}
-                onClick={() => setMobileOpen(false)}
-                className={`text-4xl font-bold tracking-tighter uppercase transition-all duration-500 transform ${
-                  mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                } ${
-                  isActive ? 'text-pearl' : 'text-mist hover:text-pearl'
-                }`}
-                style={{ transitionDelay: `${mobileOpen ? i * 0.05 + 0.1 : 0}s` }}
-              >
-                {l}
-              </a>
-            );
-          })}
+        <div className="flex-1 flex flex-col px-6 sm:px-8 pt-24 pb-8 overflow-y-auto justify-between">
+          <div className="flex flex-col gap-3 sm:gap-4">
+            {links.map((l, i) => {
+              const sectionId = l.toLowerCase();
+              const isActive = activeSection === sectionId;
+              return (
+                <a
+                  key={l}
+                  href={`#${sectionId}`}
+                  onClick={() => setMobileOpen(false)}
+                  className={`text-xl sm:text-2xl font-bold tracking-tight uppercase transition-all duration-300 flex items-center justify-between py-1 transform ${
+                    mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                  } ${
+                    isActive ? 'text-pearl pl-2 border-l-2 border-pearl' : 'text-mist hover:text-pearl'
+                  }`}
+                  style={{ transitionDelay: `${mobileOpen ? i * 0.03 + 0.05 : 0}s` }}
+                >
+                  <span>{l}</span>
+                  {isActive && (
+                    <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-pearl/10 text-pearl/80">
+                      Active
+                    </span>
+                  )}
+                </a>
+              );
+            })}
+          </div>
 
           {/* Mobile bottom actions */}
           <div 
-            className={`mt-8 pb-8 flex flex-col gap-6 transition-all duration-500 delay-500 transform ${
-              mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            className={`mt-6 pt-6 border-t border-pearl/10 flex flex-col gap-4 transition-all duration-500 delay-300 transform ${
+              mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
             }`}
           >
-            <div className="flex items-center justify-between border-t border-pearl/10 pt-6">
-              <ThemeToggle />
-              <SocialLinks />
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-slate font-medium">Appearance & Socials</span>
+              <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <SocialLinks />
+              </div>
             </div>
             <MobileCv onNavigate={() => setMobileOpen(false)} />
           </div>
