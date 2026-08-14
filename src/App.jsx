@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import ParticlesBackground from './components/ParticlesBackground';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
@@ -15,13 +15,15 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
-import Chatbot from './components/Chatbot';
 import ErrorBoundary from './components/ErrorBoundary';
+
+// Code-split heavy interactive assistants to accelerate initial page load
+const Chatbot = lazy(() => import('./components/Chatbot'));
 
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  // Prevent scroll while loading
+  // Prevent scroll while initial quick intro is active
   useEffect(() => {
     if (loading) {
       document.body.style.overflow = 'hidden';
@@ -32,10 +34,10 @@ export default function App() {
 
   return (
     <ErrorBoundary>
-      <div className="relative min-h-screen bg-obsidian transition-colors duration-500">
+      <div className="relative min-h-screen bg-obsidian transition-colors duration-300">
         {loading && <Loader onComplete={() => setLoading(false)} />}
         
-        {/* Animated particle background */}
+        {/* Hardware-accelerated lightweight particles */}
         <ParticlesBackground />
         <CustomCursor />
         <ScrollProgress />
@@ -63,7 +65,9 @@ export default function App() {
           <Contact />
         </main>
         <Footer />
-        <Chatbot />
+        <Suspense fallback={null}>
+          <Chatbot />
+        </Suspense>
       </div>
     </ErrorBoundary>
   );

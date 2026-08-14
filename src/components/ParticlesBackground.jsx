@@ -5,106 +5,90 @@ export default function ParticlesBackground() {
 
   useEffect(() => {
     const containerId = 'particles-bg';
-
     const isMobile = window.innerWidth < 768;
 
+    // High performance, lightweight particles configuration
     const config = {
       particles: {
         number: {
-          value: isMobile ? 25 : 60,
+          value: isMobile ? 12 : 32,
           density: {
             enable: true,
-            value_area: 1000,
+            value_area: 1200,
           },
         },
         color: {
-          value: ['#1a1a2e', '#16213e', '#0f3460', '#533483'],
+          value: ['#1a1a2e', '#0f3460', '#38bdf8'],
         },
         shape: {
           type: 'circle',
-          stroke: {
-            width: 0,
-            color: '#ffffff',
-          },
-          polygon: {
-            nb_sides: 6,
-          },
         },
         opacity: {
-          value: 0.6,
+          value: 0.4,
           random: true,
           anim: {
-            enable: true,
-            speed: 0.5,
-            opacity_min: 0.15,
-            sync: false,
+            enable: false,
           },
         },
         size: {
-          value: 4,
+          value: 3,
           random: true,
           anim: {
-            enable: true,
-            speed: 2,
-            size_min: 1.5,
-            sync: false,
+            enable: false,
           },
         },
         line_linked: {
-          enable: true,
-          distance: 120,
-          color: '#444466',
-          opacity: 0.15,
+          enable: !isMobile,
+          distance: 100,
+          color: '#38bdf8',
+          opacity: 0.08,
           width: 1,
         },
         move: {
           enable: true,
-          speed: isMobile ? 0.3 : 0.6,
+          speed: isMobile ? 0.3 : 0.5,
           direction: 'none',
           random: false,
           straight: false,
           out_mode: 'out',
           bounce: false,
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200,
-          },
         },
       },
       interactivity: {
-        detect_on: 'window',
+        detect_on: 'canvas',
         events: {
           onhover: {
-            enable: !isMobile,
-            mode: 'grab',
+            enable: false,
           },
           onclick: {
-            enable: true,
-            mode: 'push',
+            enable: false,
           },
           resize: true,
         },
-        modes: {
-          grab: {
-            distance: 180,
-            line_linked: {
-              opacity: 0.3,
-            },
-          },
-          push: {
-            particles_nb: 2,
-          },
-        },
       },
-      retina_detect: !isMobile,
+      retina_detect: false, // Disables retina doubling to cut GPU canvas fill rate
     };
 
     if (typeof window.particlesJS === 'function') {
       window.particlesJS(containerId, config);
     }
 
+    // Pause particles when tab is hidden to save 100% CPU
+    const handleVisibilityChange = () => {
+      const pJS = window.pJSDom?.find((dom) => dom?.pJS?.canvas?.el?.parentNode?.id === containerId)?.pJS;
+      if (pJS && pJS.fn) {
+        if (document.hidden) {
+          if (pJS.fn.drawAnim) cancelAnimationFrame(pJS.fn.drawAnim);
+        } else {
+          if (pJS.fn.particlesDraw) pJS.fn.particlesDraw();
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       const container = document.getElementById(containerId);
       if (container) {
         const canvas = container.querySelector('.particles-js-canvas-el');

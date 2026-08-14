@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { projects } from '../data/portfolio';
 import SpotlightCard from './SpotlightCard';
 import TechPill from './TechPill';
-import ArchitectureModal from './ArchitectureModal';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+
+const ArchitectureModal = lazy(() => import('./ArchitectureModal'));
 
 const DeployIcon = (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -147,11 +148,13 @@ export default function Projects() {
 
       {/* Architecture Deep Dive Modal */}
       {selectedArchProject && (
-        <ArchitectureModal
-          projectTitle={selectedArchProject}
-          isOpen={Boolean(selectedArchProject)}
-          onClose={() => setSelectedArchProject(null)}
-        />
+        <Suspense fallback={null}>
+          <ArchitectureModal
+            projectTitle={selectedArchProject}
+            isOpen={Boolean(selectedArchProject)}
+            onClose={() => setSelectedArchProject(null)}
+          />
+        </Suspense>
       )}
     </section>
   );

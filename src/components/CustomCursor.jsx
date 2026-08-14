@@ -11,46 +11,47 @@ export default function CustomCursor() {
 
     const dot = dotRef.current;
     const ring = ringRef.current;
+    if (!dot || !ring) return;
+
     let mx = window.innerWidth / 2;
     let my = window.innerHeight / 2;
     let rx = mx;
     let ry = my;
     let raf;
+    let lastTargetCheck = 0;
 
     const onMove = (e) => {
       mx = e.clientX;
       my = e.clientY;
-      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+      dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
 
-      const t = e.target.closest('a, button, input, textarea, [role="button"], .cursor-grow');
-      if (t && !t.dataset.cursorGrowHandled) {
-        ring.classList.add('hovering');
-        dot.classList.add('hovering');
-      } else if (!t) {
-        ring.classList.remove('hovering');
-        dot.classList.remove('hovering');
+      // Throttle DOM tree traversal to every 100ms for 60fps performance
+      const now = performance.now();
+      if (now - lastTargetCheck > 80) {
+        lastTargetCheck = now;
+        const isInteractive = e.target.closest('a, button, input, textarea, [role="button"], .cursor-grow');
+        if (isInteractive) {
+          ring.classList.add('hovering');
+          dot.classList.add('hovering');
+        } else {
+          ring.classList.remove('hovering');
+          dot.classList.remove('hovering');
+        }
       }
     };
 
-    const onDown = () => ring.style.setProperty('transform', `translate(${rx}px, ${ry}px) translate(-50%, -50%) scale(0.8)`);
-    const onUp = () => {};
-
     const loop = () => {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+      rx += (mx - rx) * 0.22;
+      ry += (my - ry) * 0.22;
+      ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
       raf = requestAnimationFrame(loop);
     };
 
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mousedown', onDown);
-    window.addEventListener('mouseup', onUp);
+    window.addEventListener('mousemove', onMove, { passive: true });
     raf = requestAnimationFrame(loop);
 
     return () => {
       window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mousedown', onDown);
-      window.removeEventListener('mouseup', onUp);
       cancelAnimationFrame(raf);
       document.body.classList.remove('premium-cursor');
     };
@@ -58,8 +59,18 @@ export default function CustomCursor() {
 
   return (
     <>
-      <div ref={ringRef} className="cursor-ring hidden md:block" aria-hidden="true" />
-      <div ref={dotRef} className="cursor-dot hidden md:block" aria-hidden="true" />
+      <div
+        ref={ringRef}
+        className="cursor-ring hidden md:block"
+        style={{ willChange: 'transform' }}
+        aria-hidden="true"
+      />
+      <div
+        ref={dotRef}
+        className="cursor-dot hidden md:block"
+        style={{ willChange: 'transform' }}
+        aria-hidden="true"
+      />
     </>
   );
 }
