@@ -314,20 +314,22 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
-        {/* Logo with animation */}
-        <a
-          href="#home"
-          className="text-lg sm:text-xl font-bold tracking-tight text-pearl group relative shrink-0"
-        >
-          <span className="relative z-10 transition-all duration-300 group-hover:text-black">
-            {personal.logo}<span className="text-mist group-hover:text-pearl/70 transition-colors duration-300">.</span>
-          </span>
-          {/* Logo glow on hover */}
-          <span className="absolute inset-0 blur-xl bg-pearl/10 rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        </a>
+        {/* Left: Logo with animation */}
+        <div className="flex-1 flex items-center justify-start min-w-0">
+          <a
+            href="#home"
+            className="text-lg sm:text-xl font-bold tracking-tight text-pearl group relative shrink-0"
+          >
+            <span className="relative z-10 transition-all duration-300 group-hover:text-black">
+              {personal.logo}<span className="text-mist group-hover:text-pearl/70 transition-colors duration-300">.</span>
+            </span>
+            {/* Logo glow on hover */}
+            <span className="absolute inset-0 blur-xl bg-pearl/10 rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </a>
+        </div>
 
-        {/* Desktop Links (xl: breakpoint prevents overflow with 10 links) */}
-        <div className="hidden xl:flex items-center gap-0.5 2xl:gap-1">
+        {/* Center: Desktop Links (Perfect middle alignment) */}
+        <div className="hidden xl:flex items-center justify-center gap-0.5 2xl:gap-1 shrink-0">
           {links.map((l) => {
             const sectionId = l.toLowerCase();
             const isActive = activeSection === sectionId;
@@ -350,39 +352,42 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Desktop actions: socials + CV */}
-        <div className="hidden xl:flex items-center gap-2 2xl:gap-3 shrink-0">
-          <ThemeToggle />
-          <SocialLinks />
-          <CvButton />
-        </div>
+        {/* Right: Actions (Desktop socials + CV, Mobile toggle) */}
+        <div className="flex-1 flex items-center justify-end gap-2 2xl:gap-3 min-w-0">
+          {/* Desktop actions: socials + CV */}
+          <div className="hidden xl:flex items-center gap-2 2xl:gap-3 shrink-0">
+            <ThemeToggle />
+            <SocialLinks />
+            <CvButton />
+          </div>
 
-        {/* Mobile / Tablet toggle actions (< xl) */}
-        <div className="flex xl:hidden items-center gap-2 shrink-0">
-          <ThemeToggle />
-          <button
-            className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 group cursor-pointer"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Menu"
-          >
-            <span
-              className={`block w-6 h-[2px] bg-pearl rounded-full transition-all duration-300 origin-center ${
-                mobileOpen ? 'rotate-45 translate-y-[3px]' : ''
-              }`}
-            />
-            <span
-              className={`block w-6 h-[2px] bg-pearl rounded-full transition-all duration-300 ${
-                mobileOpen ? 'opacity-0 scale-x-0' : ''
-              }`}
-            />
-            <span
-              className={`block w-6 h-[2px] bg-pearl rounded-full transition-all duration-300 origin-center ${
-                mobileOpen ? '-rotate-45 -translate-y-[3px]' : ''
-              }`}
-            />
-            {/* Ripple effect */}
-            <span className="absolute inset-0 rounded-full bg-pearl/0 group-hover:bg-pearl/5 transition-colors duration-300" />
-          </button>
+          {/* Mobile / Tablet toggle actions (< xl) */}
+          <div className="flex xl:hidden items-center gap-2 shrink-0">
+            <ThemeToggle />
+            <button
+              className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 group cursor-pointer"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Menu"
+            >
+              <span
+                className={`block w-6 h-[2px] bg-pearl rounded-full transition-all duration-300 origin-center ${
+                  mobileOpen ? 'rotate-45 translate-y-[3px]' : ''
+                }`}
+              />
+              <span
+                className={`block w-6 h-[2px] bg-pearl rounded-full transition-all duration-300 ${
+                  mobileOpen ? 'opacity-0 scale-x-0' : ''
+                }`}
+              />
+              <span
+                className={`block w-6 h-[2px] bg-pearl rounded-full transition-all duration-300 origin-center ${
+                  mobileOpen ? '-rotate-45 -translate-y-[3px]' : ''
+                }`}
+              />
+              {/* Ripple effect */}
+              <span className="absolute inset-0 rounded-full bg-pearl/0 group-hover:bg-pearl/5 transition-colors duration-300" />
+            </button>
+          </div>
         </div>
       </div>
 
