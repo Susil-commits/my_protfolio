@@ -54,13 +54,13 @@ export const hero = {
   eyebrow: 'Full-Stack Development',
   roles: ['Full-Stack Development', 'Data Science', 'AI / ML'],
   tagline:
-    'Engineering secure, scalable web platforms end-to-end — from schema design, REST APIs, and real-time systems to query optimization, load-tested deployments, and polished, responsive interfaces that ship.',
+    'Engineering secure, scalable web platforms end-to-end — from schema design,APIs, and real-time systems to query optimization, load-tested deployments, and polished, responsive interfaces that ship.',
 };
 
 export const about = {
   headline: ['Engineer who ships —', 'across web, data & AI.'],
   paragraphs: [
-    "I build production-grade software end-to-end: secure REST APIs, real-time features, and the responsive interfaces on top of them. Three full-stack platforms — a farmer marketplace, a food redistribution network, and a driver booking system — are live evidence that I own a product from blank repo to deployment.",
+    "I build production-grade software end-to-end: secure APIS , real-time features, and the responsive interfaces on top of them. Three full-stack platforms — a farmer marketplace, a food redistribution network, and a driver booking system — are live evidence that I own a product from blank repo to deployment.",
     'Beyond the web stack, I bring data science and AI/ML into the loop — qualified on Oracle Cloud Gen AI & Data Science, NPTEL-certified in IoT, and a NASSCOM Gold tag in Big Data. That means I can wire an analytics dashboard, a model, or an intelligent feature into the products I build.',
     'Internship-tested across backend (Techgeering, MERN), Java full-stack, and embedded IoT. I write secure, well-architected code with JWT, RBAC, rate-limiting, and logging — and I am ready to contribute from day one.',
   ],
@@ -68,7 +68,7 @@ export const about = {
     { label: 'MERN end-to-end', value: '3 shipped platforms' },
     { label: 'Security-first', value: 'JWT · RBAC · Helmet' },
     { label: 'AI/ML & Data', value: 'Oracle + NASSCOM Gold' },
-    { label: 'Open to work', value: 'Graduating Jun 2026' },
+
   ],
 };
 
