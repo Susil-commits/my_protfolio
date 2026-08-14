@@ -278,6 +278,93 @@ function ThemeToggle({ className = '' }) {
   );
 }
 
+function MoreDropdown({ activeSection }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  const moreItems = [
+    { label: 'Education', id: 'education', icon: '🎓' },
+    { label: 'Achievements', id: 'achievements', icon: '🏆' },
+    { label: 'Certifications', id: 'certifications', icon: '📜' },
+  ];
+
+  const isMoreActive = moreItems.some((item) => activeSection === item.id);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="true"
+        aria-expanded={open}
+        className={`relative px-2.5 py-1.5 2xl:px-3 2xl:py-2 text-[11px] 2xl:text-xs font-semibold transition-all duration-300 tracking-wider uppercase rounded-full flex items-center gap-1 cursor-pointer ${
+          isMoreActive || open
+            ? 'text-pearl bg-pearl/[0.08]'
+            : 'text-mist hover:text-pearl hover:bg-pearl/[0.03]'
+        }`}
+      >
+        <span>More</span>
+        <svg
+          className={`w-3 h-3 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+        {isMoreActive && (
+          <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-pearl rounded-full animate-pulse" />
+        )}
+      </button>
+
+      {/* Dropdown Menu */}
+      <div
+        className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 w-44 origin-top z-50 transition-all duration-200 ${
+          open ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' : 'opacity-0 scale-95 -translate-y-1 pointer-events-none'
+        }`}
+      >
+        <div className="rounded-2xl border border-pearl/15 bg-obsidian/95 backdrop-blur-xl shadow-2xl p-1.5 space-y-0.5">
+          {moreItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={() => setOpen(false)}
+                className={`flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-xl transition-all ${
+                  isActive
+                    ? 'bg-pearl text-black font-semibold shadow-sm'
+                    : 'text-mist hover:text-pearl hover:bg-pearl/[0.06]'
+                }`}
+              >
+                <span>{item.icon}</span>
+                <span>{item.label}</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const SECTION_IDS = ['home', 'about', 'skills', 'architecture', 'projects', 'experience', 'education', 'achievements', 'certifications', 'contact'];
 
 export default function Navbar() {
