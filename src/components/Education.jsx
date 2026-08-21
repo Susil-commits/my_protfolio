@@ -58,7 +58,7 @@ export default function Education() {
                   </span>
                 </div>
 
-                <h3 className="text-pearl font-semibold text-lg group-hover:text-black transition-colors duration-300">
+                <h3 className="text-pearl font-semibold text-lg group-hover:text-accent1 transition-colors duration-300">
                   {edu.institution}
                 </h3>
                 <p className="text-slate text-sm mt-1">{edu.location}</p>

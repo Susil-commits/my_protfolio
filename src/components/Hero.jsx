@@ -136,9 +136,6 @@ export default function Hero() {
           >
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
             <span>Ask AI</span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400 font-mono font-bold">
-              Gemini
-            </span>
           </button>
         </div>
 

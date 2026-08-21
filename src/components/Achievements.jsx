@@ -62,7 +62,7 @@ export default function Achievements() {
                     </span>
                   )}
                 </div>
-                <h3 className="text-pearl font-semibold text-base leading-snug group-hover:text-black transition-colors duration-300">
+                <h3 className="text-pearl font-semibold text-base leading-snug group-hover:text-accent1 transition-colors duration-300">
                   {item.title}
                 </h3>
                 <p className="text-mist/80 text-sm mt-3 leading-relaxed">

@@ -350,7 +350,7 @@ function MoreDropdown({ activeSection }) {
                 onClick={() => setOpen(false)}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-xl transition-all ${
                   isActive
-                    ? 'bg-pearl text-black font-semibold shadow-sm'
+                    ? 'bg-pearl text-obsidian font-semibold shadow-sm'
                     : 'text-mist hover:text-pearl hover:bg-pearl/[0.06]'
                 }`}
               >
@@ -362,6 +362,24 @@ function MoreDropdown({ activeSection }) {
         </div>
       </div>
     </div>
+  );
+}
+
+function CommandPaletteButton({ className = '' }) {
+  return (
+    <button
+      type="button"
+      onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
+      aria-label="Open Command Palette (Ctrl+K)"
+      title="Quick Search & Navigation (Ctrl+K)"
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-pearl/15 bg-pearl/[0.04] hover:bg-pearl/10 text-mist hover:text-pearl text-xs font-mono transition-all duration-300 cursor-pointer ${className}`}
+    >
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+      <span className="hidden sm:inline text-[10px] text-slate font-bold">⌘K</span>
+    </button>
   );
 }
 
@@ -406,7 +424,7 @@ export default function Navbar() {
             href="#home"
             className="text-lg sm:text-xl font-bold tracking-tight text-pearl group relative shrink-0"
           >
-            <span className="relative z-10 transition-all duration-300 group-hover:text-black">
+            <span className="relative z-10 transition-all duration-300 group-hover:text-accent1">
               {personal.logo}<span className="text-mist group-hover:text-pearl/70 transition-colors duration-300">.</span>
             </span>
             {/* Logo glow on hover */}
@@ -460,6 +478,7 @@ export default function Navbar() {
         <div className="flex items-center justify-end gap-2 2xl:gap-3 shrink-0">
           {/* Desktop actions: socials + CV */}
           <div className="hidden lg:flex items-center gap-2 2xl:gap-3 shrink-0">
+            <CommandPaletteButton />
             <ThemeToggle />
             <SocialLinks />
             <CvButton />
@@ -467,6 +486,7 @@ export default function Navbar() {
 
           {/* Mobile / Tablet toggle actions (< lg) */}
           <div className="flex lg:hidden items-center gap-2 shrink-0">
+            <CommandPaletteButton />
             <ThemeToggle />
             <button
               className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 group cursor-pointer"

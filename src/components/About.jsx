@@ -53,7 +53,7 @@ export default function About() {
                 >
                   <div className="relative z-10">
                     <p className="text-[10px] uppercase tracking-[0.15em] text-slate">{h.label}</p>
-                    <p className="text-sm font-semibold text-pearl mt-1 group-hover:text-black transition-colors duration-300">
+                    <p className="text-sm font-semibold text-pearl mt-1 group-hover:text-accent1 transition-colors duration-300">
                       {h.value}
                     </p>
                   </div>

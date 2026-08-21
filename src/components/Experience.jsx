@@ -72,7 +72,7 @@ export default function Experience() {
                     <span className="text-xs font-semibold text-pearl/50 uppercase tracking-[0.15em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-pearl/10">
                       {exp.period}
                     </span>
-                    <h3 className="text-pearl font-semibold text-lg mt-3 group-hover:text-black transition-colors duration-300">
+                    <h3 className="text-pearl font-semibold text-lg mt-3 group-hover:text-accent1 transition-colors duration-300">
                       {exp.role}
                     </h3>
                     <p className="text-mist text-sm mt-1">{exp.company}</p>
@@ -109,7 +109,7 @@ export default function Experience() {
                           <span className="block text-[10px] font-semibold text-pearl/50 uppercase tracking-[0.12em]">
                             {exp.certificateLabel || 'Certificate'}
                           </span>
-                          <span className="inline-flex items-center gap-1 text-xs font-medium text-pearl group-hover/cert:text-black transition-colors duration-300">
+                          <span className="inline-flex items-center gap-1 text-xs font-medium text-pearl group-hover/cert:text-accent1 transition-colors duration-300">
                             View certificate
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover/cert:translate-x-0.5">
                               <line x1="5" y1="12" x2="19" y2="12" />

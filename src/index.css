@@ -15,16 +15,16 @@
 
 @layer base {
   :root {
-    --theme-obsidian: #ffffff;
-    --theme-charcoal: #f8f8f8;
-    --theme-smoke: #eeeeee;
-    --theme-ash: #e0e0e0;
-    --theme-pearl: #111111;
-    --theme-frost: #2a2a2a;
-    --theme-mist: #3a3a3a;
-    --theme-slate: #5e5e5e;
-    --theme-accent1: #0ea5e9;
-    --theme-accent2: #8b5cf6;
+    --theme-obsidian: #fafafa;
+    --theme-charcoal: #f1f5f9;
+    --theme-smoke: #e2e8f0;
+    --theme-ash: #cbd5e1;
+    --theme-pearl: #0f172a;
+    --theme-frost: #1e293b;
+    --theme-mist: #334155;
+    --theme-slate: #64748b;
+    --theme-accent1: #0284c7;
+    --theme-accent2: #7c3aed;
   }
 
   :root.dark {

@@ -5,26 +5,35 @@ import { personal } from '../data/portfolio';
 // Initial pre-suggestions categorized for quick selection
 const INITIAL_CATEGORIES = [
   {
-    category: '🏛️ System Architecture',
+    category: '⚡ Flagship Distributed & AI',
     suggestions: [
-      { label: 'FaRm MongoDB Indexing (95% Cut)', query: 'Explain how Susil cut FaRm latency by 95% using MongoDB compound indexing.' },
-      { label: 'Left2Serve PostgreSQL & 19K Load Test', query: 'What is Left2Serve’s PostgreSQL B-tree indexing and Artillery load test result?' },
-      { label: 'MyMate WebSocket Race Condition Fix', query: 'How did Susil architect MyMate’s real-time WebSockets and fix the race condition?' },
-      { label: 'Security & Defense-in-Depth Pipeline', query: 'How is security, JWT, and RBAC architected across Susil\'s platforms?' },
+      { label: 'APEX (Kafka 60Hz & Safe RL)', query: 'Tell me about APEX — the autonomous F1 race strategy engine, Kafka streaming, and 5-agent consensus.' },
+      { label: 'ORBIT-X (Google CP-SAT & Neural Surrogate)', query: 'Explain ORBIT-X — autonomous satellite constellation scheduling and sub-0.8ms neural edge valuation.' },
+      { label: 'EdgeGuard (Event-Driven Ansible Self-Healing)', query: 'What is EdgeGuard and how does it use Event-Driven Ansible and EWMA predictive alerting?' },
+      { label: 'HyperDeploy (Cosign & GitOps Auto-Rollback)', query: 'Tell me about HyperDeploy and its health-gated zero-downtime rollouts and instant rollbacks.' },
     ],
   },
   {
-    category: '🚀 Projects',
+    category: '🏛️ System Architecture',
     suggestions: [
-      { label: 'FaRm (Marketplace & 95% Latency Cut)', query: 'Tell me about the FaRm project and how Susil optimized it.' },
-      { label: 'Left2Serve (19k+ Artillery Load Test)', query: 'What is Left2Serve and what optimizations did Susil implement?' },
-      { label: 'MyMate (Driver Booking & Real-time Tracking)', query: 'Tell me about the MyMate project and its tech stack.' },
+      { label: 'APEX 0.0245ms Feature Store SLA', query: 'How is APEX’s sub-millisecond feature store and L1/L2/L3 cache hierarchy architected?' },
+      { label: 'ORBIT-X 6-Scheduler Benchmarks', query: 'What are the empirical benchmark results of ORBIT-X across the 6 scheduling paradigms?' },
+      { label: 'FaRm MongoDB Indexing (95% Cut)', query: 'Explain how Susil cut FaRm latency by 95% using MongoDB compound indexing.' },
+      { label: 'Left2Serve PostgreSQL & 19K Load Test', query: 'What is Left2Serve’s PostgreSQL B-tree indexing and Artillery load test result?' },
+    ],
+  },
+  {
+    category: '🚀 Full-Stack Web Projects',
+    suggestions: [
+      { label: 'FaRm (Marketplace & 95% Latency Cut)', query: 'Tell me about the FaRm marketplace project and how Susil optimized it.' },
+      { label: 'Left2Serve (Food Rescue & Concurrency)', query: 'What is Left2Serve and what ACID optimizations did Susil implement?' },
+      { label: 'MyMate (Driver Booking & Real-Time Tracking)', query: 'Tell me about the MyMate project and its WebSockets telemetry.' },
     ],
   },
   {
     category: '🛠 Skills & Experience',
     suggestions: [
-      { label: 'Core Technical Stack', query: 'What are Susil\'s key programming languages, frameworks, and tools?' },
+      { label: 'Distributed Systems & Cloud Stack', query: 'What are Susil\'s key skills across Kafka, Kubernetes, PyTorch, Docker, and Redis?' },
       { label: 'Techgeering Internship', query: 'Tell me about Susil\'s backend internship at Techgeering Solutions.' },
       { label: 'Other Internships (IIG Varsity & SDI)', query: 'What other internships and practical experience does Susil have?' },
     ],
@@ -48,9 +57,12 @@ const INITIAL_CATEGORIES = [
 
 // Quick bar pills
 const QUICK_BAR_PROMPTS = [
-  '🏛️ Architecture & DB',
-  '🚀 Top Projects',
-  '⚡ Core Tech Stack',
+  '🏎️ APEX F1 Brain',
+  '🛰️ ORBIT-X Space AI',
+  '🛡️ EdgeGuard Self-Healing',
+  '⚡ HyperDeploy GitOps',
+  '🏛️ System Architecture',
+  '🚀 All 7 Projects',
   '🌾 FaRm Optimization',
   '🍲 Left2Serve 19k Load',
   '🚗 MyMate WebSockets',
@@ -62,15 +74,18 @@ const QUICK_BAR_PROMPTS = [
 ];
 
 const QUICK_BAR_MAP = {
-  '🏛️ Architecture & DB': 'Explain the system architecture and database indexing optimizations across Susil\'s full-stack projects.',
-  '🚀 Top Projects': 'What are the top full-stack projects Susil has built?',
-  '⚡ Core Tech Stack': 'What are Susil\'s core technical skills and tools?',
+  '🏎️ APEX F1 Brain': 'Explain the APEX autonomous F1 race strategy engine, Kafka 60Hz telemetry, BullMQ queues, and Safe RL.',
+  '🛰️ ORBIT-X Space AI': 'Tell me about ORBIT-X, Google CP-SAT constraint optimization, and PyTorch neural surrogate bidding.',
+  '🛡️ EdgeGuard Self-Healing': 'What is EdgeGuard and how does it use Red Hat Event-Driven Ansible (EDA) and EWMA trend alerting?',
+  '⚡ HyperDeploy GitOps': 'Explain HyperDeploy’s hybrid delivery controller, Sigstore Cosign verification, and instant auto-rollbacks.',
+  '🏛️ System Architecture': 'Explain the system architecture and performance optimizations across Susil\'s distributed platforms.',
+  '🚀 All 7 Projects': 'What are the 7 production platforms and distributed systems Susil has engineered?',
   '🌾 FaRm Optimization': 'How did Susil optimize MongoDB queries by 95% in FaRm?',
   '🍲 Left2Serve 19k Load': 'Tell me about Left2Serve’s PostgreSQL compound indexing and 19k Artillery load test results.',
   '🚗 MyMate WebSockets': 'How does MyMate handle real-time driver tracking and Socket.IO race conditions?',
-  '💼 Internship Experience': 'Tell me about Susil\'s work experience and internships.',
+  '💼 Internship Experience': 'Tell me about Susil\'s work experience and internships at Techgeering, IIG Varsity, and SDI.',
   '🎓 Education & CGPA': 'What is Susil\'s college, degree, and CGPA?',
-  '📜 Oracle Agentic AI': 'Tell me about Susil\'s Oracle Agentic AI certification.',
+  '📜 Oracle Agentic AI': 'Tell me about Susil\'s Oracle Agentic AI certification and score.',
   '📄 Download Resume': 'Can you provide the link to Susil\'s resume?',
   '📫 Contact Info': 'How can I contact Susil Kumar Nayak via email, LinkedIn, or phone?',
 };
@@ -463,8 +478,7 @@ export default function Chatbot() {
           <div className="mb-2.5 animate-bounce hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--theme-charcoal)]/90 backdrop-blur-md border border-[var(--theme-pearl)]/15 shadow-xl text-xs font-medium text-[var(--theme-pearl)] cursor-pointer hover:border-cyan-400/50 transition-all"
                onClick={() => setIsOpen(true)}>
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Ask AI about Susil</span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400 font-mono font-bold">Gemini</span>
+            <span>Ask AI Assistant</span>
           </div>
         )}
 
@@ -520,12 +534,9 @@ export default function Chatbot() {
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-sm font-bold text-[var(--theme-pearl)]">Susil's AI</span>
-                  <span className="px-1.5 py-0.2 text-[9px] font-mono font-bold uppercase rounded bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 border border-cyan-500/30">
-                    Gemini 3.5
-                  </span>
+                  <span className="text-sm font-bold text-[var(--theme-pearl)]">Susil's AI Assistant</span>
                 </div>
-                <p className="text-[11px] text-[var(--theme-mist)]">Ask anything about my portfolio</p>
+                <p className="text-[11px] text-[var(--theme-mist)]">Ask anything about my portfolio & architecture</p>
               </div>
             </div>
 
@@ -606,10 +617,10 @@ export default function Chatbot() {
                               <button
                                 key={sIdx}
                                 onClick={() => handleSend(s.query)}
-                                className="w-full text-left px-3 py-2 rounded-xl text-xs bg-[var(--theme-obsidian)]/60 hover:bg-cyan-500/10 border border-[var(--theme-pearl)]/10 hover:border-cyan-500/40 text-[var(--theme-pearl)] hover:text-cyan-300 transition-all duration-200 flex items-center justify-between group cursor-pointer"
+                                className="w-full text-left px-3 py-2 rounded-xl text-xs bg-[var(--theme-obsidian)]/60 hover:bg-cyan-500/10 border border-[var(--theme-pearl)]/10 hover:border-cyan-500/40 text-[var(--theme-pearl)] hover:text-cyan-700 dark:hover:text-cyan-300 transition-all duration-200 flex items-center justify-between group cursor-pointer"
                               >
                                 <span>{s.label}</span>
-                                <svg className="w-3.5 h-3.5 text-[var(--theme-mist)] group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="w-3.5 h-3.5 text-[var(--theme-mist)] group-hover:text-cyan-600 dark:group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                               </button>
@@ -702,7 +713,7 @@ export default function Chatbot() {
                       <button
                         key={pIdx}
                         onClick={() => handleSend(prompt)}
-                        className="px-2.5 py-1 rounded-full text-xs bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 hover:text-cyan-200 transition-all cursor-pointer text-left"
+                        className="px-2.5 py-1 rounded-full text-xs bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-700 dark:text-cyan-300 hover:text-cyan-800 dark:hover:text-cyan-200 transition-all cursor-pointer text-left"
                       >
                         {prompt}
                       </button>

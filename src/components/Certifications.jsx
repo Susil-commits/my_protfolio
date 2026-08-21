@@ -80,7 +80,7 @@ export default function Certifications() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                <h3 className="text-pearl font-semibold text-base leading-snug group-hover:text-black transition-colors duration-300">
+                <h3 className="text-pearl font-semibold text-base leading-snug group-hover:text-accent1 transition-colors duration-300">
                   {item.title}
                 </h3>
                 <p className="text-mist/80 text-sm mt-2 leading-relaxed">

@@ -1,13 +1,56 @@
 import { useState } from 'react';
 import { systemPrinciples, productionScenarios } from '../data/architecture';
 import SpotlightCard from './SpotlightCard';
+import InteractiveTopology from './InteractiveTopology';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const ARCHITECTURE_MODES = [
   {
+    id: 'streaming',
+    title: 'Kafka Streaming & Multi-Agent Pit Wall',
+    badge: 'Distributed Streaming (APEX)',
+    description:
+      'High-frequency 60Hz telemetry ingestion partitioned across Apache Kafka topics, decoupled from 10,000 Monte Carlo rollouts in BullMQ/Redis worker pools, and guarded by Safe RL action masking.',
+    diagram: [
+      { step: '01', title: '60Hz Telemetry', note: 'FastF1 & Jolpica multi-car stream' },
+      { step: '02', title: 'Kafka Partitioning', note: 'session_id:car_id key routing + DLQ' },
+      { step: '03', title: 'Ring Buffer & Feature Store', note: '0.0245ms p99 extraction SLA' },
+      { step: '04', title: '5-Agent Consensus', note: 'Weighted pit wall debate & TreeSHAP' },
+      { step: '05', title: 'BullMQ Async Queue', note: '10k Monte Carlo rollouts (SHA-256)' },
+    ],
+  },
+  {
+    id: 'optimization',
+    title: 'CP-SAT Global Solvers & Neural Surrogates',
+    badge: 'Space AI (ORBIT-X)',
+    description:
+      'Pairs exact constraint satisfaction programming (Google OR-Tools CP-SAT) with PyTorch Multi-Head Cross-Attention neural surrogates for sub-millisecond edge mission bidding (<0.8ms).',
+    diagram: [
+      { step: '01', title: 'Target Ingress', note: 'GPS coordinate & urgency dispatch' },
+      { step: '02', title: 'J2 Orbital Drift', note: 'WGS-84 physics & visibility cones' },
+      { step: '03', title: 'Cross-Attention Net', note: 'Sub-0.8ms neural edge valuation' },
+      { step: '04', title: 'Exact CP-SAT Solver', note: 'Guarantees SoC >= 20% & non-overlap' },
+      { step: '05', title: 'Laser Mesh ISL', note: 'Space-to-ground downlink delivery' },
+    ],
+  },
+  {
+    id: 'gitops',
+    title: 'GitOps, EDA & Health-Gated Rollbacks',
+    badge: 'DevOps & Reliability (HyperDeploy & EdgeGuard)',
+    description:
+      'Continuous reconciliation loops with Sigstore/Cosign cryptographic verification, Event-Driven Ansible (EDA) remediation, and automated 3-second rollbacks on CrashLoopBackOff.',
+    diagram: [
+      { step: '01', title: 'Cosign Verification', note: 'SHA-256 image digest validation' },
+      { step: '02', title: 'Health Gate Poll', note: 'Detects CrashLoopBackOff & probe fails' },
+      { step: '03', title: 'Instant Rollback', note: 'Single-function restore in <3s' },
+      { step: '04', title: 'EWMA Predictive Alert', note: 'Projects disk/RAM breaches 6h early' },
+      { step: '05', title: 'EDA Playbook Runner', note: 'Idempotent SSH Ansible self-healing' },
+    ],
+  },
+  {
     id: 'gateway',
     title: 'Stateless API Ingress & Security',
-    badge: 'Security Layer',
+    badge: 'Security Layer (FaRm, Left2Serve)',
     description:
       'All client interactions hit an edge reverse-proxy with strict CORS, Helmet security headers, rate limiting (100 req/15min), and cryptographic JWT validation before dispatching to business controllers.',
     diagram: [
@@ -21,7 +64,7 @@ const ARCHITECTURE_MODES = [
   {
     id: 'database',
     title: 'Compound Indexing & Query Acceleration',
-    badge: 'Data Layer',
+    badge: 'Data Layer (FaRm, MyMate)',
     description:
       'Eliminated costly sequential collection and table scans (COLLSCAN / Seq Scan). Applied composite B-Tree and 2dsphere indexes in MongoDB and PostgreSQL, dropping p95 query latency by up to 95% (240ms → 12ms).',
     diagram: [
@@ -31,24 +74,11 @@ const ARCHITECTURE_MODES = [
       { step: '04', title: 'Document Return', note: '~12ms response time' },
     ],
   },
-  {
-    id: 'websocket',
-    title: 'Real-Time WebSocket & State Synchronization',
-    badge: 'Real-Time Layer',
-    description:
-      'Bi-directional Socket.IO topology with isolated communication rooms, heartbeat ping/pong health monitoring, and atomic locking to prevent asynchronous race conditions during high-volume events.',
-    diagram: [
-      { step: '01', title: 'Handshake Auth', note: 'Token-validated socket connect' },
-      { step: '02', title: 'Channel Joining', note: 'Isolated room subscribe' },
-      { step: '03', title: 'Event Dispatch', note: 'Sub-50ms broadcast telemetry' },
-      { step: '04', title: 'Race Condition Lock', note: 'Atomic mutex state resolution' },
-    ],
-  },
 ];
 
 export default function SystemArchitecture() {
-  const [viewType, setViewType] = useState('scenarios'); // 'scenarios' | 'pipelines'
-  const [selectedMode, setSelectedMode] = useState('gateway');
+  const [viewType, setViewType] = useState('topology'); // 'topology' | 'scenarios' | 'pipelines'
+  const [selectedMode, setSelectedMode] = useState('streaming');
   const [selectedScenario, setSelectedScenario] = useState(productionScenarios[0].id);
   const sectionRef = useIntersectionObserver();
 
@@ -71,7 +101,7 @@ export default function SystemArchitecture() {
             System <span className="text-gradient-accent">Architecture</span>
           </h2>
           <p className="reveal-on-scroll text-mist mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
-            Production-grade engineering principles, real-world failure mode recovery, and high-throughput system topologies.
+            Production-grade engineering principles, real-world failure mode recovery, and high-throughput distributed system topologies.
           </p>
         </div>
 
@@ -104,46 +134,69 @@ export default function SystemArchitecture() {
 
         {/* Interactive Explorer Container */}
         <div className="reveal-on-scroll rounded-2xl sm:rounded-3xl border border-pearl/15 bg-obsidian/80 backdrop-blur-2xl p-4 sm:p-10 shadow-2xl relative overflow-hidden space-y-6 sm:space-y-8">
-          {/* View Type Toggle (Scenarios vs Pipelines) */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 sm:pb-6 border-b border-pearl/10">
+          {/* View Type Toggle (Topology vs Scenarios vs Pipelines) */}
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-4 sm:pb-6 border-b border-pearl/10">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate block mb-1">
-                Interactive Explorer
+                Interactive Architecture Console
               </span>
               <h3 className="text-lg font-bold text-pearl">
-                {viewType === 'scenarios' ? 'Real-World Production Scenarios & Fault Recovery' : 'Core Architecture Pipelines'}
+                {viewType === 'topology'
+                  ? 'Live Distributed Node Graph & Packet Flow'
+                  : viewType === 'scenarios'
+                  ? 'Real-World Production Scenarios & Fault Recovery'
+                  : 'Core Architecture Pipelines & Topologies'}
               </h3>
             </div>
 
-            <div className="flex items-center p-1 rounded-2xl bg-pearl/[0.04] border border-pearl/10 shrink-0">
+            <div className="flex flex-wrap items-center p-1 rounded-2xl bg-pearl/[0.04] border border-pearl/10 shrink-0 gap-1">
+              <button
+                type="button"
+                onClick={() => setViewType('topology')}
+                className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+                  viewType === 'topology'
+                    ? 'bg-pearl text-obsidian shadow-md font-bold'
+                    : 'text-mist hover:text-pearl'
+                }`}
+              >
+                <span>🌐</span>
+                <span>Live Topology</span>
+              </button>
               <button
                 type="button"
                 onClick={() => setViewType('scenarios')}
-                className={`px-4 py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 ${
+                className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
                   viewType === 'scenarios'
-                    ? 'bg-pearl text-black shadow-md'
+                    ? 'bg-pearl text-obsidian shadow-md font-bold'
                     : 'text-mist hover:text-pearl'
                 }`}
               >
                 <span>⚡</span>
-                <span>Production Scenarios</span>
+                <span>Fault Recovery</span>
               </button>
               <button
                 type="button"
                 onClick={() => setViewType('pipelines')}
-                className={`px-4 py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 ${
+                className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
                   viewType === 'pipelines'
-                    ? 'bg-pearl text-black shadow-md'
+                    ? 'bg-pearl text-obsidian shadow-md font-bold'
                     : 'text-mist hover:text-pearl'
                 }`}
               >
                 <span>🏛️</span>
-                <span>Architecture Pipelines</span>
+                <span>Pipelines</span>
               </button>
             </div>
           </div>
 
-          {/* VIEW 1: PRODUCTION SCENARIOS */}
+          {/* VIEW 1: LIVE INTERACTIVE TOPOLOGY */}
+          {viewType === 'topology' && (
+            <div className="animate-fade-in">
+              <InteractiveTopology />
+            </div>
+          )}
+
+          {/* VIEW 2: PRODUCTION SCENARIOS */}
           {viewType === 'scenarios' && (
             <div className="space-y-8 animate-fade-in">
               {/* Scenario Selector Chips */}
@@ -154,9 +207,9 @@ export default function SystemArchitecture() {
                     <button
                       key={sc.id}
                       onClick={() => setSelectedScenario(sc.id)}
-                      className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                      className={`px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer ${
                         isSelected
-                          ? 'bg-pearl text-black shadow-lg font-semibold scale-102'
+                          ? 'bg-pearl text-obsidian shadow-lg font-semibold scale-102'
                           : 'text-mist hover:text-pearl bg-pearl/[0.04] hover:bg-pearl/[0.08] border border-pearl/10'
                       }`}
                     >
@@ -230,7 +283,7 @@ export default function SystemArchitecture() {
             </div>
           )}
 
-          {/* VIEW 2: CORE ARCHITECTURE PIPELINES */}
+          {/* VIEW 3: CORE ARCHITECTURE PIPELINES */}
           {viewType === 'pipelines' && (
             <div className="space-y-8 animate-fade-in">
               {/* Pipeline Mode Switcher */}
@@ -241,9 +294,9 @@ export default function SystemArchitecture() {
                     <button
                       key={mode.id}
                       onClick={() => setSelectedMode(mode.id)}
-                      className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                      className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer ${
                         isSelected
-                          ? 'bg-pearl text-black shadow-lg font-semibold scale-102'
+                          ? 'bg-pearl text-obsidian shadow-lg font-semibold scale-102'
                           : 'text-mist hover:text-pearl bg-pearl/[0.04] hover:bg-pearl/[0.08] border border-pearl/10'
                       }`}
                     >
@@ -268,7 +321,7 @@ export default function SystemArchitecture() {
                 </div>
 
                 {/* Diagram Pipeline */}
-                <div className="lg:col-span-2 grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3 relative">
+                <div className="lg:col-span-2 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 relative">
                   {activeMode.diagram.map((step, i) => (
                     <div
                       key={step.step}
@@ -279,13 +332,13 @@ export default function SystemArchitecture() {
                           STEP {step.step}
                         </span>
                         {i < activeMode.diagram.length - 1 && (
-                          <span className="hidden md:inline-block text-pearl/20 font-mono text-xs">→</span>
+                          <span className="hidden lg:inline-block text-pearl/20 font-mono text-xs">→</span>
                         )}
                       </div>
-                      <h4 className="text-sm font-semibold text-pearl leading-snug">
+                      <h4 className="text-xs sm:text-sm font-semibold text-pearl leading-snug">
                         {step.title}
                       </h4>
-                      <p className="text-[11px] text-slate leading-relaxed">
+                      <p className="text-[10px] sm:text-[11px] text-slate leading-relaxed">
                         {step.note}
                       </p>
                     </div>
@@ -299,7 +352,7 @@ export default function SystemArchitecture() {
           <div className="p-4 rounded-2xl bg-pearl/[0.02] border border-pearl/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-mist">
             <div className="flex items-center gap-2">
               <span className="text-emerald-400">●</span>
-              <span>All 3 platforms (FaRm, Left2Serve, MyMate) are stress-tested against these scenarios.</span>
+              <span>All 7 platforms (APEX, ORBIT-X, EdgeGuard, HyperDeploy, FaRm, Left2Serve, MyMate) are stress-tested against these failure scenarios.</span>
             </div>
             <a
               href="#projects"

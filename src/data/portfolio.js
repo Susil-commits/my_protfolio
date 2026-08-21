@@ -23,21 +23,21 @@ export const personal = {
   name: 'Susil Kumar Nayak',
   firstName: 'Susil',
   lastName: 'Nayak',
-  title: 'Full-Stack Developer',
+  title: 'Full-Stack & Distributed Systems Engineer',
   location: 'Odisha, India',
   email: 'nayaksusil963@gmail.com',
   phone: '+91 8984339007',
   resumes: [
     {
-      role: 'Full Stack Engineer',
+      role: 'Full Stack & Distributed Systems',
       subtitle: 'Development',
       url: 'https://drive.google.com/file/d/1uRBEFKMyyjtXkKq_trUMoXnCCClMWb2k/view?usp=sharing',
       icon: 'mern',
     },
     {
-      role: 'AI / ML & Data Science',
-      subtitle: 'Exploring',
-      url: '',
+      role: 'AI / ML & Cloud Infrastructure',
+      subtitle: 'Engineering',
+      url: 'https://drive.google.com/file/d/1uRBEFKMyyjtXkKq_trUMoXnCCClMWb2k/view?usp=sharing',
       icon: 'ai',
     },
   ],
@@ -51,54 +51,111 @@ export const personal = {
 };
 
 export const hero = {
-  eyebrow: 'Full-Stack Development',
-  roles: ['Full-Stack Development', 'Data Science', 'AI / ML'],
+  eyebrow: 'Distributed Systems · Cloud-Native · Full-Stack',
+  roles: ['Distributed Systems', 'Cloud-Native & DevOps', 'Full-Stack Development', 'Autonomous AI / ML'],
   tagline:
-    'Engineering secure, scalable web platforms end-to-end — from schema design,APIs, and real-time systems to query optimization, load-tested deployments, and polished, responsive interfaces that ship.',
+    'Engineering resilient, high-throughput distributed systems, autonomous AI digital twins, and full-stack cloud platforms — from Apache Kafka streaming pipelines and Kubernetes orchestration to sub-millisecond mathematical optimization and production-tested web architectures.',
 };
 
 export const about = {
-  headline: ['Engineer who ships —', 'across web, data & AI.'],
+  headline: ['Engineer who ships —', 'across distributed systems, AI & cloud.'],
   paragraphs: [
-    "I build production-grade software end-to-end: secure APIS , real-time features, and the responsive interfaces on top of them. Three full-stack platforms — a farmer marketplace, a food redistribution network, and a driver booking system — are live evidence that I own a product from blank repo to deployment.",
-    'Beyond the web stack, I bring data science and AI/ML into the loop — qualified on Oracle Cloud Gen AI & Data Science, NPTEL-certified in IoT, and a NASSCOM Gold tag in Big Data. That means I can wire an analytics dashboard, a model, or an intelligent feature into the products I build.',
-    'Internship-tested across backend (Techgeering, MERN), Java full-stack, and embedded IoT. I write secure, well-architected code with JWT, RBAC, rate-limiting, and logging — and I am ready to contribute from day one.',
+    'I engineer production-grade distributed architectures, autonomous AI digital twins, and high-performance full-stack web platforms. From event-driven telemetry streaming on Apache Kafka (APEX F1 Strategy Engine) and combinatorial satellite constellation solvers (ORBIT-X) to self-healing edge remediation (EdgeGuard) and cryptographic GitOps delivery controllers (HyperDeploy), I own systems from blank repository to cloud deployment.',
+    'My work couples mathematical rigor and deep learning with cloud-native reliability: Google OR-Tools CP-SAT constraint solvers, PyTorch Multi-Head Cross-Attention neural surrogates, TreeSHAP explainability, and Safe-RL action masking guardrails. On the infrastructure front, I build with Docker, Kubernetes, Helm, Event-Driven Ansible (EDA), Redis/BullMQ, and full Prometheus/Grafana observability.',
+    'Internship-tested across backend development (Techgeering Solutions, MERN stack), Java full-stack systems, and embedded IoT. Backed by Oracle Cloud Gen AI & Data Science certifications, NPTEL IoT & Software Testing, and NASSCOM Gold in Big Data, I design secure, zero-trust architectures with strict RBAC, automated rollbacks, and verified sub-millisecond latencies.',
   ],
   highlights: [
-    { label: 'MERN end-to-end', value: '3 shipped platforms' },
-    { label: 'Security-first', value: 'JWT · RBAC · Helmet' },
-    { label: 'AI/ML & Data', value: 'Oracle + NASSCOM Gold' },
-
+    { label: 'Production Platforms', value: '7 Shipped Systems' },
+    { label: 'Streaming & Queues', value: 'Kafka · Redis · BullMQ' },
+    { label: 'Cloud & Orchestration', value: 'Kubernetes · Helm · EDA' },
+    { label: 'AI / ML & Optimization', value: 'PyTorch · CP-SAT · RL' },
   ],
 };
 
 export const skills = [
   {
-    category: 'Programming',
-    icon: '⌘',
-    items: ['C++', 'Java', 'Python', 'JavaScript', 'TypeScript'],
+    category: 'Distributed & AI',
+    icon: '⚡',
+    items: ['Kafka', 'PyTorch', 'Google OR-Tools', 'Redis', 'BullMQ', 'Python', 'FastAPI', 'Three.js'],
   },
   {
-    category: 'Frontend',
-    icon: '▣',
-    items: ['HTML', 'CSS', 'React.js', 'Tailwind CSS'],
+    category: 'Cloud & DevOps',
+    icon: '☁',
+    items: ['Kubernetes', 'Docker', 'Helm', 'Ansible', 'Prometheus', 'Grafana', 'OpenTelemetry', 'AWS', 'CI/CD'],
   },
   {
-    category: 'Backend',
+    category: 'Backend & Data',
     icon: '◈',
-    items: ['Node.js', 'Express.js', 'REST APIs', 'SQL', 'MongoDB', 'PostgreSQL'],
+    items: ['Node.js', 'Express.js', 'PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'REST APIs', 'JWT'],
   },
   {
-    category: 'Tools & Cloud',
-    icon: '⚙',
-    items: ['Git', 'GitHub', 'Vercel', 'Render', 'Jira', 'Cloudinary', 'Docker', 'CI/CD', 'AWS'],
+    category: 'Frontend & Languages',
+    icon: '⌘',
+    items: ['React.js', 'TypeScript', 'JavaScript', 'C++', 'Java', 'Tailwind CSS', 'Socket.IO', 'React Query'],
   },
 ];
 
 export const projects = [
   {
+    title: 'APEX',
+    subtitle: 'Autonomous F1 Race Strategy Intelligence & Digital Twin',
+    category: 'Distributed Systems & AI',
+    icon: '🏎️',
+    gradient: 'from-rose-500/15 via-amber-500/10 to-transparent',
+    description:
+      'Distributed autonomous Formula 1 pit-wall mission control platform streaming 60Hz telemetry across Apache Kafka topics. Coupled with BullMQ/Redis asynchronous worker queues, Safe RL action masking guardrails, Multi-Agent Pit Wall Consensus (5 specialist agents), TreeSHAP feature attributions, and a Three.js 3D WebGL Digital Twin HUD. 172/172 automated tests passing with 0.0245ms p99 feature store extraction.',
+    tags: ['Kafka', 'PyTorch', 'FastAPI', 'Redis', 'BullMQ', 'Kubernetes', 'Helm', 'Prometheus', 'Three.js', 'Python', 'React.js'],
+    link: 'https://github.com/Susil-commits/F1-s-APEX----Autonomous-Predictive-EXecutive-Race-Intelligence-',
+    github: 'https://github.com/Susil-commits/F1-s-APEX----Autonomous-Predictive-EXecutive-Race-Intelligence-',
+    highlight: true,
+    badge: 'Flagship AI & Streaming',
+  },
+  {
+    title: 'ORBIT-X',
+    subtitle: 'Autonomous Orbital Resource Intelligence Network',
+    category: 'Distributed Systems & AI',
+    icon: '🛰️',
+    gradient: 'from-cyan-500/15 via-blue-500/10 to-transparent',
+    description:
+      'Autonomous LEO multi-satellite constellation dispatching and 3D digital twin platform. Combines Google OR-Tools CP-SAT exact constraint optimization with a PyTorch Multi-Head Cross-Attention neural surrogate (<0.8ms inference, 84.6% top-1 agreement), WGS-84 J2 orbital propagator, Isolation Forest health anomaly detection, Stefan-Boltzmann radiative cooling ODEs, and 10-scenario space disaster resilience.',
+    tags: ['Google OR-Tools', 'PyTorch', 'FastAPI', 'Redis', 'Kafka', 'Docker', 'Three.js', 'PostgreSQL', 'Python', 'TypeScript'],
+    link: 'https://github.com/Susil-commits/ORBIT-X---Autonomous-Orbital-Resource-Intelligence-Network',
+    github: 'https://github.com/Susil-commits/ORBIT-X---Autonomous-Orbital-Resource-Intelligence-Network',
+    highlight: true,
+    badge: 'Flagship Space AI',
+  },
+  {
+    title: 'EdgeGuard',
+    subtitle: 'Red Hat-Oriented Edge Monitoring & Self-Healing Platform',
+    category: 'Cloud & DevOps',
+    icon: '🛡️',
+    gradient: 'from-red-500/15 via-orange-500/10 to-transparent',
+    description:
+      'Enterprise hybrid-edge monitoring and self-healing remediation platform powered by Red Hat Event-Driven Ansible (EDA) rulebooks. Features EWMA predictive trend forecasting (breach detection up to 6 hours ahead), offline-first SQLite WAL spooling with zero-duplication UUID idempotency, and an ALLOWED_PLAYBOOKS security allow-list registry.',
+    tags: ['Ansible', 'FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes', 'Prometheus', 'Grafana', 'Python', 'React.js'],
+    link: 'https://github.com/Susil-commits/EdgeGuard',
+    github: 'https://github.com/Susil-commits/EdgeGuard',
+    highlight: true,
+    badge: 'Self-Healing Edge & EDA',
+  },
+  {
+    title: 'HyperDeploy',
+    subtitle: 'Hybrid Bare-Metal & K8s Continuous Delivery Controller',
+    category: 'Cloud & DevOps',
+    icon: '⚡',
+    gradient: 'from-indigo-500/15 via-violet-500/10 to-transparent',
+    description:
+      'Enterprise-grade hybrid continuous delivery controller unifying bare-metal / VM management (via Ansible) and containerized workloads (via Kubernetes). Enforces Sigstore/Cosign cryptographic container verification, automated health-gated zero-downtime rollouts with instant single-function rollback (CrashLoopBackOff), and environment-aware GitOps drift reconciliation.',
+    tags: ['Kubernetes', 'Ansible', 'FastAPI', 'Redis', 'PostgreSQL', 'Docker', 'Python', 'TypeScript'],
+    link: 'https://github.com/Susil-commits/HyperDeploy',
+    github: 'https://github.com/Susil-commits/HyperDeploy',
+    highlight: true,
+    badge: 'GitOps & Delivery Engine',
+  },
+  {
     title: 'FaRm',
     subtitle: 'Farmer-to-Consumer Marketplace',
+    category: 'Full-Stack Web',
     icon: '🌾',
     gradient: 'from-emerald-500/10 to-green-500/5',
     description:
@@ -106,31 +163,36 @@ export const projects = [
     tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'JWT', 'Cloudinary', 'React Query', 'TypeScript'],
     link: 'https://farm-direct-marketplace-eta.vercel.app/',
     github: 'https://github.com/Susil-commits/FarmDirect',
-    highlight: true,
+    highlight: false,
+    badge: 'Full-Stack MERN',
   },
   {
     title: 'Left2Serve',
     subtitle: 'Food Redistribution Platform',
+    category: 'Full-Stack Web',
     icon: '🍲',
     gradient: 'from-orange-500/10 to-amber-500/5',
     description:
       'Full-stack food redistribution platform connecting donors and NGOs. Engineered a compound B-tree index in PostgreSQL to reduce average query latency from 340ms to 12ms. Load-tested the API with Artillery (19K+ requests at 187 req/sec), validating rate-limit defenses and maintaining 383ms median latency.',
-    tags: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'Tailwind CSS', 'JWT', 'RBAC', 'Cloudinary', 'TypeScript'],
+    tags: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'PostgreSQL', 'Tailwind CSS', 'JWT', 'Cloudinary', 'TypeScript'],
     link: 'https://left2-serve.vercel.app/',
     github: 'https://github.com/Susil-commits/Left2Serve',
-    highlight: true,
+    highlight: false,
+    badge: 'ACID Concurrency',
   },
   {
     title: 'MyMate',
     subtitle: 'Driver Booking Platform',
+    category: 'Full-Stack Web',
     icon: '🚗',
     gradient: 'from-blue-500/10 to-indigo-500/5',
     description:
       'Full-stack driver booking platform featuring real-time WebSocket location tracking, AI-heuristic driver matching, and Tesseract.js OCR. Implemented MongoDB compound indexing to cut execution time to ~1ms. Load-tested API at 200 concurrent users, sustaining 115 req/sec while resolving a Socket.IO chat race condition.',
-    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Cloudinary', 'Helmet', 'Winston', 'TypeScript'],
+    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Cloudinary', 'Socket.IO', 'TypeScript'],
     link: 'https://my-mate-tawny.vercel.app/',
     github: 'https://github.com/Susil-commits/MyMate',
-    highlight: true,
+    highlight: false,
+    badge: 'Real-Time Telemetry',
   },
 ];
 

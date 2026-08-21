@@ -16,12 +16,16 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
 import ErrorBoundary from './components/ErrorBoundary';
+import CommandPalette from './components/CommandPalette';
 
 // Code-split heavy interactive assistants to accelerate initial page load
 const Chatbot = lazy(() => import('./components/Chatbot'));
+const ArchitectureModal = lazy(() => import('./components/ArchitectureModal'));
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [selectedArchProject, setSelectedArchProject] = useState(null);
 
   // Prevent scroll while initial quick intro is active
   useEffect(() => {
@@ -31,6 +35,13 @@ export default function App() {
       document.body.style.overflow = '';
     }
   }, [loading]);
+
+  // Listen for open-command-palette global event
+  useEffect(() => {
+    const handleOpenPalette = () => setCommandPaletteOpen(true);
+    window.addEventListener('open-command-palette', handleOpenPalette);
+    return () => window.removeEventListener('open-command-palette', handleOpenPalette);
+  }, []);
 
   return (
     <ErrorBoundary>
@@ -65,6 +76,26 @@ export default function App() {
           <Contact />
         </main>
         <Footer />
+
+        {/* Global Command Palette */}
+        <CommandPalette
+          isOpen={commandPaletteOpen}
+          onClose={() => setCommandPaletteOpen(false)}
+          onSelectProject={(title) => setSelectedArchProject(title)}
+        />
+
+        {/* Global Architecture Deep Dive Modal */}
+        {selectedArchProject && (
+          <Suspense fallback={null}>
+            <ArchitectureModal
+              projectTitle={selectedArchProject}
+              isOpen={Boolean(selectedArchProject)}
+              onClose={() => setSelectedArchProject(null)}
+            />
+          </Suspense>
+        )}
+
+        {/* Code-split Gemini AI Chatbot */}
         <Suspense fallback={null}>
           <Chatbot />
         </Suspense>
