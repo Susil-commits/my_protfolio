@@ -89,7 +89,7 @@ export default function Skills() {
               >
                 {/* Icon */}
                 <div className="flex items-center justify-between mb-3">
-                  <div className="text-2xl text-pearl/40 group-hover:text-pearl/80 transition-colors duration-500">
+                  <div className="text-2xl text-pearl/70 group-hover:text-pearl transition-colors duration-500">
                     {group.icon}
                   </div>
                   <span className="text-[10px] uppercase font-mono tracking-widest text-slate group-hover:text-emerald-400 transition-colors duration-300">
@@ -97,7 +97,7 @@ export default function Skills() {
                   </span>
                 </div>
 
-                <h3 className="text-pearl font-semibold text-base sm:text-lg mb-3 group-hover:text-white transition-colors duration-300">
+                <h3 className="text-pearl font-semibold text-base sm:text-lg mb-3 group-hover:text-accent1 transition-colors duration-300">
                   {group.category}
                 </h3>
 
@@ -142,7 +142,7 @@ export default function Skills() {
                   <span className="text-xs font-bold text-emerald-400 font-mono block">
                     {pr.name}
                   </span>
-                  <p className="text-[11px] text-slate leading-relaxed">
+                  <p className="text-xs text-mist leading-relaxed">
                     {pr.desc}
                   </p>
                 </div>

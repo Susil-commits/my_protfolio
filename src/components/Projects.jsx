@@ -37,7 +37,7 @@ function ProjectLink({ url, label, icon }) {
         rel="noopener noreferrer"
         aria-label={label}
         title={label}
-        className="inline-flex items-center gap-1.5 text-xs font-medium text-pearl hover:text-white transition-colors duration-300"
+        className="inline-flex items-center gap-1.5 text-xs font-medium text-pearl hover:text-accent1 transition-colors duration-300"
       >
         {icon}
         <span>{label}</span>
@@ -241,7 +241,7 @@ export default function Projects() {
                 <button
                   type="button"
                   onClick={() => setSelectedArchProject(project.title)}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-semibold text-pearl/90 bg-pearl/[0.05] hover:bg-pearl hover:text-obsidian border border-pearl/15 hover:border-pearl shadow-sm transition-all duration-300 cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-semibold text-pearl bg-pearl/[0.05] hover:bg-pearl hover:text-obsidian border border-pearl/15 hover:border-pearl shadow-sm transition-all duration-300 cursor-pointer"
                 >
                   {BlueprintIcon}
                   <span>System Architecture Deep Dive</span>

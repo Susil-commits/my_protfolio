@@ -121,7 +121,7 @@ export default function SystemArchitecture() {
               <div className="text-emerald-400 font-mono text-sm font-bold tracking-tight mb-1">
                 {item.metric}
               </div>
-              <h3 className="text-pearl font-semibold text-base mb-2 group-hover:text-black transition-colors duration-300">
+              <h3 className="text-pearl font-semibold text-base mb-2 group-hover:text-accent1 transition-colors duration-300">
                 {item.title}
               </h3>
               <p className="text-mist text-xs leading-relaxed mb-3">
@@ -317,7 +317,7 @@ export default function SystemArchitecture() {
                       <h4 className="text-sm font-semibold text-pearl leading-snug">
                         {st.title}
                       </h4>
-                      <p className="text-[11px] text-slate leading-relaxed">
+                      <p className="text-xs text-mist leading-relaxed">
                         {st.desc}
                       </p>
                     </div>
@@ -372,7 +372,7 @@ export default function SystemArchitecture() {
                       className="p-4 rounded-2xl border border-pearl/10 bg-pearl/[0.02] hover:border-pearl/20 hover:bg-pearl/[0.05] transition-all duration-300 space-y-2 group relative"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono font-bold text-pearl/50 group-hover:text-emerald-400 transition-colors duration-300">
+                        <span className="text-[10px] font-mono font-bold text-slate group-hover:text-emerald-400 transition-colors duration-300">
                           STEP {step.step}
                         </span>
                         {i < activeMode.diagram.length - 1 && (
@@ -382,7 +382,7 @@ export default function SystemArchitecture() {
                       <h4 className="text-xs sm:text-sm font-semibold text-pearl leading-snug">
                         {step.title}
                       </h4>
-                      <p className="text-[10px] sm:text-[11px] text-slate leading-relaxed">
+                      <p className="text-xs text-mist leading-relaxed">
                         {step.note}
                       </p>
                     </div>

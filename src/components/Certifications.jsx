@@ -83,7 +83,7 @@ export default function Certifications() {
                 <h3 className="text-pearl font-semibold text-base leading-snug group-hover:text-accent1 transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="text-mist/80 text-sm mt-2 leading-relaxed">
+                <p className="text-mist text-sm mt-2 leading-relaxed">
                   {item.description}
                 </p>
               </div>

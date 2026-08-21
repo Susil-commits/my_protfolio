@@ -69,21 +69,21 @@ export default function Experience() {
                   }`}
                 >
                   <SpotlightCard className="card-morph-border p-6 group hover:border-white/10">
-                    <span className="text-xs font-semibold text-pearl/50 uppercase tracking-[0.15em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-pearl/10">
+                    <span className="text-xs font-semibold text-slate font-mono uppercase tracking-[0.15em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-pearl/10">
                       {exp.period}
                     </span>
                     <h3 className="text-pearl font-semibold text-lg mt-3 group-hover:text-accent1 transition-colors duration-300">
                       {exp.role}
                     </h3>
-                    <p className="text-mist text-sm mt-1">{exp.company}</p>
-                    <p className="text-mist/70 text-sm mt-3 leading-relaxed">
+                    <p className="text-mist font-medium text-sm mt-1">{exp.company}</p>
+                    <p className="text-mist text-sm mt-3 leading-relaxed">
                       {exp.description}
                     </p>
                     <div className="flex gap-2 mt-4 flex-wrap">
                       {exp.highlights.map((h) => (
                         <span
                           key={h}
-                          className="text-[10px] font-medium text-pearl/40 bg-pearl/[0.02] px-2 py-0.5 rounded border border-pearl/10"
+                          className="text-[10px] font-medium text-slate font-mono bg-pearl/[0.02] px-2 py-0.5 rounded border border-pearl/10"
                         >
                           {h}
                         </span>
@@ -106,7 +106,7 @@ export default function Experience() {
                           />
                         </span>
                         <span className="min-w-0">
-                          <span className="block text-[10px] font-semibold text-pearl/50 uppercase tracking-[0.12em]">
+                          <span className="block text-[10px] font-semibold text-slate font-mono uppercase tracking-[0.12em]">
                             {exp.certificateLabel || 'Certificate'}
                           </span>
                           <span className="inline-flex items-center gap-1 text-xs font-medium text-pearl group-hover/cert:text-accent1 transition-colors duration-300">

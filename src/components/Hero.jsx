@@ -168,7 +168,7 @@ export default function Hero() {
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-12 px-6">
               {skills.flatMap((s) => s.items).map((tech, idx) => (
-                <span key={`${i}-${idx}`} className="text-mist/70 text-xs font-semibold tracking-[0.2em] uppercase whitespace-nowrap">
+                <span key={`${i}-${idx}`} className="text-mist text-xs font-semibold tracking-[0.2em] uppercase whitespace-nowrap">
                   {tech}
                 </span>
               ))}

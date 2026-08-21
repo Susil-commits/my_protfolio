@@ -244,24 +244,24 @@ export default function Contact() {
           </button>
 
           {status === 'success' && (
-            <div className="text-center py-3 px-4 bg-green-500/5 border border-green-500/10 rounded-xl animate-scale-in">
-              <p className="text-sm text-green-700 flex items-center justify-center gap-2">
+            <div className="text-center py-3 px-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl animate-scale-in">
+              <p className="text-sm text-emerald-600 dark:text-emerald-400 font-semibold flex items-center justify-center gap-2">
                 <span className="text-base">✓</span>
                 Message sent! Thanks for reaching out — I'll get back to you within 24 hours.
               </p>
             </div>
           )}
           {status === 'error' && (
-            <div className="text-center py-3 px-4 bg-red-500/5 border border-red-500/10 rounded-xl animate-scale-in">
-              <p className="text-sm text-red-700 flex items-center justify-center gap-2">
+            <div className="text-center py-3 px-4 bg-rose-500/10 border border-rose-500/20 rounded-xl animate-scale-in">
+              <p className="text-sm text-rose-600 dark:text-rose-400 font-semibold flex items-center justify-center gap-2">
                 <span className="text-base">✕</span>
                 Something went wrong. Please email me directly at {personal.email}.
               </p>
             </div>
           )}
           {status === 'nokey' && (
-            <div className="text-center py-3 px-4 bg-amber-500/5 border border-amber-500/10 rounded-xl animate-scale-in">
-              <p className="text-sm text-amber-700 flex items-center justify-center gap-2">
+            <div className="text-center py-3 px-4 bg-amber-500/10 border border-amber-500/20 rounded-xl animate-scale-in">
+              <p className="text-sm text-amber-600 dark:text-amber-400 font-semibold flex items-center justify-center gap-2">
                 <span className="text-base">!</span>
                 Form delivery isn't configured yet. Email me at {personal.email}.
               </p>

@@ -53,7 +53,7 @@ export default function Education() {
                       <path d="M6 12v5c3 3 9 3 12 0v-5" />
                     </svg>
                   </div>
-                  <span className="text-xs font-semibold text-pearl/50 uppercase tracking-[0.12em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-pearl/10 shrink-0">
+                  <span className="text-xs font-semibold text-slate font-mono uppercase tracking-[0.12em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-pearl/10 shrink-0">
                     {edu.period}
                   </span>
                 </div>
@@ -65,8 +65,8 @@ export default function Education() {
 
                 <div className="mt-4 space-y-1 text-sm">
                   <p className="text-mist">
-                    <span className="text-slate">{edu.degree}</span>
-                    {edu.field && <span className="text-slate"> · {edu.field}</span>}
+                    <span className="text-mist font-medium">{edu.degree}</span>
+                    {edu.field && <span className="text-mist"> · {edu.field}</span>}
                   </p>
                 </div>
 

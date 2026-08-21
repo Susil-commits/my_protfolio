@@ -53,7 +53,7 @@ export default function Achievements() {
                     {item.icon}
                   </div>
                   {item.certificates.length > 0 && (
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-pearl/50 uppercase tracking-[0.12em] bg-pearl/[0.03] px-2.5 py-1 rounded-full border border-pearl/10">
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-slate font-mono uppercase tracking-[0.12em] bg-pearl/[0.03] px-2.5 py-1 rounded-full border border-pearl/10">
                       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                         <polyline points="14 2 14 8 20 8" />
@@ -65,7 +65,7 @@ export default function Achievements() {
                 <h3 className="text-pearl font-semibold text-base leading-snug group-hover:text-accent1 transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="text-mist/80 text-sm mt-3 leading-relaxed">
+                <p className="text-mist text-sm mt-3 leading-relaxed">
                   {item.description}
                 </p>
 

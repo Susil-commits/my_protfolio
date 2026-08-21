@@ -70,11 +70,11 @@ export default function About() {
                 &ldquo;
               </span>
 
-              <div className="space-y-5 text-mist leading-relaxed text-[15px] relative z-10">
+              <div className="space-y-5 text-mist leading-relaxed text-base relative z-10">
                 {about.paragraphs.map((p, i) => (
                   <p
                     key={i}
-                    className={i === 0 ? 'text-pearl/90 text-lg font-medium leading-relaxed' : ''}
+                    className={i === 0 ? 'text-pearl text-lg font-medium leading-relaxed' : ''}
                   >
                     {p}
                   </p>
