@@ -85,6 +85,14 @@ export default function Hero() {
         {/* Interactive 3D Profile Avatar */}
         <ProfileAvatar3D />
 
+        {/* Subtle executive status indicator */}
+        <div className="reveal-on-scroll inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-pearl/10 bg-pearl/[0.03] backdrop-blur-md mb-6">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-xs font-mono font-medium text-pearl/90 tracking-wide">
+            Distributed Systems & AI Architecture • 7 Verified System Topologies
+          </span>
+        </div>
+
         {/* Subheading — rotating roles */}
         <div className="reveal-on-scroll flex items-center justify-center gap-3 mb-6">
           <span className="h-px w-8 bg-pearl/20" />

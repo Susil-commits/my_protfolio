@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { systemPrinciples, productionScenarios } from '../data/architecture';
 import SpotlightCard from './SpotlightCard';
 import InteractiveTopology from './InteractiveTopology';
+import SlaMathCalculator from './SlaMathCalculator';
+import TradeOffMatrix from './TradeOffMatrix';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const ARCHITECTURE_MODES = [
@@ -145,6 +147,10 @@ export default function SystemArchitecture() {
                   ? 'Live Distributed Node Graph & Packet Flow'
                   : viewType === 'scenarios'
                   ? 'Real-World Production Scenarios & Fault Recovery'
+                  : viewType === 'sla_simulator'
+                  ? 'Real-Time SLA & Latency Decomposition Simulator'
+                  : viewType === 'tradeoffs'
+                  ? 'Distributed Systems & PACELC Trade-Off Matrix'
                   : 'Core Architecture Pipelines & Topologies'}
               </h3>
             </div>
@@ -153,19 +159,19 @@ export default function SystemArchitecture() {
               <button
                 type="button"
                 onClick={() => setViewType('topology')}
-                className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+                className={`px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
                   viewType === 'topology'
                     ? 'bg-pearl text-obsidian shadow-md font-bold'
                     : 'text-mist hover:text-pearl'
                 }`}
               >
                 <span>🌐</span>
-                <span>Live Topology</span>
+                <span>Topology</span>
               </button>
               <button
                 type="button"
                 onClick={() => setViewType('scenarios')}
-                className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+                className={`px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
                   viewType === 'scenarios'
                     ? 'bg-pearl text-obsidian shadow-md font-bold'
                     : 'text-mist hover:text-pearl'
@@ -176,8 +182,32 @@ export default function SystemArchitecture() {
               </button>
               <button
                 type="button"
+                onClick={() => setViewType('sla_simulator')}
+                className={`px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+                  viewType === 'sla_simulator'
+                    ? 'bg-pearl text-obsidian shadow-md font-bold'
+                    : 'text-mist hover:text-pearl'
+                }`}
+              >
+                <span>📐</span>
+                <span>SLA Math</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewType('tradeoffs')}
+                className={`px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+                  viewType === 'tradeoffs'
+                    ? 'bg-pearl text-obsidian shadow-md font-bold'
+                    : 'text-mist hover:text-pearl'
+                }`}
+              >
+                <span>⚖️</span>
+                <span>PACELC Matrix</span>
+              </button>
+              <button
+                type="button"
                 onClick={() => setViewType('pipelines')}
-                className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+                className={`px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs font-semibold rounded-xl transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
                   viewType === 'pipelines'
                     ? 'bg-pearl text-obsidian shadow-md font-bold'
                     : 'text-mist hover:text-pearl'
@@ -196,7 +226,21 @@ export default function SystemArchitecture() {
             </div>
           )}
 
-          {/* VIEW 2: PRODUCTION SCENARIOS */}
+          {/* VIEW 2: SLA MATH SIMULATOR */}
+          {viewType === 'sla_simulator' && (
+            <div className="animate-fade-in">
+              <SlaMathCalculator />
+            </div>
+          )}
+
+          {/* VIEW 3: PACELC TRADE-OFF MATRIX */}
+          {viewType === 'tradeoffs' && (
+            <div className="animate-fade-in">
+              <TradeOffMatrix />
+            </div>
+          )}
+
+          {/* VIEW 4: PRODUCTION SCENARIOS */}
           {viewType === 'scenarios' && (
             <div className="space-y-8 animate-fade-in">
               {/* Scenario Selector Chips */}
