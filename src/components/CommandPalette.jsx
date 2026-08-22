@@ -71,7 +71,7 @@ export default function CommandPalette({ isOpen, onClose, onSelectProject }) {
       icon: '📄',
       onSelect: () => {
         onClose();
-        window.open(personal.resumes[0]?.url || 'https://drive.google.com/file/d/1uRBEFKMyyjtXkKq_trUMoXnCCClMWb2k/view?usp=sharing', '_blank');
+        window.open(personal.resumes[0]?.url || 'https://drive.google.com/file/d/1i8YK3XQLwm5e_ow4Hq5ypD0TxwoLzS0O/view?usp=sharing', '_blank');
       },
     },
     {

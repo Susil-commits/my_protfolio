@@ -29,15 +29,9 @@ export const personal = {
   phone: '+91 8984339007',
   resumes: [
     {
-      role: 'Full Stack & Distributed Systems',
-      subtitle: 'Development',
-      url: 'https://drive.google.com/file/d/1uRBEFKMyyjtXkKq_trUMoXnCCClMWb2k/view?usp=sharing',
-      icon: 'mern',
-    },
-    {
       role: 'AI / ML & Cloud Infrastructure',
       subtitle: 'Engineering',
-      url: 'https://drive.google.com/file/d/1uRBEFKMyyjtXkKq_trUMoXnCCClMWb2k/view?usp=sharing',
+      url: 'https://drive.google.com/file/d/1i8YK3XQLwm5e_ow4Hq5ypD0TxwoLzS0O/view?usp=sharing',
       icon: 'ai',
     },
   ],

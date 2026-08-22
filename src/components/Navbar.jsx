@@ -93,6 +93,23 @@ function CvButton({ className = '', onClick }) {
     };
   }, [open]);
 
+  if (personal.resumes.length === 1) {
+    const single = personal.resumes[0];
+    return (
+      <a
+        href={single.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick}
+        aria-label="Download CV"
+        className={`btn-primary !py-2 !px-4 text-xs gap-1.5 inline-flex items-center ${className}`}
+      >
+        {DownloadIcon}
+        <span>CV</span>
+      </a>
+    );
+  }
+
   return (
     <div ref={ref} className={`relative ${className}`}>
       <button
@@ -177,6 +194,26 @@ function CvButton({ className = '', onClick }) {
 
 function MobileCv({ onNavigate }) {
   const [open, setOpen] = useState(false);
+
+  if (personal.resumes.length === 1) {
+    const single = personal.resumes[0];
+    return (
+      <div className="w-full flex items-center justify-between">
+        <span className="text-[10px] uppercase tracking-[0.18em] text-slate">Resume</span>
+        <a
+          href={single.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={onNavigate}
+          aria-label="Download CV"
+          className="btn-primary !py-2 !px-4 text-xs gap-1.5 inline-flex items-center"
+        >
+          {DownloadIcon}
+          <span>CV</span>
+        </a>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
