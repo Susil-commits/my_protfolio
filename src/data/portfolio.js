@@ -174,6 +174,20 @@ export const projects = [
     badge: 'Flagship Space AI',
   },
   {
+    title: 'RESQ-X',
+    subtitle: 'Real-Time Disaster Simulation & Decision Intelligence Platform',
+    category: 'Distributed Systems & AI',
+    icon: '🚨',
+    gradient: 'from-amber-500/15 via-rose-500/10 to-transparent',
+    description:
+      'Real-time disaster command intelligence platform executing multi-hazard cellular automata propagation, XGBoost edge traversal risk prediction (R²=0.991), and Google OR-Tools MILP optimal resource dispatching within a hard 100ms decision deadline. Evaluated across 1,000 Monte Carlo scenarios yielding 39.86% faster response and 82.97% casualty reduction with 35/35 automated unit & resilience tests.',
+    tags: ['Google OR-Tools', 'FastAPI', 'XGBoost', 'Python', 'Redis', 'Docker', 'Monte Carlo', 'React.js', 'Prometheus'],
+    link: 'https://github.com/Susil-commits/RESQ-X---Resilient-Emergency-Simulation-Decision-Intelligence',
+    github: 'https://github.com/Susil-commits/RESQ-X---Resilient-Emergency-Simulation-Decision-Intelligence',
+    highlight: true,
+    badge: 'Disaster Decision AI',
+  },
+  {
     title: 'EdgeGuard',
     subtitle: 'Red Hat-Oriented Edge Monitoring & Self-Healing Platform',
     category: 'Cloud & DevOps',
