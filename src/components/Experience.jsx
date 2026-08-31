@@ -26,7 +26,7 @@ export default function Experience() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6 overflow-hidden">
+    <section ref={sectionRef} id="experience" className="relative py-32 px-6 overflow-hidden">
       <div className="ambient-glow ambient-glow-accent2 w-[400px] h-[400px] top-1/2 -left-20 opacity-15 animate-glow-pulse" />
       <div className="ambient-glow ambient-glow-accent1 w-[200px] h-[200px] bottom-20 right-10 opacity-10 animate-float-slow" />
 

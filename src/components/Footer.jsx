@@ -3,6 +3,17 @@ import { personal } from '../data/portfolio';
 export default function Footer() {
   const year = new Date().getFullYear();
 
+  const handleFooterNav = (e, sectionId) => {
+    e.preventDefault();
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.querySelectorAll('.reveal-on-scroll, .reveal-left, .reveal-right, .reveal-scale, .char-stagger')
+        .forEach((child) => child.classList.add('revealed'));
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.pushState(null, '', `#${sectionId}`);
+    }
+  };
+
   return (
     <footer className="relative py-16 px-6 border-t border-pearl/[0.06] overflow-hidden">
       {/* Top decorative line */}
@@ -13,6 +24,7 @@ export default function Footer() {
           {/* Logo */}
           <a
             href="#home"
+            onClick={(e) => handleFooterNav(e, 'home')}
             className="text-xl font-bold tracking-tight text-pearl group relative"
           >
             {personal.logo}<span className="text-mist group-hover:text-pearl/70 transition-colors duration-300">.</span>
@@ -21,16 +33,20 @@ export default function Footer() {
 
           {/* Navigation links */}
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            {['Home', 'About', 'Skills', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'].map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className="text-sm text-mist hover:text-pearl transition-all duration-300 relative group"
-              >
-                {link}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-pearl/30 group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
+            {['Home', 'About', 'Skills', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'].map((link) => {
+              const sectionId = link.toLowerCase();
+              return (
+                <a
+                  key={link}
+                  href={`#${sectionId}`}
+                  onClick={(e) => handleFooterNav(e, sectionId)}
+                  className="text-sm text-mist hover:text-pearl transition-all duration-300 relative group"
+                >
+                  {link}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-pearl/30 group-hover:w-full transition-all duration-500" />
+                </a>
+              );
+            })}
           </div>
 
         </div>

@@ -51,6 +51,10 @@
     scrollbar-width: none;
   }
 
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
   body {
     font-family: var(--font-sans);
     background-color: var(--color-obsidian);

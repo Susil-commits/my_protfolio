@@ -315,7 +315,7 @@ function ThemeToggle({ className = '' }) {
   );
 }
 
-function MoreDropdown({ activeSection }) {
+function MoreDropdown({ activeSection, onNavigate }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -384,7 +384,10 @@ function MoreDropdown({ activeSection }) {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  setOpen(false);
+                  onNavigate?.(e, item.id);
+                }}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-xl transition-all ${
                   isActive
                     ? 'bg-pearl text-obsidian font-semibold shadow-sm'
@@ -420,7 +423,7 @@ function CommandPaletteButton({ className = '' }) {
   );
 }
 
-const SECTION_IDS = ['home', 'about', 'skills', 'architecture', 'projects', 'experience', 'education', 'achievements', 'certifications', 'contact'];
+const SECTION_IDS = ['home', 'about', 'skills', 'projects', 'experience', 'education', 'achievements', 'certifications', 'contact'];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -444,8 +447,22 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const desktopPrimaryLinks = ['Home', 'About', 'Skills', 'Architecture', 'Projects', 'Experience'];
-  const allLinks = ['Home', 'About', 'Skills', 'Architecture', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'];
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    setMobileOpen(false);
+
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.querySelectorAll('.reveal-on-scroll, .reveal-left, .reveal-right, .reveal-scale, .char-stagger')
+        .forEach((child) => child.classList.add('revealed'));
+
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.pushState(null, '', `#${sectionId}`);
+    }
+  };
+
+  const desktopPrimaryLinks = ['Home', 'About', 'Skills', 'Projects', 'Experience'];
+  const allLinks = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'];
 
   return (
     <nav
@@ -459,6 +476,7 @@ export default function Navbar() {
         <div className="flex items-center justify-start shrink-0">
           <a
             href="#home"
+            onClick={(e) => handleNavClick(e, 'home')}
             className="text-lg sm:text-xl font-bold tracking-tight text-pearl group relative shrink-0"
           >
             <span className="relative z-10 transition-all duration-300 group-hover:text-accent1">
@@ -478,6 +496,7 @@ export default function Navbar() {
               <a
                 key={l}
                 href={`#${sectionId}`}
+                onClick={(e) => handleNavClick(e, sectionId)}
                 className={`relative px-2.5 py-1.5 2xl:px-3 2xl:py-2 text-[11px] 2xl:text-xs font-semibold transition-all duration-300 tracking-wider uppercase rounded-full ${
                   isActive
                     ? 'text-pearl bg-pearl/[0.08]'
@@ -493,11 +512,12 @@ export default function Navbar() {
           })}
 
           {/* More Dropdown (Education, Achievements, Certifications) */}
-          <MoreDropdown activeSection={activeSection} />
+          <MoreDropdown activeSection={activeSection} onNavigate={handleNavClick} />
 
           {/* Contact Link */}
           <a
             href="#contact"
+            onClick={(e) => handleNavClick(e, 'contact')}
             className={`relative px-2.5 py-1.5 2xl:px-3 2xl:py-2 text-[11px] 2xl:text-xs font-semibold transition-all duration-300 tracking-wider uppercase rounded-full ${
               activeSection === 'contact'
                 ? 'text-pearl bg-pearl/[0.08]'
@@ -567,7 +587,7 @@ export default function Navbar() {
                 <a
                   key={l}
                   href={`#${sectionId}`}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => handleNavClick(e, sectionId)}
                   className={`text-xl sm:text-2xl font-bold tracking-tight uppercase transition-all duration-300 flex items-center justify-between py-1 transform ${
                     mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                   } ${

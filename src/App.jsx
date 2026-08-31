@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
-import SystemArchitecture from './components/SystemArchitecture';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -36,6 +35,45 @@ export default function App() {
     }
   }, [loading]);
 
+  // Handle route / hash navigation on initial refresh or URL change
+  useEffect(() => {
+    if (loading) return;
+
+    const scrollToRouteTarget = (smooth = true) => {
+      let targetId = window.location.hash ? window.location.hash.replace(/^#/, '') : '';
+      if (!targetId && window.location.pathname && window.location.pathname !== '/') {
+        targetId = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+      }
+
+      if (targetId) {
+        const el = document.getElementById(targetId);
+        if (el) {
+          // Immediately reveal components in that section
+          el.querySelectorAll('.reveal-on-scroll, .reveal-left, .reveal-right, .reveal-scale, .char-stagger')
+            .forEach((child) => child.classList.add('revealed'));
+
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+          }, 60);
+        }
+      }
+    };
+
+    // Execute immediately on initial load after loader finishes
+    scrollToRouteTarget(false);
+
+    const handleHashChange = () => scrollToRouteTarget(true);
+    const handlePopState = () => scrollToRouteTarget(true);
+
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [loading]);
+
   // Listen for open-command-palette global event
   useEffect(() => {
     const handleOpenPalette = () => setCommandPaletteOpen(true);
@@ -60,8 +98,6 @@ export default function App() {
           <About />
           <div className="line-decoration max-w-4xl mx-auto" />
           <Skills />
-          <div className="line-decoration max-w-4xl mx-auto" />
-          <SystemArchitecture />
           <div className="line-decoration max-w-4xl mx-auto" />
           <Projects />
           <div className="line-decoration max-w-4xl mx-auto" />
