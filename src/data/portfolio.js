@@ -48,22 +48,77 @@ export const hero = {
   eyebrow: 'Distributed Systems · Cloud-Native · Full-Stack',
   roles: ['Distributed Systems', 'Cloud-Native & DevOps', 'Full-Stack Development', 'Autonomous AI / ML'],
   tagline:
-    'Engineering resilient, high-throughput distributed systems, autonomous AI digital twins, and full-stack cloud platforms — from Apache Kafka streaming pipelines and Kubernetes orchestration to sub-millisecond mathematical optimization and production-tested web architectures.',
+    "Hey there, I'm Susil! 👋 I'm a full-stack developer passionate about building intelligent, production-ready applications — blending React/Node.js with AI/ML systems like RAG, LLMs, and predictive modeling.",
 };
 
 export const about = {
   headline: ['Engineer who ships —', 'across distributed systems, AI & cloud.'],
-  paragraphs: [
-    'I engineer production-grade distributed architectures, autonomous AI digital twins, and high-performance full-stack web platforms. From event-driven telemetry streaming on Apache Kafka (APEX F1 Strategy Engine) and combinatorial satellite constellation solvers (ORBIT-X) to self-healing edge remediation (EdgeGuard) and cryptographic GitOps delivery controllers (HyperDeploy), I own systems from blank repository to cloud deployment.',
-    'My work couples mathematical rigor and deep learning with cloud-native reliability: Google OR-Tools CP-SAT constraint solvers, PyTorch Multi-Head Cross-Attention neural surrogates, TreeSHAP explainability, and Safe-RL action masking guardrails. On the infrastructure front, I build with Docker, Kubernetes, Helm, Event-Driven Ansible (EDA), Redis/BullMQ, and full Prometheus/Grafana observability.',
-    'Internship-tested across backend development (Techgeering Solutions, MERN stack), Java full-stack systems, and embedded IoT. Backed by Oracle Cloud Gen AI & Data Science certifications, NPTEL IoT & Software Testing, and NASSCOM Gold in Big Data, I design secure, zero-trust architectures with strict RBAC, automated rollbacks, and verified sub-millisecond latencies.',
-  ],
-  highlights: [
-    { label: 'Production Platforms', value: '7 Shipped Systems' },
-    { label: 'Streaming & Queues', value: 'Kafka · Redis · BullMQ' },
-    { label: 'Cloud & Orchestration', value: 'Kubernetes · Helm · EDA' },
-    { label: 'AI / ML & Optimization', value: 'PyTorch · CP-SAT · RL' },
-  ],
+  principles: {
+    howIThink: [
+      {
+        title: 'Break problems down before jumping into code',
+        description: 'I break big problems into small, testable pieces before writing code.',
+        tag: 'Decomposition',
+        icon: 'puzzle',
+      },
+      {
+        title: 'Focus on root causes, not quick patches',
+        description: 'I care about why something breaks, not just fixing the symptom.',
+        tag: 'Root-Cause',
+        icon: 'target',
+      },
+      {
+        title: 'Prefer shipping and iterating over perfectionism',
+        description: "I'd rather ship something working and improve it than over-engineer upfront.",
+        tag: 'Velocity',
+        icon: 'rocket',
+      },
+      {
+        title: 'Read the error, then the docs, then ask',
+        description: 'I read the error, then the docs, then ask — in that order.',
+        tag: 'First-Principles',
+        icon: 'terminal',
+      },
+      {
+        title: 'Treat every task like it goes to production tomorrow',
+        description: "I treat every internship task like it'll be in production tomorrow.",
+        tag: 'Production-Ready',
+        icon: 'shield',
+      },
+    ],
+    whatIBring: [
+      {
+        title: 'End-to-end full-stack + AI/ML skillset',
+        description: 'Full-stack ownership — frontend, backend, APIs, deployment.',
+        tag: 'Full-Stack',
+        icon: 'layers',
+      },
+      {
+        title: 'Solid grounding in AI/ML',
+        description: 'Solid grounding in AI/ML — not just using models, understanding them.',
+        tag: 'AI/ML Systems',
+        icon: 'brain',
+      },
+      {
+        title: 'Production-tested backend experience',
+        description: 'Comfortable across the stack: React/Node to PyTorch/FastAPI.',
+        tag: 'Stack Versatility',
+        icon: 'code',
+      },
+      {
+        title: 'Reliability mindset & quality gating',
+        description: 'Reliability mindset — testing, CI, and catching edge cases early.',
+        tag: 'Reliability',
+        icon: 'check',
+      },
+      {
+        title: 'Consistent learner — certs, internships, projects',
+        description: 'Fast learner — picked up new tools/certs consistently, not just once.',
+        tag: 'Continuous Growth',
+        icon: 'sparkles',
+      },
+    ],
+  },
 };
 
 export const skills = [
