@@ -573,11 +573,9 @@
 
 @layer utilities {
   /* ── Premium: Custom Cursor ── */
-  @media (hover: hover) and (pointer: fine) {
-    body.premium-cursor,
-    body.premium-cursor * {
-      cursor: none !important;
-    }
+  body.premium-cursor,
+  body.premium-cursor * {
+    cursor: none !important;
   }
   .cursor-dot,
   .cursor-ring {
