@@ -324,6 +324,81 @@ export const projectArchitectures = {
     },
   },
 
+  'RESQ-X': {
+    id: 'resq-x',
+    title: 'RESQ-X — Real-Time Disaster Decision Intelligence',
+    tagline: 'Physics Cellular Automata, XGBoost Edge Delays & OR-Tools MILP Dispatch under 100ms Deadline',
+    summary:
+      'An engineering-focused real-time simulation and decision-intelligence platform designed for urban disaster response (earthquakes, flash floods, collapses, and fires). Unifies cellular automata hazard propagation, XGBoost traversal prediction (R²=0.991), and Google OR-Tools MILP dispatch under a strict 100ms real-time deadline with greedy fallback resilience.',
+    systemFlow: [
+      {
+        step: 1,
+        title: 'Physics-Based Cellular Automata Digital Twin',
+        description: 'Simulates multi-hazard spatial propagation across elevation gradients, structural vulnerabilities, and dynamic road networks.',
+        tech: ['Cellular Automata', 'Spatial Physics', 'Digital Twin', 'Elevation Gradients'],
+      },
+      {
+        step: 2,
+        title: 'XGBoost Travel-Time & Road-Risk Prediction',
+        description: 'Gradient Boosted Decision Trees predict non-linear edge traversal delays under disaster degradation with R²=0.991 accuracy.',
+        tech: ['XGBoost / GBDT', 'Graph Traversal', 'Dynamic Edge Cost', 'Scikit-Learn'],
+      },
+      {
+        step: 3,
+        title: 'Mathematical Multi-Objective Optimization (OR-Tools MILP)',
+        description: 'Executes dynamic priority assignment balancing responder fleet capacity, medical triage severity, and hospital throughput constraints.',
+        tech: ['Google OR-Tools', 'MILP Branch & Bound', 'Multi-Objective Solver', 'Constraint Programming'],
+      },
+      {
+        step: 4,
+        title: 'Hard 100ms Real-Time Decision Deadline & Profiler',
+        description: 'Instruments each stage with dynamic time-budget profiling. If MILP exceeds 45ms (e.g. 500k boolean variables), triggers 0.07ms greedy fallback.',
+        tech: ['Hard Time Budget', 'Latency Profiler', 'Greedy Fallback (0.07ms)', 'Graceful Degradation'],
+      },
+      {
+        step: 5,
+        title: 'Explainability, Observability & Command HUD',
+        description: 'Generates counterfactual decision explainability logs, Prometheus telemetry metrics, and real-time interactive incident command dashboard.',
+        tech: ['Prometheus Metrics', 'Counterfactual Logs', 'FastAPI REST/WS', 'React Command HUD'],
+      },
+    ],
+    dbOptimization: {
+      engine: 'MILP Solver & In-Memory Graph Index',
+      strategy: 'Strict 100ms Time-Budgeted Dynamic Profiling & 0.07ms Fallback',
+      indexDefinition: 'OR-Tools MILP: 10.54ms P95 | Greedy Fallback: 0.07ms P95',
+      beforeLatency: '11.87 ticks (Greedy)',
+      afterLatency: '7.24 ticks (MILP)',
+      improvementPercent: '39.86%',
+      details:
+        'Across 1,000 randomized Monte Carlo disaster scenarios (50 independent seeds), ML-enhanced OR-Tools MILP achieved a 39.86% faster response time, 82.97% casualty reduction, and 71.30% unmet-demand reduction compared to greedy priority baselines.',
+      metrics: [
+        { label: 'Response Time Improvement', value: '39.86% Faster' },
+        { label: 'Casualty Reduction', value: '82.97% Reduced' },
+        { label: 'Unmet Demand Cut', value: '71.30% Cut' },
+        { label: 'Solver P95 Latency', value: '10.54ms P95' },
+      ],
+    },
+    security: {
+      auth: 'Stateless HMAC-SHA256 JWT authorization for incident command dispatchers and field responder units.',
+      rbac: 'Granular Role-Based Access: VIEWER (Live hazard map), DISPATCHER (Execute triage allocations), INCIDENT_COMMANDER (Override constraints & trigger manual fallback), ADMIN (Chaos injection & model retrain).',
+      middleware: ['Time-Budget Guardrail', 'Redis Fallback Circuit Breaker', 'Idempotent Incident Dispatch UUID', 'Prometheus Latency Middleware'],
+    },
+    loadTesting: {
+      tool: '1,000-Scenario Monte Carlo Benchmark & PyTest Suite',
+      concurrency: '500 Responders x 1,000 Victims (500k Decision Variables)',
+      totalRequests: '35 / 35 Automated Tests (88% Cov)',
+      p95Latency: '33.2ms (Metropolitan Scale)',
+      errorRate: '0.00%',
+      summary:
+        'Evaluated across 1,000 Monte Carlo scenarios. Successfully proved predictable degradation under extreme overload (500 responders / 1,000 victims) shifting to 0.07ms greedy fallback without deadline violation.',
+    },
+    scenario: {
+      title: '500k Decision Variable Metropolitan Collapse Overload',
+      summary: 'When a mega-disaster spawns 500 responders and 1,000 victims exceeding exact MILP budget, RESQ-X preemptively activates 0.07ms greedy fallback to guarantee the 100ms life-critical decision deadline.',
+      recoveryKey: 'Dynamic Time-Budget Profiler + 0.07ms Sub-Millisecond Fallback',
+    },
+  },
+
   EdgeGuard: {
     id: 'edgeguard',
     title: 'EdgeGuard — Red Hat-Oriented Edge Monitoring',
