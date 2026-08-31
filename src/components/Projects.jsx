@@ -28,6 +28,62 @@ const BlueprintIcon = (
   </svg>
 );
 
+function LiveProjectButton({ project }) {
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = (e) => {
+    if (!project.deployed || !project.link) {
+      e.preventDefault();
+      setClicked(true);
+      setTimeout(() => setClicked(false), 2400);
+    }
+  };
+
+  if (project.deployed && project.link) {
+    return (
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Live Demo for ${project.title}`}
+        title={`Visit live demo for ${project.title}`}
+        className="inline-flex items-center gap-1.5 text-xs font-medium text-pearl hover:text-emerald-400 transition-colors duration-300 group/link"
+      >
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        {DeployIcon}
+        <span>Live Demo</span>
+      </a>
+    );
+  }
+
+  return (
+    <div className="relative inline-block">
+      <button
+        type="button"
+        onClick={handleClick}
+        aria-label={`${project.title} live deployment is work in progress`}
+        title="Live Deployment: Work in Progress"
+        className="relative inline-flex items-center gap-1.5 text-xs font-medium text-mist hover:text-amber-300 transition-all duration-300 group/wip cursor-pointer py-0.5"
+      >
+        <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80 group-hover/wip:animate-ping" />
+        {DeployIcon}
+        <span className="group-hover/wip:hidden transition-all">Live Demo</span>
+        <span className="hidden group-hover/wip:inline-flex items-center gap-1 font-semibold text-amber-300 transition-all">
+          <span>🚧</span> Work in Progress
+        </span>
+      </button>
+
+      {/* Click feedback popup */}
+      {clicked && (
+        <div className="absolute bottom-full left-0 mb-2 px-2.5 py-1 rounded-xl bg-obsidian/95 border border-amber-500/30 text-[11px] font-semibold text-amber-300 shadow-2xl backdrop-blur-xl whitespace-nowrap animate-bounce z-30 flex items-center gap-1.5">
+          <span>🚧</span>
+          <span>Work in Progress — Deployment coming soon!</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ProjectLink({ url, label, icon }) {
   if (url) {
     return (
@@ -197,6 +253,15 @@ export default function Projects() {
 
               {/* Badges */}
               <div className="absolute top-4 right-4 z-10 flex items-center gap-1.5">
+                {!project.deployed && (
+                  <span
+                    title="Live Deployment: Work in Progress"
+                    className="px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] bg-amber-500/10 text-amber-300 rounded-full border border-amber-500/25 backdrop-blur-md flex items-center gap-1"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-amber-400 animate-pulse" />
+                    WIP
+                  </span>
+                )}
                 {project.badge && (
                   <span className="px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.15em] bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20 backdrop-blur-md">
                     {project.badge}
@@ -249,7 +314,7 @@ export default function Projects() {
 
                 {/* External links */}
                 <div className="flex items-center justify-between px-1">
-                  <ProjectLink url={project.link} label="Live / Repo" icon={DeployIcon} />
+                  <LiveProjectButton project={project} />
                   <ProjectLink url={project.github} label="Source Code" icon={GithubIcon} />
                 </div>
               </div>

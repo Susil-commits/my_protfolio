@@ -154,9 +154,10 @@ export const projects = [
     description:
       'Distributed autonomous Formula 1 pit-wall mission control platform streaming 60Hz telemetry across Apache Kafka topics. Coupled with BullMQ/Redis asynchronous worker queues, Safe RL action masking guardrails, Multi-Agent Pit Wall Consensus (5 specialist agents), TreeSHAP feature attributions, and a Three.js 3D WebGL Digital Twin HUD. 172/172 automated tests passing with 0.0245ms p99 feature store extraction.',
     tags: ['Kafka', 'PyTorch', 'FastAPI', 'Redis', 'BullMQ', 'Kubernetes', 'Helm', 'Prometheus', 'Three.js', 'Python', 'React.js'],
-    link: 'https://github.com/Susil-commits/F1-s-APEX----Autonomous-Predictive-EXecutive-Race-Intelligence-',
+    link: null,
     github: 'https://github.com/Susil-commits/F1-s-APEX----Autonomous-Predictive-EXecutive-Race-Intelligence-',
     highlight: true,
+    deployed: false,
     badge: 'Flagship AI & Streaming',
   },
   {
@@ -168,9 +169,10 @@ export const projects = [
     description:
       'Autonomous LEO multi-satellite constellation dispatching and 3D digital twin platform. Combines Google OR-Tools CP-SAT exact constraint optimization with a PyTorch Multi-Head Cross-Attention neural surrogate (<0.8ms inference, 84.6% top-1 agreement), WGS-84 J2 orbital propagator, Isolation Forest health anomaly detection, Stefan-Boltzmann radiative cooling ODEs, and 10-scenario space disaster resilience.',
     tags: ['Google OR-Tools', 'PyTorch', 'FastAPI', 'Redis', 'Kafka', 'Docker', 'Three.js', 'PostgreSQL', 'Python', 'TypeScript'],
-    link: 'https://github.com/Susil-commits/ORBIT-X---Autonomous-Orbital-Resource-Intelligence-Network',
+    link: null,
     github: 'https://github.com/Susil-commits/ORBIT-X---Autonomous-Orbital-Resource-Intelligence-Network',
     highlight: true,
+    deployed: false,
     badge: 'Flagship Space AI',
   },
   {
@@ -182,9 +184,10 @@ export const projects = [
     description:
       'Real-time disaster command intelligence platform executing multi-hazard cellular automata propagation, XGBoost edge traversal risk prediction (R²=0.991), and Google OR-Tools MILP optimal resource dispatching within a hard 100ms decision deadline. Evaluated across 1,000 Monte Carlo scenarios yielding 39.86% faster response and 82.97% casualty reduction with 35/35 automated unit & resilience tests.',
     tags: ['Google OR-Tools', 'FastAPI', 'XGBoost', 'Python', 'Redis', 'Docker', 'Monte Carlo', 'React.js', 'Prometheus'],
-    link: 'https://github.com/Susil-commits/RESQ-X---Resilient-Emergency-Simulation-Decision-Intelligence',
+    link: null,
     github: 'https://github.com/Susil-commits/RESQ-X---Resilient-Emergency-Simulation-Decision-Intelligence',
     highlight: true,
+    deployed: false,
     badge: 'Disaster Decision AI',
   },
   {
@@ -196,9 +199,10 @@ export const projects = [
     description:
       'Enterprise hybrid-edge monitoring and self-healing remediation platform powered by Red Hat Event-Driven Ansible (EDA) rulebooks. Features EWMA predictive trend forecasting (breach detection up to 6 hours ahead), offline-first SQLite WAL spooling with zero-duplication UUID idempotency, and an ALLOWED_PLAYBOOKS security allow-list registry.',
     tags: ['Ansible', 'FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes', 'Prometheus', 'Grafana', 'Python', 'React.js'],
-    link: 'https://github.com/Susil-commits/EdgeGuard',
+    link: null,
     github: 'https://github.com/Susil-commits/EdgeGuard',
     highlight: true,
+    deployed: false,
     badge: 'Self-Healing Edge & EDA',
   },
   {
@@ -210,9 +214,10 @@ export const projects = [
     description:
       'Enterprise-grade hybrid continuous delivery controller unifying bare-metal / VM management (via Ansible) and containerized workloads (via Kubernetes). Enforces Sigstore/Cosign cryptographic container verification, automated health-gated zero-downtime rollouts with instant single-function rollback (CrashLoopBackOff), and environment-aware GitOps drift reconciliation.',
     tags: ['Kubernetes', 'Ansible', 'FastAPI', 'Redis', 'PostgreSQL', 'Docker', 'Python', 'TypeScript'],
-    link: 'https://github.com/Susil-commits/HyperDeploy',
+    link: null,
     github: 'https://github.com/Susil-commits/HyperDeploy',
     highlight: true,
+    deployed: false,
     badge: 'GitOps & Delivery Engine',
   },
   {
@@ -227,6 +232,7 @@ export const projects = [
     link: 'https://farm-direct-marketplace-eta.vercel.app/',
     github: 'https://github.com/Susil-commits/FarmDirect',
     highlight: false,
+    deployed: true,
     badge: 'Full-Stack MERN',
   },
   {
@@ -241,6 +247,7 @@ export const projects = [
     link: 'https://left2-serve.vercel.app/',
     github: 'https://github.com/Susil-commits/Left2Serve',
     highlight: false,
+    deployed: true,
     badge: 'ACID Concurrency',
   },
   {
@@ -255,6 +262,7 @@ export const projects = [
     link: 'https://my-mate-tawny.vercel.app/',
     github: 'https://github.com/Susil-commits/MyMate',
     highlight: false,
+    deployed: true,
     badge: 'Real-Time Telemetry',
   },
 ];
