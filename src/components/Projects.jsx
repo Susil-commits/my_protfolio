@@ -119,7 +119,7 @@ const CATEGORIES = [
   'Full-Stack Web',
 ];
 
-const POPULAR_TAGS = ['Kafka', 'PyTorch', 'Kubernetes', 'PostgreSQL', 'MongoDB', 'Ansible', 'FastAPI'];
+const POPULAR_TAGS = ['Kafka', 'PyTorch', 'LangGraph', 'XGBoost', 'PostgreSQL', 'MongoDB', 'FastAPI'];
 
 export default function Projects() {
   const [selectedArchProject, setSelectedArchProject] = useState(null);
@@ -195,7 +195,7 @@ export default function Projects() {
               type="text"
               value={searchTag}
               onChange={(e) => setSearchTag(e.target.value)}
-              placeholder="Search by technology (e.g. Kafka, PyTorch, Kubernetes, PostgreSQL)..."
+              placeholder="Search by technology (e.g. Kafka, PyTorch, LangGraph, PostgreSQL)..."
               className="w-full px-4 py-2.5 pl-10 rounded-2xl bg-pearl/[0.03] border border-pearl/15 text-xs sm:text-sm text-pearl placeholder:text-slate focus:outline-none focus:border-pearl/40 transition-all duration-300"
             />
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate">

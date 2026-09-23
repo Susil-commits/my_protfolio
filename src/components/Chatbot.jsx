@@ -8,17 +8,17 @@ const INITIAL_CATEGORIES = [
     category: '⚡ Flagship Distributed & AI',
     suggestions: [
       { label: 'APEX (Kafka 60Hz & Safe RL)', query: 'Tell me about APEX — the autonomous F1 race strategy engine, Kafka streaming, and 5-agent consensus.' },
-      { label: 'ORBIT-X (Google CP-SAT & Neural Surrogate)', query: 'Explain ORBIT-X — autonomous satellite constellation scheduling and sub-0.8ms neural edge valuation.' },
-      { label: 'EdgeGuard (Event-Driven Ansible Self-Healing)', query: 'What is EdgeGuard and how does it use Event-Driven Ansible and EWMA predictive alerting?' },
-      { label: 'HyperDeploy (Cosign & GitOps Auto-Rollback)', query: 'Tell me about HyperDeploy and its health-gated zero-downtime rollouts and instant rollbacks.' },
+      { label: 'Veritas (LangGraph & Socratic AI)', query: 'Explain Veritas — the AI Socratic Math Tutor, zero answer leakage guardrails, and Bayesian Knowledge Tracing.' },
+      { label: 'Predictive Maintenance (Calibrated ML)', query: 'What is the Predictive Maintenance System and how does Platt calibration reduce Brier error by 62.9%?' },
+      { label: 'FaRm (Marketplace & 95% Latency Cut)', query: 'Tell me about the FaRm marketplace project and how Susil optimized MongoDB indexing.' },
     ],
   },
   {
     category: '🏛️ System Architecture',
     suggestions: [
       { label: 'APEX 0.0245ms Feature Store SLA', query: 'How is APEX’s sub-millisecond feature store and L1/L2/L3 cache hierarchy architected?' },
-      { label: 'ORBIT-X 6-Scheduler Benchmarks', query: 'What are the empirical benchmark results of ORBIT-X across the 6 scheduling paradigms?' },
-      { label: 'FaRm MongoDB Indexing (95% Cut)', query: 'Explain how Susil cut FaRm latency by 95% using MongoDB compound indexing.' },
+      { label: 'Veritas BKT & pgvector RAG', query: 'How does Veritas track 10 CCSS standards using Bayesian Knowledge Tracing and Supabase pgvector?' },
+      { label: 'PMS Telemetry Drift & PSI Engine', query: 'How does the Predictive Maintenance System monitor Population Stability Index (PSI) drift?' },
       { label: 'Left2Serve PostgreSQL & 19K Load Test', query: 'What is Left2Serve’s PostgreSQL B-tree indexing and Artillery load test result?' },
     ],
   },
@@ -58,11 +58,10 @@ const INITIAL_CATEGORIES = [
 // Quick bar pills
 const QUICK_BAR_PROMPTS = [
   '🏎️ APEX F1 Brain',
-  '🛰️ ORBIT-X Space AI',
-  '🛡️ EdgeGuard Self-Healing',
-  '⚡ HyperDeploy GitOps',
+  '🎓 Veritas Socratic AI',
+  '⚙️ Predictive Maintenance',
   '🏛️ System Architecture',
-  '🚀 All 7 Projects',
+  '🚀 Flagship Projects',
   '🌾 FaRm Optimization',
   '🍲 Left2Serve 19k Load',
   '🚗 MyMate WebSockets',
@@ -75,11 +74,10 @@ const QUICK_BAR_PROMPTS = [
 
 const QUICK_BAR_MAP = {
   '🏎️ APEX F1 Brain': 'Explain the APEX autonomous F1 race strategy engine, Kafka 60Hz telemetry, BullMQ queues, and Safe RL.',
-  '🛰️ ORBIT-X Space AI': 'Tell me about ORBIT-X, Google CP-SAT constraint optimization, and PyTorch neural surrogate bidding.',
-  '🛡️ EdgeGuard Self-Healing': 'What is EdgeGuard and how does it use Red Hat Event-Driven Ansible (EDA) and EWMA trend alerting?',
-  '⚡ HyperDeploy GitOps': 'Explain HyperDeploy’s hybrid delivery controller, Sigstore Cosign verification, and instant auto-rollbacks.',
-  '🏛️ System Architecture': 'Explain the system architecture and performance optimizations across Susil\'s distributed platforms.',
-  '🚀 All 7 Projects': 'What are the 7 production platforms and distributed systems Susil has engineered?',
+  '🎓 Veritas Socratic AI': 'Tell me about Veritas, LangGraph multi-agent orchestration, handwritten scratchpad OCR, and Bayesian Knowledge Tracing.',
+  '⚙️ Predictive Maintenance': 'What is the Predictive Maintenance System, how does Platt calibration work, and how is PSI data drift detected?',
+  '🏛️ System Architecture': 'Explain the system architecture and performance optimizations across Susil\'s engineering platforms.',
+  '🚀 Flagship Projects': 'What are the core production platforms and distributed systems Susil has engineered?',
   '🌾 FaRm Optimization': 'How did Susil optimize MongoDB queries by 95% in FaRm?',
   '🍲 Left2Serve 19k Load': 'Tell me about Left2Serve’s PostgreSQL compound indexing and 19k Artillery load test results.',
   '🚗 MyMate WebSockets': 'How does MyMate handle real-time driver tracking and Socket.IO race conditions?',

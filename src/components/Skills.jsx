@@ -5,31 +5,31 @@ import TechPill from './TechPill';
 
 const SKILL_APPLICATIONS = {
   'Distributed & AI': {
-    lead: 'High-Frequency Streaming, Reinforcement Learning & Constraint Optimization',
+    lead: 'High-Frequency Streaming, Reinforcement Learning & Socratic AI Systems',
     projects: [
       { name: 'APEX', desc: '60Hz Kafka telemetry partition routing, BullMQ async rollouts, Safe RL ActionMaskGuardrail' },
-      { name: 'ORBIT-X', desc: 'Google CP-SAT constraint optimization & PyTorch Cross-Attention neural surrogates (<0.8ms)' },
+      { name: 'Veritas', desc: 'LangGraph multi-agent Socratic inquiry, Gemini vision scratchpad OCR, Bayesian Knowledge Tracing (BKT)' },
     ],
   },
   'Cloud & DevOps': {
-    lead: 'GitOps Continuous Delivery, Infrastructure-as-Code & Self-Healing Automation',
+    lead: 'Industrial ML Observability, Telemetry Drift & CI/CD Pipelines',
     projects: [
-      { name: 'HyperDeploy', desc: 'Sigstore/Cosign cryptographic verification, Kubernetes health-gated rollouts & <3s rollback' },
-      { name: 'EdgeGuard', desc: 'Red Hat Event-Driven Ansible (EDA) rulebooks, EWMA 6h trend forecasting, SQLite WAL spooling' },
+      { name: 'Predictive Maintenance', desc: 'Platt sigmoid calibration, SHAP TreeExplainer attributions, PSI data drift monitoring' },
+      { name: 'Prometheus & Docker', desc: 'Pre-configured Grafana metrics, containerized microservices, and automated GitHub Actions CI' },
     ],
   },
   'Backend & Data': {
-    lead: 'Sub-Millisecond Feature Stores, ACID Concurrency & Compound Indexing',
+    lead: 'Sub-Millisecond Feature Stores, Vector Search & Compound Indexing',
     projects: [
-      { name: 'FaRm', desc: 'MongoDB compound B-Tree indexing cutting p95 query latency by 95% (~240ms to ~12ms)' },
-      { name: 'Left2Serve', desc: 'PostgreSQL compound indexing (status, pickup_window) with 19K+ Artillery load testing' },
+      { name: 'Veritas pgvector', desc: 'Supabase pgvector 768-dim embeddings with pedagogical utility scoring and RLS security' },
+      { name: 'Left2Serve & FaRm', desc: 'PostgreSQL & MongoDB compound indexing cutting query latency by 95% with Artillery load testing' },
     ],
   },
   'Frontend & Languages': {
-    lead: 'Reactive UIs, WebGL 3D Digital Twins & Type-Safe Systems',
+    lead: 'Reactive UIs, WebGL 3D Digital Twins & Interactive Dashboards',
     projects: [
-      { name: 'APEX & ORBIT-X HUD', desc: 'Three.js 60FPS WebGL orbital digital twin HUD & WebXR virtual cockpit' },
-      { name: 'MyMate', desc: 'Bi-directional Socket.IO telemetry with atomic mutex locking & Tesseract.js OCR' },
+      { name: 'APEX HUD', desc: 'Three.js 60FPS WebGL telemetry digital twin HUD & WebXR virtual cockpit' },
+      { name: 'Veritas & PMS UIs', desc: 'React 19, TypeScript, interactive CCSS mastery radar charts, and real-time sensor dashboards' },
     ],
   },
 };

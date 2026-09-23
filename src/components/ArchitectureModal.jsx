@@ -12,34 +12,23 @@ const TERMINAL_OUTPUTS = {
     { text: '[CONSENSUS] 5/5 Agents aligned: Race Strategist, Tyre Engineer, Weather, Aero, Chief.', type: 'success' },
     { text: '[THREEJS] WebGL 60FPS digital twin updated. Simulation completed with 0 errors.', type: 'info' },
   ],
-  'ORBIT-X': [
-    { text: '$ orbitx solve --targets 24 --constellation 12 --method cp-sat', type: 'cmd' },
-    { text: '[ORBIT-X] Propagating 12 LEO orbits via WGS-84 J2 Keplerian equations (34.2k sats/sec)...', type: 'info' },
-    { text: '[NEURAL] Multi-Head Cross-Attention inference: 0.74ms (100% P4/P5 emergency bid)', type: 'success' },
-    { text: '[CP-SAT] Google OR-Tools exact solver started. Variables: 864 | Constraints: 1,420', type: 'info' },
-    { text: '[CP-SAT] Status: OPTIMAL found in 3.42ms. Objective value: 98.4% efficiency.', type: 'success' },
-    { text: '[THERMAL] Stefan-Boltzmann check: Peak temp 42.1°C (Within +/- 0.5K tolerance).', type: 'info' },
-    { text: '[ISL_MESH] Laser cross-link routing confirmed. 55/55 PyTest tests passed.', type: 'success' },
+  Veritas: [
+    { text: '$ veritas start --socratic-mode --anti-leak-strict', type: 'cmd' },
+    { text: '[LANGGRAPH] Socratic state machine initialized with 3 agent nodes.', type: 'info' },
+    { text: '[OCR_VISION] Transcribed student scratchpad handwritten proof: 4 steps detected.', type: 'info' },
+    { text: '[RETICLE] Bounding box [ymin: 120, xmin: 45, ymax: 180, xmax: 220] -> "denominator_addition"', type: 'warn' },
+    { text: '[SAFETY] Scanned tutor draft: 0 answer leaks detected. Socratic hint confidence: 0.98', type: 'success' },
+    { text: '[BKT] Bayesian update applied (w=0.5): P(L_t) updated from 0.42 to 0.58 on CCSS.MATH.7.NS.A.1', type: 'success' },
+    { text: '[PGVECTOR] Retrieved targeted remediation problem via ZPD composite utility (score: 0.94)', type: 'info' },
   ],
-  EdgeGuard: [
-    { text: '$ edgeguard monitor --ewma-predict --simulate-wan-drop', type: 'cmd' },
-    { text: '[EWMA] Metric telemetry stream active. Calculating exponential trend (alpha=0.30)...', type: 'info' },
-    { text: '[ALERT] Disk inode exhaustion projected in 5h 42m (Target: /var/log/syslog).', type: 'warn' },
-    { text: '[EDA] Event-Driven Ansible rulebook triggered: rulebooks/remediation.yml', type: 'info' },
-    { text: '[SECURITY] ALLOWED_PLAYBOOKS validation: "disk_cleanup.yml" [AUTHORIZED]', type: 'success' },
-    { text: '[PLAYBOOK] Executing idempotent remediation... Status: changed=0, failed=0, ok=4.', type: 'success' },
-    { text: '[WAN_DROP] Simulating 4h connection loss -> Spooled 1,420 events to SQLite WAL.', type: 'warn' },
-    { text: '[RECONNECT] Replaying spool buffer with UUID idempotency -> 0 duplicates committed.', type: 'success' },
-  ],
-  HyperDeploy: [
-    { text: '$ hyperdeploy rollout --app payment-service --image sha256:7f9a88c...', type: 'cmd' },
-    { text: '[COSIGN] Verifying cryptographic signature against Rekor transparency log...', type: 'info' },
-    { text: '[COSIGN] Status: VERIFIED (Signed by release-signer key)', type: 'success' },
-    { text: '[K8S] Deploying Canary Pods (20% traffic split)...', type: 'info' },
-    { text: '[HEALTH_GATE] Warning: CrashLoopBackOff detected in pod/payment-v2-d87f', type: 'warn' },
-    { text: '[RECOVERY] Readiness threshold breached (>2 retries). Initiating Auto-Rollback!', type: 'warn' },
-    { text: '[ROLLBACK] Reverted deployment to revision 14 (payment-service:v1.9.4) in 2.74s.', type: 'success' },
-    { text: '[GITOPS] Auto-healing complete. Zero customer-facing downtime observed.', type: 'success' },
+  'Predictive Maintenance System': [
+    { text: '$ pms predict --telemetry-stream --calibrate-sigmoid', type: 'cmd' },
+    { text: '[FASTAPI] Ingested telemetry payload: Temp: 92.4C | RPM: 2800 | Vib: 0.64 mm/s', type: 'info' },
+    { text: '[RATE_LIMIT] SlowAPI check: 1/60 req/min from client IP [OK]', type: 'info' },
+    { text: '[CALIBRATION] CalibratedClassifierCV Platt scaling: raw 0.741 -> calibrated 0.9734 (HIGH)', type: 'warn' },
+    { text: '[SHAP] TreeExplainer attributions: RPM (+1.65), Operating Hours (+1.44), Vib (+0.39)', type: 'info' },
+    { text: '[DRIFT] Population Stability Index (PSI) = 0.042 (< 0.10: Stable distribution)', type: 'success' },
+    { text: '[AUDIT] Prediction logged to PostgreSQL audit store (inference_id: 8b4f2c1a).', type: 'success' },
   ],
   FaRm: [
     { text: '$ farm db --benchmark-ixscan', type: 'cmd' },
@@ -96,108 +85,65 @@ export class ActionMaskGuardrail {
   }
 }`,
   },
-  'ORBIT-X': {
-    filename: 'CrossAttentionSurrogate.py',
+  Veritas: {
+    filename: 'BKTEngine.py',
     language: 'python',
-    complexity: 'Time: O(B * N * d) | Space: O(B * H * N * S)',
-    invariant: 'Guarantee: Sub-0.80ms surrogate edge valuation with 84.6% top-1 CP-SAT match',
-    code: `import torch
-import torch.nn as nn
+    complexity: 'Time: O(1) per step | Space: O(K) skills',
+    invariant: 'Guarantee: Zero direct answer leakage with weighted Bayesian Knowledge Tracing',
+    code: `import numpy as np
 
-class CrossAttentionBidSurrogate(nn.Module):
+class BayesianKnowledgeTracer:
     """
-    Multi-Head Cross-Attention Neural Surrogate predicting CP-SAT edge bid valuations
-    in <0.8ms, allowing edge satellites to evaluate 1,000+ candidate tasks autonomously.
+    Bayesian Knowledge Tracing (BKT) engine tracking student mastery P(L_t)
+    across Common Core skills with pedagogical observation weighting.
     """
-    def __init__(self, d_model=128, nhead=4, dim_feedforward=256, dropout=0.1):
-        super().__init__()
-        self.cross_attn = nn.MultiheadAttention(d_model, nhead, dropout=dropout, batch_first=True)
-        self.norm1 = nn.LayerNorm(d_model)
-        self.ffn = nn.Sequential(
-            nn.Linear(d_model, dim_feedforward),
-            nn.GELU(),
-            nn.Linear(dim_feedforward, d_model)
-        )
-        self.norm2 = nn.LayerNorm(d_model)
-        self.value_head = nn.Linear(d_model, 1) # Expected utility scalar
+    def __init__(self, p_init=0.1, p_transit=0.15, p_slip=0.1, p_guess=0.2):
+        self.p_l = p_init
+        self.p_t = p_transit
+        self.p_s = p_slip
+        self.p_g = p_guess
 
-    def forward(self, sat_state: torch.Tensor, task_candidates: torch.Tensor) -> torch.Tensor:
-        # sat_state: [Batch, 1, d_model] | task_candidates: [Batch, N_tasks, d_model]
-        attn_out, _ = self.cross_attn(query=sat_state, key=task_candidates, value=task_candidates)
-        x = self.norm1(sat_state + attn_out)
-        x = self.norm2(x + self.ffn(x))
-        return torch.sigmoid(self.value_head(x)).squeeze(-1)`,
+    def update_mastery(self, is_correct: bool, weight: float = 1.0) -> float:
+        # Scale observation evidence to prevent mastery inflation during hint usage
+        if is_correct:
+            p_obs = (self.p_l * (1 - self.p_s)) / (self.p_l * (1 - self.p_s) + (1 - self.p_l) * self.p_g)
+        else:
+            p_obs = (self.p_l * self.p_s) / (self.p_l * self.p_s + (1 - self.p_l) * (1 - self.p_g))
+        
+        # Weighted Bayesian belief adjustment + latent transition
+        p_learned = (1 - weight) * self.p_l + weight * p_obs
+        self.p_l = p_learned + (1 - p_learned) * self.p_t
+        return float(np.clip(self.p_l, 0.0, 1.0))`,
   },
-  EdgeGuard: {
-    filename: 'WalBufferEngine.py',
+  'Predictive Maintenance System': {
+    filename: 'CalibratedInferenceEngine.py',
     language: 'python',
-    complexity: 'Time: O(1) append | Space: O(N) bounded spool disk',
-    invariant: 'Guarantee: Zero in-memory heap bloat during WAN dropouts with UUID deduplication',
-    code: `import sqlite3
-import uuid
-import json
+    complexity: 'Time: O(T * D) tree traversal | Space: O(1)',
+    invariant: 'Guarantee: 62.9% reduction in Brier score loss via Platt sigmoid calibration',
+    code: `from sklearn.calibration import CalibratedClassifierCV
+import xgboost as xgb
+import shap
 
-class SQLiteWalSpooler:
-    """Offline-first SQLite WAL buffer for edge telemetry during WAN loss."""
-    def __init__(self, db_path="spool.db"):
-        self.conn = sqlite3.connect(db_path, check_same_thread=False)
-        self.conn.execute("PRAGMA journal_mode=WAL;")
-        self.conn.execute("PRAGMA synchronous=NORMAL;")
-        self.conn.execute("""
-            CREATE TABLE IF NOT EXISTS telemetry_spool (
-                event_id TEXT PRIMARY KEY,
-                timestamp REAL,
-                payload TEXT,
-                synced INTEGER DEFAULT 0
-            )
-        """)
-        self.conn.commit()
+class CalibratedMaintenancePredictor:
+    """
+    Calibrated failure prediction pipeline with SHAP TreeExplainer feature attributions.
+    Transforms raw boosting scores into trustworthy empirical probabilities.
+    """
+    def __init__(self, base_xgb_model, decision_threshold: float = 0.2619):
+        # 3-fold cross-validated Platt sigmoid calibration
+        self.calibrator = CalibratedClassifierCV(estimator=base_xgb_model, method='sigmoid', cv='prefit')
+        self.explainer = shap.TreeExplainer(base_xgb_model)
+        self.threshold = decision_threshold
 
-    def buffer_metric(self, payload: dict):
-        event_id = str(uuid.uuid4())
-        with self.conn:
-            self.conn.execute(
-                "INSERT INTO telemetry_spool (event_id, timestamp, payload) VALUES (?, strftime('%s', 'now'), ?)",
-                (event_id, json.dumps(payload))
-            )`,
-  },
-  HyperDeploy: {
-    filename: 'CosignVerifier.go',
-    language: 'go',
-    complexity: 'Time: O(1) sig check | Space: O(1)',
-    invariant: 'Guarantee: Unsigned container images are rejected before reaching K8s ingress',
-    code: `package security
-
-import (
-	"context"
-	"fmt"
-	"github.com/sigstore/cosign/v2/pkg/cosign"
-	"github.com/google/go-containerregistry/pkg/name"
-)
-
-// VerifyContainerSignature validates image digest against cryptographic public keys.
-func VerifyContainerSignature(ctx context.Context, imageRef string, pubKeyPEM []byte) error {
-	ref, err := name.ParseReference(imageRef)
-	if err != nil {
-		return fmt.Errorf("invalid image reference: %w", err)
-	}
-
-	verifier, err := cosign.LoadPublicKeyRaw(pubKeyPEM, cosign.HashAlgorithmSHA256)
-	if err != nil {
-		return fmt.Errorf("failed to load public key: %w", err)
-	}
-
-	co := &cosign.CheckOpts{
-		SigVerifier: verifier,
-		IgnoreTlog:  false, // Enforces Rekor transparency log proof
-	}
-
-	_, _, err = cosign.VerifyImageSignatures(ctx, ref, co)
-	if err != nil {
-		return fmt.Errorf("cryptographic verification failed: untrusted digest: %w", err)
-	}
-	return nil
-}`,
+    def predict_risk(self, feature_vector):
+        calibrated_prob = self.calibrator.predict_proba(feature_vector)[:, 1][0]
+        risk_tier = "HIGH" if calibrated_prob >= self.threshold else "LOW"
+        shap_values = self.explainer.shap_values(feature_vector)[0]
+        return {
+            "failure_risk": risk_tier,
+            "calibrated_probability": float(calibrated_prob),
+            "shap_attributions": dict(zip(feature_vector.columns, shap_values))
+        }`,
   },
   FaRm: {
     filename: 'MongoIndexOptimizer.js',
