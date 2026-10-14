@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { personal } from '../data/portfolio';
+import SafeImage from './SafeImage';
 
 export default function ProfileAvatar3D() {
   const containerRef = useRef(null);
@@ -86,9 +87,11 @@ export default function ProfileAvatar3D() {
             className="relative w-full h-full rounded-2xl overflow-hidden bg-obsidian border border-pearl/20"
             style={{ transform: 'translateZ(15px)' }}
           >
-            <img
+            <SafeImage
               src={personal.avatar}
               alt={personal.name}
+              title={personal.name}
+              loading="eager"
               className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-108"
             />
 

@@ -1,23 +1,49 @@
-import profilePic from '../../assets/PF.jpeg';
+import profilePic from '../assets/PF.jpeg';
 
-import nasscomBigDataCert from '../../assets/nasscombigdata.png';
-import nasscomDataTag from '../../assets/data_tag.jpg';
-import nasscomAiTag from '../../assets/ai_tag.jpg';
-import hackathonCert from '../../assets/hackathoniiitcert.jpeg';
-import nptelTestingCert from '../../assets/testingcerrt.jpeg';
-import nptelIotCert from '../../assets/iotnptelcert.jpeg';
-import oracleGenAiCert from '../../assets/ORacle_gen_ai_cert.jpg';
-import oracleGenAiScore from '../../assets/gen_ai_score_report.jpg';
-import oracleDataScienceCert from '../../assets/Data_Science_cert.jpg';
-import oracleDataScienceScore from '../../assets/Score_Report_Data_Science.jpg';
+// Optimized certificate assets (fast 5KB thumbs + crisp 100KB full web previews)
+import nasscomBigDataThumb from '../assets/thumbs/nasscombigdata.webp';
+import nasscomBigDataFull from '../assets/optimized/nasscombigdata.webp';
 
-import techgeeringCert from '../../assets/Techgeering_Cert.png';
-import fullstackJavaCert from '../../assets/Fullstackjava.jpeg';
-import sdiCert from '../../assets/sdicert.jpeg';
+import hackathonCertThumb from '../assets/thumbs/hackathoniiitcert.webp';
+import hackathonCertFull from '../assets/optimized/hackathoniiitcert.webp';
 
-import htmlCssBootcamp from '../../assets/htmlcssbootcamp.png';
-import reactBootcamp from '../../assets/reactbootcamp.png';
-import restNodeExpressBootcamp from '../../assets/restwithnodeexpressbootcamp.png';
+import nptelTestingCertThumb from '../assets/thumbs/testingcerrt.webp';
+import nptelTestingCertFull from '../assets/optimized/testingcerrt.webp';
+
+import nptelIotCertThumb from '../assets/thumbs/iotnptelcert.webp';
+import nptelIotCertFull from '../assets/optimized/iotnptelcert.webp';
+
+// Oracle Cloud Infrastructure — Generative AI Professional (1Z0-1127-25)
+import oracleGenAiCertThumb from '../assets/thumbs/oracle_gen_ai_cert.webp';
+import oracleGenAiCertFull from '../assets/optimized/oracle_gen_ai_cert.webp';
+import oracleGenAiScoreThumb from '../assets/thumbs/gen_ai_score_report.webp';
+import oracleGenAiScoreFull from '../assets/optimized/gen_ai_score_report.webp';
+import oracleGenAiBadgeThumb from '../assets/thumbs/ai_tag.webp';
+import oracleGenAiBadgeFull from '../assets/optimized/ai_tag.webp';
+
+// Oracle Cloud Infrastructure — Data Science Professional (1Z0-1110-25)
+import oracleDataScienceCertThumb from '../assets/thumbs/data_science_cert.webp';
+import oracleDataScienceCertFull from '../assets/optimized/data_science_cert.webp';
+import oracleDataScienceScoreThumb from '../assets/thumbs/score_report_data_science.webp';
+import oracleDataScienceScoreFull from '../assets/optimized/score_report_data_science.webp';
+import oracleDataScienceBadgeThumb from '../assets/thumbs/data_tag.webp';
+import oracleDataScienceBadgeFull from '../assets/optimized/data_tag.webp';
+
+// Experience certificates
+import techgeeringCertThumb from '../assets/thumbs/techgeering_cert.webp';
+import techgeeringCertFull from '../assets/optimized/techgeering_cert.webp';
+import fullstackJavaCertThumb from '../assets/thumbs/fullstackjava.webp';
+import fullstackJavaCertFull from '../assets/optimized/fullstackjava.webp';
+import sdiCertThumb from '../assets/thumbs/sdicert.webp';
+import sdiCertFull from '../assets/optimized/sdicert.webp';
+
+// Bootcamps & Courses
+import htmlCssBootcampThumb from '../assets/thumbs/htmlcssbootcamp.webp';
+import htmlCssBootcampFull from '../assets/optimized/htmlcssbootcamp.webp';
+import reactBootcampThumb from '../assets/thumbs/reactbootcamp.webp';
+import reactBootcampFull from '../assets/optimized/reactbootcamp.webp';
+import restNodeExpressBootcampThumb from '../assets/thumbs/restwithnodeexpressbootcamp.webp';
+import restNodeExpressBootcampFull from '../assets/optimized/restwithnodeexpressbootcamp.webp';
 
 export const personal = {
   name: 'Susil Kumar Nayak',
@@ -245,7 +271,12 @@ export const experiences = [
     description:
       'Developed backend modules for a Document Verification System using the MERN stack — implementing REST APIs, authentication, and database operations — and a secured video management module, while collaborating on backend integration, debugging, and API testing.',
     highlights: ['MERN Stack', 'REST APIs', 'Auth', 'API Testing', 'MongoDB', 'Debugging'],
-    certificate: techgeeringCert,
+    certificate: {
+      thumb: techgeeringCertThumb,
+      full: techgeeringCertFull,
+      label: 'Certificate',
+      title: 'Techgeering Solutions — Internship Certificate',
+    },
     certificateLabel: 'Internship Certificate',
   },
   {
@@ -255,7 +286,12 @@ export const experiences = [
     description:
       'Developed a responsive Music Player with play/pause, volume, seek bar, and playlist functionality using HTML, CSS, and JavaScript.',
     highlights: ['HTML', 'CSS', 'JavaScript', 'Responsive UI'],
-    certificate: fullstackJavaCert,
+    certificate: {
+      thumb: fullstackJavaCertThumb,
+      full: fullstackJavaCertFull,
+      label: 'Certificate',
+      title: 'IIG Varsity — Full Stack Java Certificate',
+    },
     certificateLabel: 'Completion Certificate',
   },
   {
@@ -265,7 +301,12 @@ export const experiences = [
     description:
       'Developed a cloud-connected real-time weather monitoring module using embedded systems and IoT concepts.',
     highlights: ['Embedded Systems', 'IoT', 'Cloud', 'Real-time'],
-    certificate: sdiCert,
+    certificate: {
+      thumb: sdiCertThumb,
+      full: sdiCertFull,
+      label: 'Certificate',
+      title: 'Skill Development Institute — IoT Internship Certificate',
+    },
     certificateLabel: 'Internship Certificate',
   },
 ];
@@ -303,28 +344,107 @@ export const achievements = [
     description:
       'Gold-certified (70%+ score), assessed under IT-ITeS Sector Skills Council standards backed by the Ministry of Electronics & IT, Government of India.',
     icon: '🥇',
-    certificates: [nasscomBigDataCert],
+    certificates: [
+      {
+        thumb: nasscomBigDataThumb,
+        full: nasscomBigDataFull,
+        label: 'Certificate',
+        title: 'NASSCOM Gold Big Data Assessment Certificate',
+      },
+    ],
   },
   {
     title: 'IIIT Hackfest Finalist — Team Leader',
     description:
       'Finalist at IIIT Bhubaneswar Hackfest, leading a team to build a real-time PVP quiz trivia application.',
     icon: '🏆',
-    certificates: [hackathonCert],
+    certificates: [
+      {
+        thumb: hackathonCertThumb,
+        full: hackathonCertFull,
+        label: 'Certificate',
+        title: 'IIIT Bhubaneswar Hack Fest Finalist Certificate',
+      },
+    ],
   },
   {
     title: 'NPTEL — Software Testing & IoT 4.0',
     description:
       'Successfully cleared NPTEL exams in Software Testing and IoT 4.0, covering QA, test design, IoT architecture, and embedded systems.',
     icon: '📜',
-    certificates: [nptelTestingCert, nptelIotCert],
+    certificates: [
+      {
+        thumb: nptelTestingCertThumb,
+        full: nptelTestingCertFull,
+        label: 'Testing Cert',
+        title: 'NPTEL Elite Software Testing Certification',
+      },
+      {
+        thumb: nptelIotCertThumb,
+        full: nptelIotCertFull,
+        label: 'IoT Cert (73%)',
+        title: 'NPTEL Elite Industry 4.0 & IoT Certification',
+      },
+    ],
   },
   {
-    title: 'Oracle Certified Foundations Associate (Agentic AI)',
+    title: 'Oracle Cloud — Generative AI Professional',
     description:
-      'Exam 1Z0-1157-26; passed with 88% (Jul \'26). Also qualified the Gen AI and Data Science curriculum on Oracle Cloud Infrastructure.',
-    icon: '☁',
-    certificates: [oracleGenAiCert, oracleGenAiScore, oracleDataScienceCert, oracleDataScienceScore, nasscomDataTag, nasscomAiTag],
+      'Exam 1Z0-1127-25 (80% score). Certified in OCI GenAI services, LLM fine-tuning, RAG architecture, LangChain integration, and Oracle 23ai vector database.',
+    icon: '🤖',
+    certificates: [
+      {
+        thumb: oracleGenAiCertThumb,
+        full: oracleGenAiCertFull,
+        label: 'Certificate',
+        title: 'Oracle Cloud Infrastructure 2025 Certified Generative AI Professional',
+      },
+      {
+        thumb: oracleGenAiScoreThumb,
+        full: oracleGenAiScoreFull,
+        label: 'Score (80%)',
+        title: 'OCI Generative AI Professional — Score Report (80% / 1Z0-1127-25)',
+      },
+      {
+        thumb: oracleGenAiBadgeThumb,
+        full: oracleGenAiBadgeFull,
+        label: 'Badge',
+        title: 'Oracle Certified Professional Generative AI 2025 Official Badge',
+      },
+    ],
+  },
+  {
+    title: 'Oracle Cloud — Data Science Professional',
+    description:
+      'Exam 1Z0-1110-25 (82% score). Certified in OCI Data Science, ADS SDK, AI Quick Actions, custom training jobs, Model Catalog, and production MLOps deployment.',
+    icon: '📊',
+    certificates: [
+      {
+        thumb: oracleDataScienceCertThumb,
+        full: oracleDataScienceCertFull,
+        label: 'Certificate',
+        title: 'Oracle Cloud Infrastructure 2025 Certified Data Science Professional',
+      },
+      {
+        thumb: oracleDataScienceScoreThumb,
+        full: oracleDataScienceScoreFull,
+        label: 'Score (82%)',
+        title: 'OCI Data Science Professional — Score Report (82% / 1Z0-1110-25)',
+      },
+      {
+        thumb: oracleDataScienceBadgeThumb,
+        full: oracleDataScienceBadgeFull,
+        label: 'Badge',
+        title: 'Oracle Certified Professional Data Science 2025 Official Badge',
+      },
+    ],
+  },
+  {
+    title: 'Oracle Certified Associate — Agentic AI',
+    description:
+      'Exam 1Z0-1157-26; passed with 88% (Jul \'26). Specialized in autonomous agentic workflows, multi-agent consensus protocols, tool execution, and decision guardrails.',
+    icon: '⚡',
+    certificates: [],
   },
 ];
 
@@ -334,20 +454,35 @@ export const certifications = [
     description:
       'Completed an intensive bootcamp covering semantic HTML structure, modern CSS layout techniques, and responsive design fundamentals.',
     icon: '🎨',
-    certificate: htmlCssBootcamp,
+    certificate: {
+      thumb: htmlCssBootcampThumb,
+      full: htmlCssBootcampFull,
+      label: 'Bootcamp Cert',
+      title: 'HTML & CSS Bootcamp Certificate',
+    },
   },
   {
     title: 'React.js Bootcamp',
     description:
       'Hands-on bootcamp on React fundamentals — components, hooks, state management, and building production-ready single-page applications.',
     icon: '⚛',
-    certificate: reactBootcamp,
+    certificate: {
+      thumb: reactBootcampThumb,
+      full: reactBootcampFull,
+      label: 'React Cert',
+      title: 'React.js Bootcamp Certificate',
+    },
   },
   {
     title: 'REST APIs with Node & Express',
     description:
       'Bootcamp focused on designing and building RESTful APIs using Node.js and Express, including routing, middleware, and authentication patterns.',
     icon: '🔌',
-    certificate: restNodeExpressBootcamp,
+    certificate: {
+      thumb: restNodeExpressBootcampThumb,
+      full: restNodeExpressBootcampFull,
+      label: 'REST API Cert',
+      title: 'Create REST APIs with Node.js & Express Certificate',
+    },
   },
 ];
