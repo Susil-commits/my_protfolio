@@ -548,21 +548,21 @@ export default function Chatbot() {
               setIsMinimized(false);
               dismissCloud();
             }}
-            className={`relative group mb-3 w-[270px] sm:w-[310px] p-3.5 sm:p-4 rounded-3xl bg-[var(--theme-charcoal)]/95 dark:bg-[#0c121e]/95 backdrop-blur-2xl border border-cyan-500/35 hover:border-cyan-400 shadow-2xl shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-300 cursor-pointer select-none ${
+            className={`relative group mb-3 w-[270px] sm:w-[310px] p-3.5 sm:p-4 rounded-3xl bg-white/95 dark:bg-[#0c121e]/95 backdrop-blur-2xl border border-cyan-500/30 dark:border-cyan-500/40 shadow-xl shadow-slate-900/10 dark:shadow-cyan-500/25 hover:border-cyan-500 transition-all duration-300 cursor-pointer select-none ${
               cloudClosing ? 'opacity-0 scale-90 translate-y-3 pointer-events-none' : 'animate-sudden-cloud'
             }`}
           >
             {/* Cloud speech bubble tail pointing to assistant button */}
-            <div className="absolute -bottom-2 right-6 w-3.5 h-3.5 bg-[var(--theme-charcoal)] dark:bg-[#0c121e] border-b border-r border-cyan-500/35 transform rotate-45 shadow-sm" />
+            <div className="absolute -bottom-2 right-6 w-3.5 h-3.5 bg-white dark:bg-[#0c121e] border-b border-r border-cyan-500/30 dark:border-cyan-500/40 transform rotate-45 shadow-sm" />
 
             {/* Cloud Header / Badge + Dismiss button */}
             <div className="flex items-center justify-between gap-2 mb-1.5">
               <div className="flex items-center gap-1.5">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-500 dark:bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-600 dark:bg-cyan-500"></span>
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-700 dark:text-cyan-400">
                   Jule · Assistant
                 </span>
               </div>
@@ -572,7 +572,7 @@ export default function Chatbot() {
                   e.stopPropagation();
                   dismissCloud();
                 }}
-                className="text-[var(--theme-mist)] hover:text-[var(--theme-pearl)] p-1 rounded-full hover:bg-white/10 transition-colors cursor-pointer"
+                className="text-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white p-1 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
                 title="Dismiss"
                 aria-label="Dismiss greeting"
               >
@@ -587,7 +587,7 @@ export default function Chatbot() {
             {cloudStep === 0 ? (
               <div className="flex items-center gap-2 pt-0.5">
                 <span className="text-xl">👋</span>
-                <p className="text-xs sm:text-sm font-bold text-[var(--theme-pearl)] flex items-center gap-1.5">
+                <p className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
                   <span>Hey, {getGreeting().phrase}!</span>
                   <span>{getGreeting().icon}</span>
                 </p>
@@ -596,15 +596,15 @@ export default function Chatbot() {
               <div className="space-y-1.5 pt-0.5">
                 <div className="flex items-center gap-2">
                   <span className="text-lg">👋</span>
-                  <p className="text-xs sm:text-sm font-bold text-[var(--theme-pearl)] flex items-center gap-1.5">
+                  <p className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
                     <span>Hey, {getGreeting().phrase}!</span>
                     <span>{getGreeting().icon}</span>
                   </p>
                 </div>
-                <p className="text-[12px] sm:text-[13px] text-[var(--theme-pearl)] leading-snug font-medium">
-                  I am <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Jule</span>, Susil's AI Assistant.
+                <p className="text-[12px] sm:text-[13px] text-slate-700 dark:text-slate-200 leading-snug font-medium">
+                  I am <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400">Jule</span>, Susil's AI Assistant.
                 </p>
-                <div className="flex items-center justify-between pt-1 text-[11px] text-cyan-400 group-hover:text-cyan-300 font-semibold">
+                <div className="flex items-center justify-between pt-1 text-[11px] text-cyan-700 group-hover:text-cyan-800 dark:text-cyan-400 dark:group-hover:text-cyan-300 font-semibold">
                   <span>Ask about projects, architecture & resume</span>
                   <svg className="w-3.5 h-3.5 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

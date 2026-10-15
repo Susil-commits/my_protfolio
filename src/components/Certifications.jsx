@@ -65,7 +65,13 @@ export default function Certifications() {
               <SpotlightCard
                 key={item.title}
                 as="button"
-                onClick={() => open(fullSrc, certTitle)}
+                onClick={() => open(fullSrc, certTitle, thumbSrc)}
+                onMouseEnter={() => {
+                  if (fullSrc) {
+                    const img = new Image();
+                    img.src = fullSrc;
+                  }
+                }}
                 aria-label={`Preview ${item.title} certificate`}
                 title="Click to preview certificate"
                 className="reveal-scale card-morph-border p-6 group text-left cursor-pointer hover:-translate-y-1 w-full flex flex-col justify-between"

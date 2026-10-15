@@ -107,7 +107,13 @@ export default function Experience() {
 
                       return (
                         <button
-                          onClick={() => open(fullSrc, certTitle)}
+                          onClick={() => open(fullSrc, certTitle, thumbSrc)}
+                          onMouseEnter={() => {
+                            if (fullSrc) {
+                              const img = new Image();
+                              img.src = fullSrc;
+                            }
+                          }}
                           aria-label={`View ${exp.certificateLabel || 'certificate'} for ${exp.company}`}
                           title="Click to preview certificate"
                           className="mt-5 group/cert flex items-center gap-3 w-full text-left p-2 rounded-xl border border-pearl/15 hover:border-pearl/30 hover:bg-pearl/[0.02] transition-all duration-300"

@@ -1,25 +1,58 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 /**
- * Robust image component with loading skeleton, smooth fade-in,
- * and elegant fallback on network or file error.
+ * Robust image component with instant cache detection, loading skeleton,
+ * configurable object-fit (cover vs contain), and fallback.
  */
 export default function SafeImage({
   src,
   alt = '',
   className = '',
+  fit = 'cover',
   title = '',
   loading = 'lazy',
+  placeholder = null,
   ...props
 }) {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
+  const imgRef = useRef(null);
+
+  // If image is already in memory or cached by browser, mark loaded immediately
+  useEffect(() => {
+    setLoaded(false);
+    setError(false);
+    if (imgRef.current && imgRef.current.complete && imgRef.current.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, [src]);
+
+  const fitClass =
+    fit === 'contain'
+      ? 'max-w-full max-h-full w-auto h-auto object-contain block mx-auto my-auto'
+      : 'w-full h-full object-cover';
 
   return (
-    <div className={`relative overflow-hidden ${className}`}>
-      {/* Loading Shimmer Skeleton */}
-      {!loaded && !error && (
-        <div className="absolute inset-0 bg-pearl/[0.04] animate-pulse flex items-center justify-center">
+    <div
+      className={`relative ${
+        fit === 'contain' ? 'flex items-center justify-center' : 'overflow-hidden'
+      } ${className}`}
+    >
+      {/* Optional Low-Res Blurred Placeholder for Instant Preview */}
+      {placeholder && !loaded && !error && (
+        <img
+          src={placeholder}
+          alt=""
+          aria-hidden="true"
+          className={`absolute inset-0 w-full h-full ${
+            fit === 'contain' ? 'object-contain' : 'object-cover'
+          } filter blur-[2px] opacity-70 pointer-events-none transition-opacity duration-300`}
+        />
+      )}
+
+      {/* Loading Shimmer Skeleton (shown only if no placeholder is available) */}
+      {!placeholder && !loaded && !error && (
+        <div className="absolute inset-0 bg-pearl/[0.04] animate-pulse flex items-center justify-center pointer-events-none">
           <div className="w-4 h-4 rounded-full border border-pearl/20 border-t-pearl/60 animate-spin" />
         </div>
       )}
@@ -53,6 +86,7 @@ export default function SafeImage({
         </div>
       ) : (
         <img
+          ref={imgRef}
           src={src}
           alt={alt}
           title={title}
@@ -63,7 +97,7 @@ export default function SafeImage({
             console.warn(`[SafeImage] Failed to load image: ${src}`);
             setError(true);
           }}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${
+          className={`${fitClass} transition-opacity duration-200 ${
             loaded ? 'opacity-100' : 'opacity-0'
           }`}
           {...props}

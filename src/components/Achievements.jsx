@@ -114,7 +114,13 @@ export default function Achievements() {
                         return (
                           <button
                             key={idx}
-                            onClick={() => open(fullSrc, certTitle)}
+                            onClick={() => open(fullSrc, certTitle, thumbSrc)}
+                            onMouseEnter={() => {
+                              if (fullSrc) {
+                                const img = new Image();
+                                img.src = fullSrc;
+                              }
+                            }}
                             aria-label={`View ${certTitle}`}
                             title={`Click to preview: ${certTitle}`}
                             className="relative group/proof rounded-lg overflow-hidden border border-pearl/15 hover:border-pearl/40 transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent1/50"
@@ -127,8 +133,8 @@ export default function Achievements() {
                                 className="w-full h-full object-cover"
                               />
 
-                              {/* Subtle label tag at bottom */}
-                              <span className="absolute bottom-0 inset-x-0 bg-black/85 backdrop-blur-[2px] text-[8px] font-mono font-semibold text-pearl/90 text-center py-0.5 truncate px-1 border-t border-white/10">
+                              {/* Subtle label tag at bottom — pure white text ensures legibility in both light & dark mode */}
+                              <span className="absolute bottom-0 inset-x-0 bg-slate-950/90 backdrop-blur-[2px] text-[8px] font-mono font-semibold text-white text-center py-0.5 truncate px-1 border-t border-white/15">
                                 {certLabel}
                               </span>
                             </div>
