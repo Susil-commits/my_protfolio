@@ -29,6 +29,14 @@ import oracleDataScienceScoreFull from '../assets/optimized/score_report_data_sc
 import oracleDataScienceBadgeThumb from '../assets/thumbs/data_tag.webp';
 import oracleDataScienceBadgeFull from '../assets/optimized/data_tag.webp';
 
+// Oracle Certified Foundations Associate — Agentic AI (1Z0-1157-26)
+import oracleAgenticAiCertThumb from '../assets/thumbs/oracle_agentic_ai_cert.webp';
+import oracleAgenticAiCertFull from '../assets/optimized/oracle_agentic_ai_cert.webp';
+import oracleAgenticAiScoreThumb from '../assets/thumbs/agentic_ai_score_report.webp';
+import oracleAgenticAiScoreFull from '../assets/optimized/agentic_ai_score_report.webp';
+import oracleAgenticAiBadgeThumb from '../assets/thumbs/agentic_ai_badge.webp';
+import oracleAgenticAiBadgeFull from '../assets/optimized/agentic_ai_badge.webp';
+
 // Experience certificates
 import techgeeringCertThumb from '../assets/thumbs/techgeering_cert.webp';
 import techgeeringCertFull from '../assets/optimized/techgeering_cert.webp';
@@ -442,9 +450,28 @@ export const achievements = [
   {
     title: 'Oracle Certified Associate — Agentic AI',
     description:
-      'Exam 1Z0-1157-26; passed with 88% (Jul \'26). Specialized in autonomous agentic workflows, multi-agent consensus protocols, tool execution, and decision guardrails.',
+      'Exam 1Z0-1157-26 (88% score). Certified in autonomous enterprise AI agent lifecycle, multi-agent workflows, tool execution, LangChain agent flow, OCI AI Vector Search, and MCP integration.',
     icon: '⚡',
-    certificates: [],
+    certificates: [
+      {
+        thumb: oracleAgenticAiCertThumb,
+        full: oracleAgenticAiCertFull,
+        label: 'Certificate',
+        title: 'Oracle Certified Foundations Associate — Agentic AI Certificate of Recognition',
+      },
+      {
+        thumb: oracleAgenticAiScoreThumb,
+        full: oracleAgenticAiScoreFull,
+        label: 'Score (88%)',
+        title: 'Oracle Agentic AI Foundations Associate — Score Report (88% / 1Z0-1157-26)',
+      },
+      {
+        thumb: oracleAgenticAiBadgeThumb,
+        full: oracleAgenticAiBadgeFull,
+        label: 'Badge',
+        title: 'Oracle Certified Foundations Associate Agentic AI 2026 Official Badge',
+      },
+    ],
   },
 ];
 
