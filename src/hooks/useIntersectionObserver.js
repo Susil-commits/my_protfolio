@@ -28,12 +28,10 @@ export function useIntersectionObserver(
     }
 
     return () => {
-      if (current) {
-        observer.unobserve(current);
-      }
       observer.disconnect();
     };
-  }, [options, selector]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return containerRef;
 }

@@ -31,5 +31,5 @@ export function useMagnetic(strength = 0.35) {
     };
   }, [strength]);
 
-  return { ref, className: 'magnetic' };
+  return { ref };
 }

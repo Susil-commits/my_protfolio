@@ -52,7 +52,7 @@ function MagneticSocialLink({ url, label, icon }) {
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
-      className={`w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300 ${magnetic.className}`}
+      className="w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300"
       ref={magnetic.ref}
     >
       {icon}
@@ -291,7 +291,7 @@ function ThemeToggle({ className = '' }) {
     <button
       onClick={toggleTheme}
       aria-label="Toggle Theme"
-      className={`w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300 ${magnetic.className} ${className}`}
+      className={`w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300 ${className}`}
       ref={magnetic.ref}
     >
       {theme === 'dark' ? (

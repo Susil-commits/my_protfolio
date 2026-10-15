@@ -26,14 +26,14 @@ export default function App() {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [selectedArchProject, setSelectedArchProject] = useState(null);
 
-  // Prevent scroll while initial quick intro is active
+  // Prevent scroll while initial quick intro OR command palette is active
   useEffect(() => {
-    if (loading) {
+    if (loading || commandPaletteOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-  }, [loading]);
+  }, [loading, commandPaletteOpen]);
 
   // Handle route / hash navigation on initial refresh or URL change
   useEffect(() => {

@@ -12,9 +12,7 @@ export default function CommandPalette({ isOpen, onClose, onSelectProject }) {
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 50);
-      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = '';
       setQuery('');
       setSelectedIndex(0);
     }

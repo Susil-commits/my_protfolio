@@ -22,7 +22,7 @@ export default function SpotlightCard({
       const rx = (py - 0.5) * 2 * maxTilt;
       const ry = -(px - 0.5) * 2 * maxTilt;
       el.style.setProperty('--rx', `${rx}deg`);
-      el.style.setProperty('--ry', `${-ry}deg`);
+      el.style.setProperty('--ry', `${ry}deg`);
       el.classList.add('tilt-active');
     }
   };

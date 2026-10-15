@@ -8,7 +8,6 @@ export default function SafeImage({
   src,
   alt = '',
   className = '',
-  fallbackIcon = 'cert',
   title = '',
   loading = 'lazy',
   ...props
@@ -27,7 +26,10 @@ export default function SafeImage({
 
       {/* Fallback Display if Image Fails */}
       {error ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-obsidian-card p-2 text-center border border-pearl/10">
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center bg-obsidian-card p-2 text-center border border-pearl/10"
+          aria-hidden="true"
+        >
           <svg
             width="20"
             height="20"

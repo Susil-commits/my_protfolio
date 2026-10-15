@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { personal } from '../data/portfolio';
 
 const SYSTEM_BOOT_STEPS = [
@@ -13,6 +13,9 @@ export default function Loader({ onComplete }) {
   const [progress, setProgress] = useState(0);
   const [stepIdx, setStepIdx] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
+  // Stable ref so the effect doesn't restart if the parent re-renders
+  const onCompleteRef = useRef(onComplete);
+  useEffect(() => { onCompleteRef.current = onComplete; }, [onComplete]);
 
   useEffect(() => {
     // Preload key hero and certificate assets while loader is active
@@ -48,14 +51,16 @@ export default function Loader({ onComplete }) {
         setTimeout(() => {
           setIsExiting(true);
           setTimeout(() => {
-            onComplete();
+            onCompleteRef.current();
           }, 500); // Wait for exit animation
         }, 200);
       }
     }, 25);
 
     return () => clearInterval(updateInterval);
-  }, [onComplete]);
+  // Run only once on mount — onComplete is accessed via stable ref
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div

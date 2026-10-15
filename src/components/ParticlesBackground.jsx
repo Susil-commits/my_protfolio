@@ -1,8 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 
 export default function ParticlesBackground() {
-  const containerRef = useRef(null);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -98,20 +97,25 @@ export default function ParticlesBackground() {
       }
     };
 
+    // Track interval so cleanup can always cancel it
+    let interval = null;
+
     // Initialize or retry if script is still loading
     if (typeof window.particlesJS === 'function') {
       initParticles();
     } else {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         if (typeof window.particlesJS === 'function') {
           clearInterval(interval);
+          interval = null;
           initParticles();
         }
       }, 50);
-      return () => clearInterval(interval);
     }
 
+    // Unified cleanup — always runs regardless of which branch above fired
     return () => {
+      if (interval) clearInterval(interval);
       const container = document.getElementById(containerId);
       if (container) {
         const canvas = container.querySelector('.particles-js-canvas-el');
@@ -130,7 +134,6 @@ export default function ParticlesBackground() {
   return (
     <div
       id="particles-bg"
-      ref={containerRef}
       className="fixed inset-0 z-0 pointer-events-none"
     />
   );
