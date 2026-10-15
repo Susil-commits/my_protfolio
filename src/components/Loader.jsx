@@ -18,17 +18,11 @@ export default function Loader({ onComplete }) {
   useEffect(() => { onCompleteRef.current = onComplete; }, [onComplete]);
 
   useEffect(() => {
-    // Preload key hero and certificate assets while loader is active
-    const preloadImages = [
-      '/assets/thumbs/oracle_gen_ai_cert.webp',
-      '/assets/thumbs/data_science_cert.webp',
-      '/assets/thumbs/gen_ai_score_report.webp',
-      '/assets/PF.jpeg',
-    ];
-    preloadImages.forEach((src) => {
+    // Preload key assets while loader is active
+    if (personal?.avatar) {
       const img = new Image();
-      img.src = src;
-    });
+      img.src = personal.avatar;
+    }
 
     const startTime = performance.now();
     const duration = 1900; // ~1.9s smooth, cinematic loading experience
@@ -59,7 +53,6 @@ export default function Loader({ onComplete }) {
 
     return () => clearInterval(updateInterval);
   // Run only once on mount — onComplete is accessed via stable ref
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
