@@ -281,6 +281,7 @@ export default function Chatbot() {
   // Pop-up cloud state above assistant logo
   const [cloudVisible, setCloudVisible] = useState(false);
   const [cloudStep, setCloudStep] = useState(0); // 0: 'Hey, Good morning!', 1: 'I am Jule...'
+  const [cloudClosing, setCloudClosing] = useState(false);
   const [cloudDismissed, setCloudDismissed] = useState(false);
 
   // Time-based greeting helper
@@ -297,6 +298,13 @@ export default function Chatbot() {
     }
   };
 
+  const dismissCloud = () => {
+    setCloudClosing(true);
+    setTimeout(() => {
+      setCloudDismissed(true);
+    }, 300);
+  };
+
   // Sudden pop-up cloud above assistant logo after 2.2s delay, then step progression
   useEffect(() => {
     const popTimer = setTimeout(() => {
@@ -305,13 +313,37 @@ export default function Chatbot() {
 
     const stepTimer = setTimeout(() => {
       setCloudStep(1);
-    }, 4000);
+    }, 3800);
 
     return () => {
       clearTimeout(popTimer);
       clearTimeout(stepTimer);
     };
   }, []);
+
+  // Auto-hide pop-up cloud after 5 seconds OR implicitly on scroll
+  useEffect(() => {
+    if (!cloudVisible || cloudDismissed) return;
+
+    // Disappear after 5 seconds of being displayed
+    const autoHideTimer = setTimeout(() => {
+      dismissCloud();
+    }, 5000);
+
+    // Disappear implicitly when user scrolls the page
+    const handleScroll = () => {
+      if (window.scrollY > 25) {
+        dismissCloud();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      clearTimeout(autoHideTimer);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [cloudVisible, cloudDismissed]);
 
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
@@ -365,7 +397,7 @@ export default function Chatbot() {
     const handleOpenAiEvent = (e) => {
       setIsOpen(true);
       setIsMinimized(false);
-      setCloudDismissed(true);
+      dismissCloud();
       if (e.detail?.query) {
         setTimeout(() => {
           handleSend(e.detail.query);
@@ -514,9 +546,11 @@ export default function Chatbot() {
             onClick={() => {
               setIsOpen(true);
               setIsMinimized(false);
-              setCloudDismissed(true);
+              dismissCloud();
             }}
-            className="relative group mb-3 w-[270px] sm:w-[310px] p-3.5 sm:p-4 rounded-3xl bg-[var(--theme-charcoal)]/95 dark:bg-[#0c121e]/95 backdrop-blur-2xl border border-cyan-500/35 hover:border-cyan-400 shadow-2xl shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-300 cursor-pointer select-none animate-sudden-cloud"
+            className={`relative group mb-3 w-[270px] sm:w-[310px] p-3.5 sm:p-4 rounded-3xl bg-[var(--theme-charcoal)]/95 dark:bg-[#0c121e]/95 backdrop-blur-2xl border border-cyan-500/35 hover:border-cyan-400 shadow-2xl shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-300 cursor-pointer select-none ${
+              cloudClosing ? 'opacity-0 scale-90 translate-y-3 pointer-events-none' : 'animate-sudden-cloud'
+            }`}
           >
             {/* Cloud speech bubble tail pointing to assistant button */}
             <div className="absolute -bottom-2 right-6 w-3.5 h-3.5 bg-[var(--theme-charcoal)] dark:bg-[#0c121e] border-b border-r border-cyan-500/35 transform rotate-45 shadow-sm" />
@@ -536,7 +570,7 @@ export default function Chatbot() {
                 type="button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setCloudDismissed(true);
+                  dismissCloud();
                 }}
                 className="text-[var(--theme-mist)] hover:text-[var(--theme-pearl)] p-1 rounded-full hover:bg-white/10 transition-colors cursor-pointer"
                 title="Dismiss"
@@ -585,7 +619,7 @@ export default function Chatbot() {
           onClick={() => {
             setIsOpen(!isOpen);
             setIsMinimized(false);
-            setCloudDismissed(true);
+            dismissCloud();
           }}
           aria-label="Open Jule AI Assistant"
           className="relative group p-3.5 sm:p-4 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 text-white shadow-2xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer border border-white/20"
