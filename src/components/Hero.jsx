@@ -8,7 +8,6 @@ export default function Hero() {
   const sectionRef = useRef(null);
   const viewWork = useMagnetic(0.4);
   const getInTouch = useMagnetic(0.4);
-  const askAi = useMagnetic(0.4);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -129,15 +128,6 @@ export default function Hero() {
               <polyline points="22,6 12,13 2,6" />
             </svg>
           </a>
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent('open-portfolio-ai'))}
-            className="btn-outline group border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500/10 text-pearl cursor-pointer flex items-center gap-2"
-            {...askAi}
-          >
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            <span>Ask AI</span>
-          </button>
         </div>
 
         {/* Scroll indicator */}

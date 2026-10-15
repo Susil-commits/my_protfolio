@@ -278,6 +278,41 @@ export default function Chatbot() {
   const [followUps, setFollowUps] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
 
+  // Pop-up cloud state above assistant logo
+  const [cloudVisible, setCloudVisible] = useState(false);
+  const [cloudStep, setCloudStep] = useState(0); // 0: 'Hey, Good morning!', 1: 'I am Jule...'
+  const [cloudDismissed, setCloudDismissed] = useState(false);
+
+  // Time-based greeting helper
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) {
+      return { phrase: 'Good morning', icon: '🌅' };
+    } else if (hour >= 12 && hour < 17) {
+      return { phrase: 'Good afternoon', icon: '☀️' };
+    } else if (hour >= 17 && hour < 22) {
+      return { phrase: 'Good evening', icon: '🌆' };
+    } else {
+      return { phrase: 'Good night', icon: '🌙' };
+    }
+  };
+
+  // Sudden pop-up cloud above assistant logo after 2.2s delay, then step progression
+  useEffect(() => {
+    const popTimer = setTimeout(() => {
+      setCloudVisible(true);
+    }, 2200);
+
+    const stepTimer = setTimeout(() => {
+      setCloudStep(1);
+    }, 4000);
+
+    return () => {
+      clearTimeout(popTimer);
+      clearTimeout(stepTimer);
+    };
+  }, []);
+
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const recognitionRef = useRef(null);
@@ -330,6 +365,7 @@ export default function Chatbot() {
     const handleOpenAiEvent = (e) => {
       setIsOpen(true);
       setIsMinimized(false);
+      setCloudDismissed(true);
       if (e.detail?.query) {
         setTimeout(() => {
           handleSend(e.detail.query);
@@ -470,13 +506,78 @@ export default function Chatbot() {
 
   return (
     <>
-      {/* ── FLOATING LAUNCHER BUTTON ── */}
+      {/* ── FLOATING LAUNCHER BUTTON & SUDDEN GREETING CLOUD ── */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-        {!isOpen && (
-          <div className="mb-2.5 animate-bounce hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--theme-charcoal)]/90 backdrop-blur-md border border-[var(--theme-pearl)]/15 shadow-xl text-xs font-medium text-[var(--theme-pearl)] cursor-pointer hover:border-cyan-400/50 transition-all"
-               onClick={() => setIsOpen(true)}>
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Ask AI Assistant</span>
+        {/* Sudden Pop-Up Cloud above Assistant Logo */}
+        {!isOpen && cloudVisible && !cloudDismissed && (
+          <div
+            onClick={() => {
+              setIsOpen(true);
+              setIsMinimized(false);
+              setCloudDismissed(true);
+            }}
+            className="relative group mb-3 w-[270px] sm:w-[310px] p-3.5 sm:p-4 rounded-3xl bg-[var(--theme-charcoal)]/95 dark:bg-[#0c121e]/95 backdrop-blur-2xl border border-cyan-500/35 hover:border-cyan-400 shadow-2xl shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-300 cursor-pointer select-none animate-sudden-cloud"
+          >
+            {/* Cloud speech bubble tail pointing to assistant button */}
+            <div className="absolute -bottom-2 right-6 w-3.5 h-3.5 bg-[var(--theme-charcoal)] dark:bg-[#0c121e] border-b border-r border-cyan-500/35 transform rotate-45 shadow-sm" />
+
+            {/* Cloud Header / Badge + Dismiss button */}
+            <div className="flex items-center justify-between gap-2 mb-1.5">
+              <div className="flex items-center gap-1.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400">
+                  Jule · Assistant
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCloudDismissed(true);
+                }}
+                className="text-[var(--theme-mist)] hover:text-[var(--theme-pearl)] p-1 rounded-full hover:bg-white/10 transition-colors cursor-pointer"
+                title="Dismiss"
+                aria-label="Dismiss greeting"
+              >
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Cloud Greeting Body */}
+            {cloudStep === 0 ? (
+              <div className="flex items-center gap-2 pt-0.5">
+                <span className="text-xl">👋</span>
+                <p className="text-xs sm:text-sm font-bold text-[var(--theme-pearl)] flex items-center gap-1.5">
+                  <span>Hey, {getGreeting().phrase}!</span>
+                  <span>{getGreeting().icon}</span>
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-1.5 pt-0.5">
+                <div className="flex items-center gap-2">
+                  <span className="text-lg">👋</span>
+                  <p className="text-xs sm:text-sm font-bold text-[var(--theme-pearl)] flex items-center gap-1.5">
+                    <span>Hey, {getGreeting().phrase}!</span>
+                    <span>{getGreeting().icon}</span>
+                  </p>
+                </div>
+                <p className="text-[12px] sm:text-[13px] text-[var(--theme-pearl)] leading-snug font-medium">
+                  I am <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Jule</span>, Susil's AI Assistant.
+                </p>
+                <div className="flex items-center justify-between pt-1 text-[11px] text-cyan-400 group-hover:text-cyan-300 font-semibold">
+                  <span>Ask about projects, architecture & resume</span>
+                  <svg className="w-3.5 h-3.5 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
@@ -484,8 +585,9 @@ export default function Chatbot() {
           onClick={() => {
             setIsOpen(!isOpen);
             setIsMinimized(false);
+            setCloudDismissed(true);
           }}
-          aria-label="Open AI Assistant"
+          aria-label="Open Jule AI Assistant"
           className="relative group p-3.5 sm:p-4 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 text-white shadow-2xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer border border-white/20"
         >
           {/* Ambient Glow */}
@@ -532,9 +634,9 @@ export default function Chatbot() {
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-sm font-bold text-[var(--theme-pearl)]">Susil's AI Assistant</span>
+                  <span className="text-sm font-bold text-[var(--theme-pearl)]">Jule · AI Assistant</span>
                 </div>
-                <p className="text-[11px] text-[var(--theme-mist)]">Ask anything about my portfolio & architecture</p>
+                <p className="text-[11px] text-[var(--theme-mist)]">Ask anything about Susil's portfolio & architecture</p>
               </div>
             </div>
 
@@ -592,10 +694,10 @@ export default function Chatbot() {
                       </svg>
                     </div>
                     <h3 className="font-bold text-base text-[var(--theme-pearl)]">
-                      Hi! I'm Susil's AI Assistant 🤖
+                      Hi! I'm Jule, Susil's AI Assistant 🤖
                     </h3>
                     <p className="text-xs text-[var(--theme-mist)] mt-1 max-w-xs mx-auto">
-                      Powered by Gemini with full access to Susil's projects, optimizations, skills, experience, and certifications.
+                      Powered by Gemini with full access to Susil's projects, distributed systems architecture, skills, and experience.
                     </p>
                   </div>
 
@@ -755,7 +857,7 @@ export default function Chatbot() {
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder={isListening ? 'Listening...' : 'Ask about projects, skills, resume...'}
+                    placeholder={isListening ? 'Listening...' : 'Ask Jule about projects, skills, resume...'}
                     disabled={isLoading}
                     className="w-full pl-3.5 pr-10 py-2.5 text-xs sm:text-sm bg-[var(--theme-charcoal)] border border-[var(--theme-pearl)]/15 rounded-xl text-[var(--theme-pearl)] placeholder-[var(--theme-mist)] focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all disabled:opacity-60"
                   />
