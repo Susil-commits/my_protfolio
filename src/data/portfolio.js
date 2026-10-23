@@ -218,7 +218,7 @@ export const projects = [
     description:
       'End-to-end ML platform for industrial equipment telemetry and failure prediction. Combines hyperparameter-tuned XGBoost with Platt sigmoid calibration (CalibratedClassifierCV) to cut Brier score error by 62.9% on imbalanced data. Features real-time SHAP feature attributions, Population Stability Index (PSI) drift monitoring, Prometheus observability, and an interactive React dashboard.',
     tags: ['FastAPI', 'XGBoost', 'scikit-learn', 'SHAP', 'React 19', 'PostgreSQL', 'Prometheus', 'Grafana', 'Python'],
-    link: 'https://predictive-maintenance-system-swart.vercel.app/',
+    link: 'https://predictive-maintenance-system-six.vercel.app/',
     github: 'https://github.com/Susil-commits/Predictive-Maintenance-System',
     highlight: true,
     deployed: true,
