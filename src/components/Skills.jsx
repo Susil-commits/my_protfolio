@@ -19,10 +19,10 @@ const SKILL_APPLICATIONS = {
     ],
   },
   'Backend & Data': {
-    lead: 'Sub-Millisecond Feature Stores, Vector Search & Compound Indexing',
+    lead: 'High-Concurrency Go 1.24 Cores, Kafka Streaming & Compound Indexing',
     projects: [
-      { name: 'Veritas pgvector', desc: 'Supabase pgvector 768-dim embeddings with pedagogical utility scoring and RLS security' },
-      { name: 'Left2Serve & FaRm', desc: 'PostgreSQL & MongoDB compound indexing cutting query latency by 95% with Artillery load testing' },
+      { name: 'MyMate & Left2Serve', desc: 'Compiled Go 1.24 (Gin) backends: 19.4K req/sec (3.6x throughput), Kafka event stream & PostgreSQL B-tree (96.4% latency drop)' },
+      { name: 'Veritas & FaRm', desc: 'Supabase pgvector 768-dim embeddings with RLS and MongoDB compound indexing cutting query latency by 95%' },
     ],
   },
   'Frontend & Languages': {

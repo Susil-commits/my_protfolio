@@ -82,7 +82,7 @@ export const hero = {
   eyebrow: 'Distributed Systems · Cloud-Native · Full-Stack',
   roles: ['Distributed Systems', 'Cloud-Native & DevOps', 'Full-Stack Development', 'Autonomous AI / ML'],
   tagline:
-    "Hey there, I'm Susil! 👋 I'm a full-stack developer passionate about building intelligent, production-ready applications — blending React/Node.js with AI/ML systems like RAG, LLMs, and predictive modeling.",
+    "Hey there, I'm Susil! 👋 I'm a full-stack developer passionate about building intelligent, production-ready applications — blending Go, React/Next.js, and Node.js with AI/ML systems like RAG, LLMs, and predictive modeling.",
 };
 
 export const about = {
@@ -123,7 +123,7 @@ export const about = {
     whatIBring: [
       {
         title: 'Full-stack development',
-        description: 'Responsive React and TypeScript frontends backed by Node.js and Python APIs.',
+        description: 'Responsive React and Next.js frontends backed by high-concurrency Go (Golang), Node.js, and Python APIs.',
         tag: 'Full-Stack',
         icon: 'layers',
       },
@@ -169,12 +169,12 @@ export const skills = [
   {
     category: 'Backend & Data',
     icon: '◈',
-    items: ['Node.js', 'Express.js', 'PostgreSQL', 'MongoDB', 'Supabase', 'MySQL', 'REST APIs', 'JWT'],
+    items: ['Go', 'Gin', 'Node.js', 'Express.js', 'PostgreSQL', 'MongoDB', 'Supabase', 'REST APIs'],
   },
   {
     category: 'Frontend & Languages',
     icon: '⌘',
-    items: ['React.js', 'TypeScript', 'JavaScript', 'C++', 'Java', 'Tailwind CSS', 'Socket.IO', 'React Query'],
+    items: ['React.js', 'Next.js', 'TypeScript', 'JavaScript', 'C++', 'Java', 'Tailwind CSS', 'Socket.IO'],
   },
 ];
 
@@ -241,33 +241,33 @@ export const projects = [
   },
   {
     title: 'Left2Serve',
-    subtitle: 'Food Redistribution Platform',
+    subtitle: 'AI Food Rescue & Redistribution Network',
     category: 'Full-Stack Web',
     icon: '🍲',
     gradient: 'from-orange-500/10 to-amber-500/5',
     description:
-      'Full-stack food redistribution platform connecting donors and NGOs. Engineered a compound B-tree index in PostgreSQL to reduce average query latency from 340ms to 12ms. Load-tested the API with Artillery (19K+ requests at 187 req/sec), validating rate-limit defenses and maintaining 383ms median latency.',
-    tags: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'PostgreSQL', 'Tailwind CSS', 'JWT', 'Cloudinary', 'TypeScript'],
+      'Cloud-native surplus food rescue ecosystem connecting donors with community shelters and NGOs. Migrated entire backend to a compiled Go 1.24 Gin engine delivering sub-millisecond API responses and concurrent goroutine job sweepers. Engineered a Strangler Fig dual frontend (Next.js 15 App Router for SSR discovery + React 19 for real-time dispatch and HTML5 QR scanner), Google Gemini 2.5 Flash multimodal AI image intake with automated shelf-life estimation, PostgreSQL compound B-tree indexing cutting query latency from 340ms to 12ms (96.4% drop), Redis 7 caching, time-locked HMAC QR handoff tokens, and Razorpay donations. Artillery benchmarked at 19K+ requests (187 req/sec peak) with zero double-claim race conditions.',
+    tags: ['Go', 'Gin', 'Next.js', 'React.js', 'PostgreSQL', 'Redis', 'Gemini AI', 'Tailwind CSS', 'Docker'],
     link: 'https://left2-serve.vercel.app/',
     github: 'https://github.com/Susil-commits/Left2Serve',
     highlight: false,
     deployed: true,
-    badge: 'ACID Concurrency',
+    badge: 'Go 1.24 · Next.js · ACID',
   },
   {
     title: 'MyMate',
-    subtitle: 'Driver Booking Platform',
+    subtitle: 'High-Concurrency On-Demand Driver Hiring Infrastructure',
     category: 'Full-Stack Web',
     icon: '🚗',
     gradient: 'from-blue-500/10 to-indigo-500/5',
     description:
-      'Full-stack driver booking platform featuring real-time WebSocket location tracking, AI-heuristic driver matching, and Tesseract.js OCR. Implemented MongoDB compound indexing to cut execution time to ~1ms. Load-tested API at 200 concurrent users, sustaining 115 req/sec while resolving a Socket.IO chat race condition.',
-    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Cloudinary', 'Socket.IO', 'TypeScript'],
+      'Enterprise driver booking platform connecting individuals and businesses with verified professional drivers. Migrated backend to Golang 1.24 (Gin), boosting throughput by 3.6x (~19,400 req/sec), slashing p99 latency by 80% to 8.4ms, and reducing memory footprint by 88% down to 21MB with <15ms cold starts across 48 Go REST endpoints. Engineered a dual-stream architecture separating sub-50ms Gorilla WebSocket dispatches from durable Apache Kafka SASL/TLS event logs. Powered by a Haskell-verified pure functional scoring engine combined with Google Gemini 2.5 Flash contextual AI re-ranking, MongoDB 2dsphere indexing (~1ms), automated Razorpay digital driver wallets (90% instant payout), TOTP 2FA, and double-submit HMAC-SHA256 CSRF protection.',
+    tags: ['Go', 'Gin', 'Apache Kafka', 'React.js', 'MongoDB', 'Redis', 'WebSockets', 'Gemini AI', 'Docker'],
     link: 'https://my-mate-tawny.vercel.app/',
     github: 'https://github.com/Susil-commits/MyMate',
     highlight: false,
     deployed: true,
-    badge: 'Real-Time Telemetry',
+    badge: 'Go 1.24 · Kafka · 19.4K RPS',
   },
 ];
 

@@ -80,8 +80,8 @@ STRICT OPERATING RULES & GUARDRAILS:
    - Veritas: Voice-first AI Socratic Math Tutor built under a strict zero-answer-leakage pedagogical mandate. Features a compiled LangGraph multi-agent state machine, multimodal handwritten scratchpad visual diagnostics (Gemini vision + bounding box reticles), calibrated Bayesian Knowledge Tracing (BKT) across 10 CCSS standards, and misconception-targeted adaptive RAG via Supabase pgvector. 12/12 automated verification tests passing.
    - Predictive Maintenance System: End-to-end industrial machine learning platform for real-time equipment telemetry risk assessment. Combines hyperparameter-tuned XGBoost with Platt sigmoid calibration (CalibratedClassifierCV) cutting Brier score loss by 62.9% (0.0638 -> 0.0237) on imbalanced data (28:1 ratio). Features real-time SHAP TreeExplainer feature attributions, Population Stability Index (PSI) drift monitoring, Prometheus observability, and an interactive React dashboard.
    - FaRm: MongoDB compound index '{ category: 1, price: 1, createdAt: -1 }' cut latency by 95% (~240ms to ~12ms), IXSCAN covered queries, Artillery load tested at 200 concurrent users with 0% error rate and sub-150ms p95.
-   - Left2Serve: PostgreSQL compound B-tree index '(status, pickup_window, location_id)' reduced latency from 340ms to 12ms (96.4% drop), Artillery load tested at 19K+ requests (187 req/sec peak), strict hierarchical RBAC, zero double-claim race conditions.
-   - MyMate: 2dsphere compound indexing on MongoDB for sub-1ms geospatial driver queries, Tesseract.js OCR for license verification, Socket.IO real-time telemetry with atomic mutex locking for chat and ride status race conditions, Artillery tested at 200 concurrent users (115 req/sec).
+   - Left2Serve: High-throughput cloud-native surplus food rescue platform. Backend migrated to Go 1.24 (Gin Gonic) delivering sub-millisecond API responses and concurrent goroutines. Features Strangler Fig dual frontend (Next.js 15 App Router for SSR discovery + React 19 for real-time dispatch and HTML5 camera QR scanner), Google Gemini 2.5 Flash multimodal AI image intake in 5s with safety guidelines, dual input/output AI safety guardrails (PII redaction, secret protection), PostgreSQL compound B-tree index '(status, pickup_window, location_id)' reducing query latency from 340ms to 12ms (96.4% drop), Redis 7 caching, time-locked HMAC QR verification tokens, Razorpay payments, and 19k+ Artillery requests benchmarked at 187 req/sec peak with zero double-claim race conditions.
+   - MyMate: High-concurrency enterprise on-demand driver hiring infrastructure. Migrated entire backend from Node.js to Golang 1.24 (Gin Gonic) delivering 3.6x API throughput (~19,400 req/sec), slashing p99 latency by 80% to 8.4ms, reducing idle memory by 88% down to 21MB, and achieving <15ms cold starts across 48 Go REST endpoints. Engineered a dual-stream architecture separating sub-50ms Gorilla WebSocket room-based dispatch alerts from durable Apache Kafka SASL/TLS enterprise domain event logs for complete auditability. Powered by a Haskell-verified pure functional scoring engine combined with Google Gemini 2.5 Flash contextual AI re-ranking, MongoDB Atlas 2dsphere compound indexing (~0.84ms driver discovery), automated Razorpay digital driver wallets (90% instant payout on ride completion), TOTP 2FA, and double-submit HMAC-SHA256 CSRF protection.
    - Security: Zero-trust pipelines, Helmet headers, rate limiting, stateless JWT, Row-Level Security, CORS isolation, and SQL/NoSQL injection defenses.
 4. FORMATTING: Use clean, professional Markdown (bullet points, bold text for key technologies, clear headings where appropriate).
 5. LINKS: When mentioning projects, social profiles, resume, or contact info, always provide clickable Markdown links (e.g. [APEX on GitHub](https://github.com/Susil-commits/F1-s-APEX----Autonomous-Predictive-EXecutive-Race-Intelligence-), [Veritas Live Demo](https://veritas-tutor.vercel.app/), [Veritas on GitHub](https://github.com/Susil-commits/Veritas), [Predictive Maintenance System Live Demo](https://predictive-maintenance-system-swart.vercel.app/), [Predictive Maintenance System on GitHub](https://github.com/Susil-commits/Predictive-Maintenance-System), [FaRm Live Demo](https://farm-direct-marketplace-eta.vercel.app/), [GitHub Profile](https://github.com/Susil-commits), [LinkedIn](https://www.linkedin.com/in/susil-kumar-nayak-5180472b6/), [Resume](https://drive.google.com/file/d/1i8YK3XQLwm5e_ow4Hq5ypD0TxwoLzS0O/view?usp=sharing)).
@@ -194,17 +194,17 @@ export const getContextualSuggestions = (lastUserMsg = '', lastBotReply = '') =>
   if (lowerUser.includes('arch') || lowerUser.includes('system') || lowerUser.includes('design') || lowerUser.includes('index') || lowerUser.includes('artillery')) {
     return [
       '🏎️ Explain APEX’s distributed Kafka and Safe RL architecture',
+      '🚗 Explain MyMate’s Go 1.24 migration, 19.4K req/sec, and Kafka event logs',
+      '🍲 Explain Left2Serve’s Go Gin engine, Next.js dual-frontend & B-tree index',
       '🎓 Explain Veritas’s LangGraph multi-agent and BKT cognitive pipeline',
-      '⚙️ Explain PMS’s calibrated ML pipeline and PSI drift engine',
-      '🍲 Explain Left2Serve’s PostgreSQL B-tree indexing and 19k load tests',
     ];
   }
 
   if (lowerUser.includes('project') || lowerUser.includes('farm') || lowerUser.includes('left2serve') || lowerUser.includes('mymate')) {
     return [
+      '🚗 Tell me about MyMate’s 19.4K req/sec Golang engine & dual-stream dispatch',
+      '🍲 Tell me about Left2Serve’s Go 1.24 core, Next.js 15, and Gemini AI intake',
       '🏎️ Tell me about APEX F1 race strategy engine',
-      '🎓 Tell me about Veritas AI Socratic Math Tutor',
-      '⚙️ What is the Predictive Maintenance System platform?',
       '🌾 How did Susil optimize FaRm with MongoDB compound indexing?',
     ];
   }

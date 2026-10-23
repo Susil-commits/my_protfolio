@@ -119,7 +119,7 @@ const CATEGORIES = [
   'Full-Stack Web',
 ];
 
-const POPULAR_TAGS = ['Kafka', 'PyTorch', 'LangGraph', 'XGBoost', 'PostgreSQL', 'MongoDB', 'FastAPI'];
+const POPULAR_TAGS = ['Go', 'Kafka', 'Next.js', 'PyTorch', 'LangGraph', 'XGBoost', 'PostgreSQL', 'MongoDB'];
 
 export default function Projects() {
   const [selectedArchProject, setSelectedArchProject] = useState(null);
