@@ -4,15 +4,6 @@ import { useMagnetic } from '../hooks/useMagnetic';
 import RotatingText from './RotatingText';
 import ProfileAvatar3D from './ProfileAvatar3D';
 
-const TECH_BADGES = [
-  { label: 'React', color: 'oklch(72% 0.2 220)' },
-  { label: 'Node.js', color: 'oklch(70% 0.18 150)' },
-  { label: 'MongoDB', color: 'oklch(72% 0.2 155)' },
-  { label: 'AI/ML', color: 'oklch(68% 0.25 290)' },
-  { label: 'TypeScript', color: 'oklch(65% 0.2 240)' },
-  { label: 'Docker', color: 'oklch(65% 0.2 215)' },
-];
-
 export default function Hero() {
   const sectionRef = useRef(null);
   const viewWork = useMagnetic(0.4);
@@ -135,28 +126,6 @@ export default function Hero() {
           transition: 'background 0.1s ease',
         }}
       />
-
-      {/* Floating tech badges drifting up */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 2 }}>
-        {TECH_BADGES.map((badge, i) => (
-          <div
-            key={badge.label}
-            className="absolute px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide backdrop-blur-md border"
-            style={{
-              left: `${10 + i * 15}%`,
-              bottom: `${8 + (i % 3) * 6}%`,
-              color: badge.color,
-              borderColor: `color-mix(in oklch, ${badge.color} 25%, transparent)`,
-              background: `color-mix(in oklch, ${badge.color} 8%, oklch(10% 0.01 240 / 0.6))`,
-              animation: `float ${6 + i * 1.2}s ease-in-out infinite`,
-              animationDelay: `${i * 0.4}s`,
-              opacity: 0.75,
-            }}
-          >
-            {badge.label}
-          </div>
-        ))}
-      </div>
 
       {/* Main content with parallax tilt */}
       <div

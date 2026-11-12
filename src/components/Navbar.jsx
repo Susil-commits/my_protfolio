@@ -423,13 +423,7 @@ function CommandPaletteButton({ className = '' }) {
   );
 }
 
-const SECTION_IDS = ['home', 'about', 'skills', 'projects', 'systems-lab', 'experience', 'education', 'achievements', 'certifications', 'contact'];
-
-const getSectionId = (label) => {
-  const norm = label.toLowerCase();
-  if (norm === 'lab' || norm === 'systems lab') return 'systems-lab';
-  return norm;
-};
+const SECTION_IDS = ['home', 'about', 'skills', 'projects', 'experience', 'education', 'achievements', 'certifications', 'contact'];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -494,8 +488,8 @@ export default function Navbar() {
     });
   };
 
-  const desktopPrimaryLinks = ['Home', 'About', 'Skills', 'Projects', 'Lab', 'Experience'];
-  const allLinks = ['Home', 'About', 'Skills', 'Projects', 'Lab', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'];
+  const desktopPrimaryLinks = ['Home', 'About', 'Skills', 'Projects', 'Experience'];
+  const allLinks = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'];
 
   return (
     <>
@@ -524,7 +518,7 @@ export default function Navbar() {
         {/* Center: Desktop Links (Never collides with right icons) */}
         <div className="hidden lg:flex items-center justify-center gap-0.5 xl:gap-1 shrink-0">
           {desktopPrimaryLinks.map((l) => {
-            const sectionId = getSectionId(l);
+            const sectionId = l.toLowerCase();
             const isActive = activeSection === sectionId;
             return (
               <a
@@ -567,12 +561,6 @@ export default function Navbar() {
 
         {/* Right: Actions (Desktop socials + CV, Mobile toggle) */}
         <div className="flex items-center justify-end gap-2 2xl:gap-3 shrink-0">
-          {/* Live Fleet SLA Status Badge */}
-          <div className="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/25 bg-emerald-500/5 text-emerald-400 text-[11px] font-mono select-none" title="All Production Services Operational">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#34d399]" />
-            <span>Fleet: 99.98% SLA · p99: 0.024ms</span>
-          </div>
-
           {/* Desktop actions: socials + CV */}
           <div className="hidden lg:flex items-center gap-2 2xl:gap-3 shrink-0">
             <CommandPaletteButton />
@@ -644,7 +632,7 @@ export default function Navbar() {
         <div className="flex-1 flex flex-col px-6 sm:px-8 py-6 overflow-y-auto justify-between">
           <div className="flex flex-col gap-2.5">
             {allLinks.map((l) => {
-              const sectionId = getSectionId(l);
+              const sectionId = l.toLowerCase();
               const isActive = activeSection === sectionId;
               return (
                 <a

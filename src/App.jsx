@@ -7,7 +7,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import SystemLab from './components/SystemLab';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Achievements from './components/Achievements';
@@ -101,8 +100,6 @@ export default function App() {
           <Skills />
           <div className="line-decoration max-w-4xl mx-auto" />
           <Projects />
-          <div className="line-decoration max-w-4xl mx-auto" />
-          <SystemLab />
           <div className="line-decoration max-w-4xl mx-auto" />
           <Experience />
           <div className="line-decoration max-w-4xl mx-auto" />
