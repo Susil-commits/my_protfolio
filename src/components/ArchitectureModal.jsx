@@ -326,33 +326,33 @@ export default function ArchitectureModal({ projectTitle, isOpen, onClose }) {
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-obsidian/85 backdrop-blur-md transition-opacity duration-300"
+        className="fixed inset-0 bg-slate-900/60 dark:bg-obsidian/85 backdrop-blur-md transition-opacity duration-300"
         onClick={onClose}
       />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-4xl bg-obsidian/95 border border-pearl/15 rounded-2xl sm:rounded-3xl shadow-[0_25px_80px_-15px_rgba(0,0,0,0.7)] backdrop-blur-2xl overflow-hidden z-10 my-4 sm:my-8 max-h-[92vh] flex flex-col">
+      <div className="relative w-full max-w-4xl bg-white dark:bg-[#07080a] border border-slate-200 dark:border-[#2f3031] rounded-2xl sm:rounded-3xl shadow-2xl dark:shadow-[0_25px_80px_-15px_rgba(0,0,0,0.7)] backdrop-blur-2xl overflow-hidden z-10 my-4 sm:my-8 max-h-[92vh] flex flex-col">
         {/* Ambient Modal Glow */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-pearl/5 rounded-full blur-3xl pointer-events-none" />
 
         {/* Header */}
-        <div className="flex items-start justify-between p-4 sm:p-8 border-b border-pearl/10 relative z-10 shrink-0">
+        <div className="flex items-start justify-between p-4 sm:p-8 border-b border-slate-200 dark:border-white/10 relative z-10 shrink-0">
           <div className="min-w-0 flex-1 pr-3">
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 sm:py-1 bg-pearl/10 text-pearl/80 rounded-full border border-pearl/10">
+              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 sm:py-1 bg-slate-100 text-slate-700 border-slate-200 dark:bg-white/10 dark:text-white/80 dark:border-white/10 rounded-full border">
                 System Design & Architecture
               </span>
             </div>
-            <h3 id="arch-modal-title" className="text-lg sm:text-2xl font-bold text-pearl drop-shadow-sm truncate">
+            <h3 id="arch-modal-title" className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white drop-shadow-sm truncate">
               {archData.title}
             </h3>
-            <p className="text-slate text-[11px] sm:text-sm mt-0.5 sm:mt-1 truncate">{archData.tagline}</p>
+            <p className="text-slate-500 dark:text-[#6a6b6c] text-[11px] sm:text-sm mt-0.5 sm:mt-1 truncate">{archData.tagline}</p>
           </div>
 
           <button
             onClick={onClose}
             aria-label="Close Architecture Modal"
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-pearl/15 bg-pearl/[0.04] text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/10 flex items-center justify-center transition-all duration-300 cursor-pointer shrink-0"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200 dark:border-white/15 bg-slate-100 dark:bg-white/[0.04] text-slate-600 dark:text-mist hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-white/30 hover:bg-slate-200 dark:hover:bg-white/10 flex items-center justify-center transition-all duration-300 cursor-pointer shrink-0"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -362,7 +362,7 @@ export default function ArchitectureModal({ projectTitle, isOpen, onClose }) {
         </div>
 
         {/* Nav Tabs */}
-        <div className="flex overflow-x-auto no-scrollbar gap-2 px-4 sm:px-8 py-2.5 sm:py-3 border-b border-pearl/10 bg-pearl/[0.02] shrink-0">
+        <div className="flex overflow-x-auto no-scrollbar gap-2 px-4 sm:px-8 py-2.5 sm:py-3 border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02] shrink-0">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
@@ -371,8 +371,8 @@ export default function ArchitectureModal({ projectTitle, isOpen, onClose }) {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-xl transition-all duration-300 whitespace-nowrap cursor-pointer ${
                   isActive
-                    ? 'bg-pearl text-obsidian shadow-lg font-semibold'
-                    : 'text-mist hover:text-pearl hover:bg-pearl/[0.05]'
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-[#040506] shadow-lg font-semibold'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-[#9c9c9d] dark:hover:text-white dark:hover:bg-white/[0.05]'
                 }`}
               >
                 <span>{tab.icon}</span>

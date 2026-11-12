@@ -121,22 +121,22 @@ export default function Contact() {
           {contactCards.map((card) => {
             const content = (
               <>
-                <div className="w-10 h-10 rounded-xl bg-pearl/[0.04] border border-pearl/15 flex items-center justify-center text-pearl/60 group-hover:text-pearl transition-colors duration-300 mb-3">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <div className="w-9 h-9 rounded-lg bg-slate-100 dark:bg-[#111214] border border-slate-200 dark:border-[#2f3031] flex items-center justify-center text-slate-500 group-hover:text-slate-900 group-hover:border-slate-300 dark:text-[#9c9c9d] dark:group-hover:text-white dark:group-hover:border-[#454647] transition-colors duration-200 mb-3">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d={card.icon} />
                     {card.extra}
                   </svg>
                 </div>
-                <p className="text-xs text-slate uppercase tracking-[0.12em] mb-1">{card.label}</p>
-                <p className="text-sm text-pearl font-medium break-all">{card.value}</p>
+                <p className="text-[11px] text-slate-500 dark:text-[#6a6b6c] font-mono uppercase tracking-[0.14em] mb-1">{card.label}</p>
+                <p className="text-sm text-slate-900 dark:text-white font-medium break-all">{card.value}</p>
               </>
             );
             return card.href ? (
-              <a key={card.label} href={card.href} className="card-morph-border p-5 group block">
+              <a key={card.label} href={card.href} className="card-premium p-5 group block rounded-2xl bg-white dark:bg-[#07080a] border border-slate-200/80 dark:border-[#1b1c1e] hover:border-slate-300 dark:hover:border-[#2f3031] transition-all duration-300">
                 {content}
               </a>
             ) : (
-              <div key={card.label} className="card-morph-border p-5 group">
+              <div key={card.label} className="card-premium p-5 group rounded-2xl bg-white dark:bg-[#07080a] border border-slate-200/80 dark:border-[#1b1c1e] hover:border-slate-300 dark:hover:border-[#2f3031] transition-all duration-300">
                 {content}
               </div>
             );
@@ -244,25 +244,25 @@ export default function Contact() {
           </button>
 
           {status === 'success' && (
-            <div className="text-center py-3 px-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl animate-scale-in">
-              <p className="text-sm text-emerald-600 dark:text-emerald-400 font-semibold flex items-center justify-center gap-2">
-                <span className="text-base">✓</span>
+            <div className="text-center py-3 px-4 bg-emerald-50 dark:bg-[#111214] border border-emerald-200 dark:border-[#2f3031] rounded-xl animate-scale-in">
+              <p className="text-sm text-slate-900 dark:text-white font-medium flex items-center justify-center gap-2">
+                <span className="text-[#59d499]">✓</span>
                 Message sent! Thanks for reaching out — I'll get back to you within 24 hours.
               </p>
             </div>
           )}
           {status === 'error' && (
-            <div className="text-center py-3 px-4 bg-rose-500/10 border border-rose-500/20 rounded-xl animate-scale-in">
-              <p className="text-sm text-rose-600 dark:text-rose-400 font-semibold flex items-center justify-center gap-2">
-                <span className="text-base">✕</span>
+            <div className="text-center py-3 px-4 bg-rose-50 dark:bg-[#111214] border border-rose-200 dark:border-[#2f3031] rounded-xl animate-scale-in">
+              <p className="text-sm text-slate-900 dark:text-white font-medium flex items-center justify-center gap-2">
+                <span className="text-[#ff6363]">✕</span>
                 Something went wrong. Please email me directly at {personal.email}.
               </p>
             </div>
           )}
           {status === 'nokey' && (
-            <div className="text-center py-3 px-4 bg-amber-500/10 border border-amber-500/20 rounded-xl animate-scale-in">
-              <p className="text-sm text-amber-600 dark:text-amber-400 font-semibold flex items-center justify-center gap-2">
-                <span className="text-base">!</span>
+            <div className="text-center py-3 px-4 bg-amber-50 dark:bg-[#111214] border border-amber-200 dark:border-[#2f3031] rounded-xl animate-scale-in">
+              <p className="text-sm text-slate-700 dark:text-[#9c9c9d] font-medium flex items-center justify-center gap-2">
+                <span className="text-[#ff6363]">!</span>
                 Form delivery isn't configured yet. Email me at {personal.email}.
               </p>
             </div>
@@ -271,7 +271,7 @@ export default function Contact() {
 
         {/* Social links — only render when URLs are provided */}
         {socials.length > 0 && (
-          <div className="reveal-on-scroll flex items-center justify-center gap-4 mt-12">
+          <div className="reveal-on-scroll flex items-center justify-center gap-3 mt-12">
             {socials.map((s) => (
               <a
                 key={s.label}
@@ -279,9 +279,9 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="w-11 h-11 rounded-full bg-pearl/[0.04] border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-ash/60 transition-all duration-300"
+                className="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-200/80 dark:bg-[#111214] dark:border-[#2f3031] dark:text-[#9c9c9d] dark:hover:text-white dark:hover:border-[#454647] dark:hover:bg-[#1b1c1e] transition-all duration-200"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d={s.icon} />
                 </svg>
               </a>

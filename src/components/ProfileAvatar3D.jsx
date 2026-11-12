@@ -2,13 +2,6 @@ import { useState, useRef } from 'react';
 import { personal } from '../data/portfolio';
 import SafeImage from './SafeImage';
 
-// Orbiting mini-badges (like a solar system)
-const ORBIT_BADGES = [
-  { label: 'Full-Stack', r: 95, dur: '12s', start: '0deg', color: 'oklch(70% 0.2 240)' },
-  { label: 'AI/ML', r: 95, dur: '18s', start: '120deg', color: 'oklch(65% 0.25 290)' },
-  { label: 'Open to Work', r: 95, dur: '14s', start: '240deg', color: 'oklch(75% 0.18 160)' },
-];
-
 export default function ProfileAvatar3D() {
   const containerRef = useRef(null);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
@@ -66,64 +59,6 @@ export default function ProfileAvatar3D() {
             animation: 'glowPulse 5s ease-in-out infinite',
           }}
         />
-
-        {/* Outer orbit ring (slow spin) */}
-        <div
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            inset: '-20px',
-            border: '1px dashed oklch(70% 0.2 240 / 0.15)',
-            animation: 'spinSlow 25s linear infinite',
-          }}
-        />
-
-        {/* Inner orbit ring (counter-spin) */}
-        <div
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            inset: '-10px',
-            border: '1px solid oklch(65% 0.25 290 / 0.1)',
-            animation: 'spinSlow 18s linear infinite reverse',
-          }}
-        />
-
-        {/* Orbiting mini-badges */}
-        {ORBIT_BADGES.map((badge, i) => (
-          <div
-            key={i}
-            className="absolute pointer-events-none"
-            style={{
-              top: '50%',
-              left: '50%',
-              width: 0,
-              height: 0,
-              '--orbit-r': `${badge.r}px`,
-              '--orbit-dur': badge.dur,
-              '--orbit-start': badge.start,
-              animation: `orbiting ${badge.dur} linear infinite`,
-              animationDelay: `${i * 0.5}s`,
-            }}
-          >
-            <div
-              style={{
-                transform: 'translate(-50%, -50%)',
-                padding: '2px 8px',
-                borderRadius: '9999px',
-                fontSize: '8px',
-                fontWeight: 700,
-                letterSpacing: '0.08em',
-                color: badge.color,
-                background: `color-mix(in oklch, ${badge.color} 10%, oklch(10% 0.01 240 / 0.9))`,
-                border: `1px solid color-mix(in oklch, ${badge.color} 25%, transparent)`,
-                backdropFilter: 'blur(8px)',
-                whiteSpace: 'nowrap',
-                boxShadow: `0 0 10px color-mix(in oklch, ${badge.color} 20%, transparent)`,
-              }}
-            >
-              {badge.label}
-            </div>
-          </div>
-        ))}
 
         {/* 3D Tilting Frame */}
         <div
@@ -214,63 +149,6 @@ export default function ProfileAvatar3D() {
               className="absolute inset-0 rounded-2xl pointer-events-none"
               style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.1)' }}
             />
-          </div>
-
-          {/* Status badge (bottom-right) */}
-          <div
-            className="absolute -bottom-3 -right-3 sm:-right-5 backdrop-blur-xl rounded-full border flex items-center gap-1.5 transition-transform duration-300"
-            style={{
-              transform: `translateZ(40px) ${isHovered ? 'translateY(-2px)' : ''}`,
-              padding: '5px 12px 5px 8px',
-              background: 'color-mix(in oklch, var(--theme-obsidian) 85%, transparent)',
-              borderColor: 'oklch(75% 0.18 160 / 0.3)',
-              boxShadow: '0 4px 20px -4px oklch(75% 0.18 160 / 0.3)',
-            }}
-          >
-            <span className="relative flex">
-              <span
-                className="absolute inline-flex rounded-full"
-                style={{
-                  inset: 0,
-                  background: 'oklch(75% 0.18 160)',
-                  animation: 'pingSlow 2s ease-in-out infinite',
-                }}
-              />
-              <span
-                className="relative rounded-full"
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  background: 'oklch(75% 0.18 160)',
-                  boxShadow: '0 0 8px oklch(75% 0.18 160)',
-                }}
-              />
-            </span>
-            <span
-              className="text-[11px] font-bold whitespace-nowrap"
-              style={{ color: 'var(--theme-pearl)' }}
-            >
-              Software Engineer
-            </span>
-          </div>
-
-          {/* Top-left label */}
-          <div
-            className="absolute -top-3 -left-2 backdrop-blur-md rounded-full border"
-            style={{
-              transform: `translateZ(32px)`,
-              padding: '3px 10px',
-              background: 'oklch(70% 0.2 240 / 0.08)',
-              borderColor: 'oklch(70% 0.2 240 / 0.25)',
-              fontSize: '9px',
-              fontFamily: 'var(--font-mono)',
-              fontWeight: 700,
-              color: 'oklch(70% 0.2 240)',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Full-Stack
           </div>
         </div>
       </div>

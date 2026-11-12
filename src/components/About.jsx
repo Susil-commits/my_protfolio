@@ -136,47 +136,47 @@ export default function About() {
         {/* Dual Tables in ONE LINE side-by-side on desktop, responsive on mobile */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch reveal-on-scroll">
           {/* Table 1: How I Think & Work */}
-          <div className="card-morph-border p-6 sm:p-7 lg:p-8 rounded-2xl bg-charcoal/40 backdrop-blur-xl border border-pearl/[0.08] relative group hover:border-pearl/20 transition-all duration-500 shadow-xl shadow-obsidian/40 flex flex-col justify-between">
+          <div className="card-premium p-6 sm:p-7 lg:p-8 rounded-2xl bg-white dark:bg-[#07080a] border border-slate-200/80 dark:border-[#1b1c1e] hover:border-slate-300 dark:hover:border-[#2f3031] relative group transition-all duration-300 flex flex-col justify-between">
             <div>
               {/* Header */}
-              <div className="flex items-center justify-between gap-4 pb-5 border-b border-pearl/[0.08]">
+              <div className="flex items-center justify-between gap-4 pb-5 border-b border-slate-200 dark:border-[#1b1c1e]">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shadow-inner shrink-0">
-                    <PrincipleIcon name="brain" className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-[#111214] border border-slate-200 dark:border-[#2f3031] flex items-center justify-center text-slate-900 dark:text-white shrink-0">
+                    <PrincipleIcon name="brain" className="w-5 h-5 text-[#ff6363]" />
                   </div>
                   <div>
-                    <h3 className="text-pearl font-bold text-lg sm:text-xl tracking-tight">How I Think &amp; Work</h3>
-                    <p className="text-slate text-xs font-mono tracking-wide">Engineering Philosophy &amp; Mindset</p>
+                    <h3 className="text-slate-900 dark:text-white font-medium text-lg sm:text-xl tracking-tight">How I Think &amp; Work</h3>
+                    <p className="text-slate-500 dark:text-[#6a6b6c] text-xs font-mono tracking-wide">Engineering Philosophy &amp; Mindset</p>
                   </div>
                 </div>
-                <span className="text-[10px] uppercase font-mono tracking-widest px-2.5 py-1 rounded-full bg-pearl/[0.05] border border-pearl/10 text-pearl/70 shrink-0">
+                <span className="text-[10px] uppercase font-mono tracking-widest px-2.5 py-1 rounded bg-slate-100 dark:bg-[#111214] border border-slate-200 dark:border-[#2f3031] text-slate-600 dark:text-[#9c9c9d] shrink-0">
                   5 Tenets
                 </span>
               </div>
 
               {/* Items List */}
-              <div className="mt-5 space-y-3.5">
+              <div className="mt-5 space-y-3">
                 {about.principles?.howIThink.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-3.5 sm:p-4 rounded-xl bg-pearl/[0.02] hover:bg-pearl/[0.05] border border-pearl/[0.04] hover:border-pearl/[0.12] transition-all duration-300 group/item relative overflow-hidden"
+                    className="p-3.5 sm:p-4 rounded-xl bg-slate-50/80 hover:bg-slate-100/90 dark:bg-[#111214]/60 dark:hover:bg-[#111214] border border-slate-200/70 hover:border-slate-300 dark:border-[#1b1c1e] dark:hover:border-[#2f3031] transition-all duration-200 group/item relative overflow-hidden"
                   >
                     <div className="flex items-start gap-3.5">
-                      <div className="mt-0.5 w-7 h-7 rounded-lg bg-pearl/[0.04] group-hover/item:bg-amber-500/15 border border-pearl/10 group-hover/item:border-amber-500/30 flex items-center justify-center text-pearl/70 group-hover/item:text-amber-400 shrink-0 transition-colors duration-300">
+                      <div className="mt-0.5 w-7 h-7 rounded-lg bg-white dark:bg-[#07080a] border border-slate-200 dark:border-[#2f3031] group-hover/item:border-[#ff6363]/40 flex items-center justify-center text-slate-500 dark:text-[#9c9c9d] group-hover/item:text-[#ff6363] shrink-0 transition-colors duration-200">
                         <PrincipleIcon name={item.icon} className="w-3.5 h-3.5" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                          <h4 className="text-pearl text-sm font-semibold group-hover/item:text-amber-300 transition-colors duration-300">
+                          <h4 className="text-slate-900 dark:text-white text-sm font-medium transition-colors duration-200">
                             {item.title}
                           </h4>
                           {item.tag && (
-                            <span className="text-[9px] font-mono uppercase tracking-wider text-slate px-2 py-0.5 rounded bg-pearl/[0.04] border border-pearl/[0.06]">
+                            <span className="text-[9px] font-mono uppercase tracking-wider text-slate-600 dark:text-[#9c9c9d] px-2 py-0.5 rounded bg-slate-100 dark:bg-[#1b1c1e] border border-slate-200 dark:border-[#2f3031]">
                               {item.tag}
                             </span>
                           )}
                         </div>
-                        <p className="text-mist text-xs sm:text-sm leading-relaxed">
+                        <p className="text-slate-600 dark:text-[#9c9c9d] text-xs sm:text-sm leading-relaxed">
                           {item.description}
                         </p>
                       </div>
@@ -188,47 +188,47 @@ export default function About() {
           </div>
 
           {/* Table 2: What I Bring */}
-          <div className="card-morph-border p-6 sm:p-7 lg:p-8 rounded-2xl bg-charcoal/40 backdrop-blur-xl border border-pearl/[0.08] relative group hover:border-pearl/20 transition-all duration-500 shadow-xl shadow-obsidian/40 flex flex-col justify-between">
+          <div className="card-premium p-6 sm:p-7 lg:p-8 rounded-2xl bg-white dark:bg-[#07080a] border border-slate-200/80 dark:border-[#1b1c1e] hover:border-slate-300 dark:hover:border-[#2f3031] relative group transition-all duration-300 flex flex-col justify-between">
             <div>
               {/* Header */}
-              <div className="flex items-center justify-between gap-4 pb-5 border-b border-pearl/[0.08]">
+              <div className="flex items-center justify-between gap-4 pb-5 border-b border-slate-200 dark:border-[#1b1c1e]">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 shadow-inner shrink-0">
-                    <PrincipleIcon name="rocket" className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-[#111214] border border-slate-200 dark:border-[#2f3031] flex items-center justify-center text-slate-900 dark:text-white shrink-0">
+                    <PrincipleIcon name="rocket" className="w-5 h-5 text-[#ff6363]" />
                   </div>
                   <div>
-                    <h3 className="text-pearl font-bold text-lg sm:text-xl tracking-tight">What I Bring</h3>
-                    <p className="text-slate text-xs font-mono tracking-wide">Core Capabilities &amp; Technical Scope</p>
+                    <h3 className="text-slate-900 dark:text-white font-medium text-lg sm:text-xl tracking-tight">What I Bring</h3>
+                    <p className="text-slate-500 dark:text-[#6a6b6c] text-xs font-mono tracking-wide">Core Capabilities &amp; Technical Scope</p>
                   </div>
                 </div>
-                <span className="text-[10px] uppercase font-mono tracking-widest px-2.5 py-1 rounded-full bg-pearl/[0.05] border border-pearl/10 text-pearl/70 shrink-0">
+                <span className="text-[10px] uppercase font-mono tracking-widest px-2.5 py-1 rounded bg-slate-100 dark:bg-[#111214] border border-slate-200 dark:border-[#2f3031] text-slate-600 dark:text-[#9c9c9d] shrink-0">
                   5 Drivers
                 </span>
               </div>
 
               {/* Items List */}
-              <div className="mt-5 space-y-3.5">
+              <div className="mt-5 space-y-3">
                 {about.principles?.whatIBring.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-3.5 sm:p-4 rounded-xl bg-pearl/[0.02] hover:bg-pearl/[0.05] border border-pearl/[0.04] hover:border-pearl/[0.12] transition-all duration-300 group/item relative overflow-hidden"
+                    className="p-3.5 sm:p-4 rounded-xl bg-slate-50/80 hover:bg-slate-100/90 dark:bg-[#111214]/60 dark:hover:bg-[#111214] border border-slate-200/70 hover:border-slate-300 dark:border-[#1b1c1e] dark:hover:border-[#2f3031] transition-all duration-200 group/item relative overflow-hidden"
                   >
                     <div className="flex items-start gap-3.5">
-                      <div className="mt-0.5 w-7 h-7 rounded-lg bg-pearl/[0.04] group-hover/item:bg-sky-500/15 border border-pearl/10 group-hover/item:border-sky-500/30 flex items-center justify-center text-pearl/70 group-hover/item:text-sky-400 shrink-0 transition-colors duration-300">
+                      <div className="mt-0.5 w-7 h-7 rounded-lg bg-white dark:bg-[#07080a] border border-slate-200 dark:border-[#2f3031] group-hover/item:border-[#ff6363]/40 flex items-center justify-center text-slate-500 dark:text-[#9c9c9d] group-hover/item:text-[#ff6363] shrink-0 transition-colors duration-200">
                         <PrincipleIcon name={item.icon} className="w-3.5 h-3.5" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                          <h4 className="text-pearl text-sm font-semibold group-hover/item:text-sky-300 transition-colors duration-300">
+                          <h4 className="text-slate-900 dark:text-white text-sm font-medium transition-colors duration-200">
                             {item.title}
                           </h4>
                           {item.tag && (
-                            <span className="text-[9px] font-mono uppercase tracking-wider text-slate px-2 py-0.5 rounded bg-pearl/[0.04] border border-pearl/[0.06]">
+                            <span className="text-[9px] font-mono uppercase tracking-wider text-slate-600 dark:text-[#9c9c9d] px-2 py-0.5 rounded bg-slate-100 dark:bg-[#1b1c1e] border border-slate-200 dark:border-[#2f3031]">
                               {item.tag}
                             </span>
                           )}
                         </div>
-                        <p className="text-mist text-xs sm:text-sm leading-relaxed">
+                        <p className="text-slate-600 dark:text-[#9c9c9d] text-xs sm:text-sm leading-relaxed">
                           {item.description}
                         </p>
                       </div>

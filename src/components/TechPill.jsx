@@ -14,20 +14,20 @@ export default function TechPill({ name, compact = false }) {
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-medium rounded-full border transition-all duration-300 ${
+      className={`inline-flex items-center gap-1.5 font-normal rounded-md border transition-all duration-200 ${
         compact
-          ? 'px-2 py-1 text-[11px] bg-smoke/80 border-pearl/10 text-mist hover:text-pearl hover:border-pearl/20 hover:bg-ash/80'
-          : 'px-3 py-1.5 text-xs bg-smoke border-pearl/15 text-mist hover:text-pearl hover:border-pearl/30 hover:bg-ash'
+          ? 'px-2 py-0.5 text-[11px] bg-slate-100/90 dark:bg-[#111214] border-slate-200 dark:border-[#1b1c1e] text-slate-700 dark:text-[#9c9c9d] hover:text-slate-950 dark:hover:text-white hover:border-slate-300 dark:hover:border-[#2f3031] hover:bg-slate-200/80 dark:hover:bg-[#1b1c1e]'
+          : 'px-2.5 py-1 text-xs bg-slate-100/90 dark:bg-[#111214] border-slate-200 dark:border-[#1b1c1e] text-slate-700 dark:text-[#9c9c9d] hover:text-slate-950 dark:hover:text-white hover:border-slate-300 dark:hover:border-[#2f3031] hover:bg-slate-200/80 dark:hover:bg-[#1b1c1e]'
       }`}
     >
       {hasLogo ? (
         <span
-          className="w-4 h-4 shrink-0 rounded-[5px] flex items-center justify-center"
-          style={{ backgroundColor: hexToRgba(icon.hex, 0.12) }}
+          className="w-3.5 h-3.5 shrink-0 rounded flex items-center justify-center opacity-85"
+          style={{ backgroundColor: hexToRgba(icon.hex, 0.14) }}
         >
           <svg
-            width="11"
-            height="11"
+            width="10"
+            height="10"
             viewBox="0 0 24 24"
             fill={icon.hex}
             aria-hidden="true"
@@ -37,9 +37,9 @@ export default function TechPill({ name, compact = false }) {
           </svg>
         </span>
       ) : (
-        <span className="w-1 h-1 shrink-0 rounded-full bg-pearl/30" aria-hidden="true" />
+        <span className="w-1 h-1 shrink-0 rounded-full bg-slate-400 dark:bg-[#6a6b6c]" aria-hidden="true" />
       )}
-      <span>{name}</span>
+      <span className="font-mono text-[11px]">{name}</span>
     </span>
   );
 }

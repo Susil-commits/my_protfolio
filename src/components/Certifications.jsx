@@ -74,25 +74,24 @@ export default function Certifications() {
                 }}
                 aria-label={`Preview ${item.title} certificate`}
                 title="Click to preview certificate"
-                className="reveal-scale card-morph-border p-6 group text-left cursor-pointer hover:-translate-y-1 w-full flex flex-col justify-between"
+                className="reveal-scale card-premium p-6 group text-left cursor-pointer w-full flex flex-col justify-between bg-white dark:bg-[#07080a] border border-slate-200/80 dark:border-[#1b1c1e] hover:border-slate-300 dark:hover:border-[#2f3031] rounded-2xl transition-all duration-300"
                 style={{ transitionDelay: `${i * 0.1}s` }}
               >
                 <div className="relative z-10 tilt-pop flex flex-col h-full">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="text-3xl opacity-80 group-hover:scale-110 transition-transform duration-500">
+                    <div className="text-3xl opacity-80 group-hover:scale-105 transition-transform duration-300">
                       {item.icon}
                     </div>
-                    <span className="w-9 h-9 rounded-lg bg-pearl/[0.04] border border-pearl/15 flex items-center justify-center text-mist group-hover:text-pearl group-hover:border-pearl/30 transition-all duration-300">
+                    <span className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-[#111214] border border-slate-200 dark:border-[#2f3031] flex items-center justify-center text-slate-500 group-hover:text-slate-900 group-hover:border-slate-300 dark:text-[#9c9c9d] dark:group-hover:text-white dark:group-hover:border-[#454647] transition-all duration-200">
                       <svg
-                        width="15"
-                        height="15"
+                        width="14"
+                        height="14"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="transition-transform duration-300 group-hover:scale-110"
                       >
                         <circle cx="11" cy="11" r="8" />
                         <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -103,20 +102,19 @@ export default function Certifications() {
                   </div>
 
                   {/* Certificate thumbnail using SafeImage */}
-                  <div className="relative mb-4 aspect-[4/3] rounded-xl overflow-hidden border border-pearl/15 group-hover:border-pearl/30 transition-colors duration-500 bg-obsidian-card">
+                  <div className="relative mb-4 aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 group-hover:border-slate-300 dark:border-[#2f3031] dark:group-hover:border-[#454647] transition-colors duration-300 bg-slate-100 dark:bg-[#040506]">
                     <SafeImage
                       src={thumbSrc}
                       alt={`${item.title} certificate`}
                       title={certTitle}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
-                  <h3 className="text-pearl font-semibold text-base leading-snug group-hover:text-accent1 transition-colors duration-300">
+                  <h3 className="text-slate-900 dark:text-white font-medium text-base leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-mist text-sm mt-2 leading-relaxed flex-grow">
+                  <p className="text-slate-600 dark:text-[#9c9c9d] text-sm mt-2 leading-relaxed flex-grow">
                     {item.description}
                   </p>
                 </div>

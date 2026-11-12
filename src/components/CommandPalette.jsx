@@ -138,15 +138,15 @@ export default function CommandPalette({ isOpen, onClose, onSelectProject }) {
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 sm:pt-28 px-4 overflow-y-auto animate-fade-in">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-obsidian/85 backdrop-blur-md transition-opacity duration-300"
+        className="fixed inset-0 bg-slate-900/40 dark:bg-[#040506]/85 backdrop-blur-md transition-opacity duration-200"
         onClick={onClose}
       />
 
-      {/* Palette Container */}
-      <div className="relative w-full max-w-2xl bg-obsidian/95 border border-pearl/20 rounded-3xl shadow-[0_25px_80px_-15px_rgba(0,0,0,0.8)] backdrop-blur-2xl overflow-hidden z-10 flex flex-col">
+      {/* Palette Container — Raycast Launcher Window */}
+      <div className="relative w-full max-w-2xl bg-white dark:bg-[#07080a] border border-slate-200 dark:border-[#2f3031] rounded-2xl shadow-[0_25px_80px_rgba(0,0,0,0.15)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.95),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-3xl overflow-hidden z-10 flex flex-col">
         {/* Search Bar */}
-        <div className="flex items-center gap-3 px-6 py-4 border-b border-pearl/10">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate shrink-0">
+        <div className="flex items-center gap-3 px-5 py-3.5 border-b border-slate-200 dark:border-[#1b1c1e]">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 dark:text-[#9c9c9d] shrink-0">
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
@@ -159,18 +159,18 @@ export default function CommandPalette({ isOpen, onClose, onSelectProject }) {
               setSelectedIndex(0);
             }}
             onKeyDown={handleKeyDownNav}
-            placeholder="Type a command, project, or skill (e.g. APEX, Kafka, AI, Resume)..."
-            className="w-full bg-transparent text-sm sm:text-base text-pearl placeholder:text-slate focus:outline-none"
+            placeholder="Search commands, projects, or skills (e.g. APEX, Kafka, Resume)..."
+            className="w-full bg-transparent text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#6a6b6c] focus:outline-none"
           />
-          <kbd className="hidden sm:inline-flex text-[10px] font-mono px-2 py-1 rounded bg-pearl/10 border border-pearl/15 text-slate">
+          <kbd className="hidden sm:inline-flex text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-[#111214] border border-slate-200 dark:border-[#2f3031] text-slate-500 dark:text-[#9c9c9d]">
             ESC
           </kbd>
         </div>
 
         {/* Results List */}
-        <div className="max-h-[60vh] overflow-y-auto p-3 space-y-1">
+        <div className="max-h-[60vh] overflow-y-auto p-2 space-y-1">
           {filtered.length === 0 ? (
-            <div className="p-8 text-center text-sm text-slate">
+            <div className="p-8 text-center text-sm text-slate-400 dark:text-[#6a6b6c]">
               No matching commands or projects found for &quot;{query}&quot;
             </div>
           ) : (
@@ -181,26 +181,26 @@ export default function CommandPalette({ isOpen, onClose, onSelectProject }) {
                   key={item.id}
                   onClick={item.onSelect}
                   onMouseEnter={() => setSelectedIndex(idx)}
-                  className={`flex items-center justify-between p-3 rounded-2xl cursor-pointer transition-all duration-200 ${
+                  className={`flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition-all duration-150 ${
                     isSelected
-                      ? 'bg-pearl text-obsidian shadow-md'
-                      : 'text-mist hover:bg-pearl/[0.04]'
+                      ? 'bg-slate-100 text-slate-900 border border-slate-200 dark:bg-[#1b1c1e] dark:text-white dark:border-[#2f3031]'
+                      : 'text-slate-600 hover:bg-slate-50 dark:text-[#9c9c9d] dark:hover:bg-[#111214] border border-transparent'
                   }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <span className="text-lg shrink-0">{item.icon}</span>
+                    <span className="text-base shrink-0">{item.icon}</span>
                     <div className="min-w-0">
-                      <div className={`text-xs sm:text-sm font-semibold truncate ${isSelected ? 'text-obsidian' : 'text-pearl'}`}>
+                      <div className="text-xs sm:text-sm font-medium text-slate-900 dark:text-white truncate">
                         {item.title}
                       </div>
-                      <div className={`text-[11px] truncate ${isSelected ? 'text-obsidian/80' : 'text-slate'}`}>
+                      <div className="text-[11px] text-slate-500 dark:text-[#6a6b6c] truncate">
                         {item.subtitle}
                       </div>
                     </div>
                   </div>
 
-                  <span className={`text-[10px] uppercase font-mono px-2 py-0.5 rounded-full shrink-0 ml-2 ${
-                    isSelected ? 'bg-obsidian/20 text-obsidian font-bold' : 'bg-pearl/[0.06] text-slate'
+                  <span className={`text-[10px] uppercase font-mono px-2 py-0.5 rounded shrink-0 ml-2 ${
+                    isSelected ? 'bg-white text-slate-900 border border-slate-200 dark:bg-[#111214] dark:text-white dark:border-[#2f3031]' : 'bg-slate-100 text-slate-500 dark:bg-[#111214] dark:text-[#6a6b6c]'
                   }`}>
                     {item.category}
                   </span>
@@ -211,12 +211,12 @@ export default function CommandPalette({ isOpen, onClose, onSelectProject }) {
         </div>
 
         {/* Footer info */}
-        <div className="p-3 border-t border-pearl/10 bg-pearl/[0.02] flex items-center justify-between text-[11px] text-slate font-mono px-6">
+        <div className="p-2.5 border-t border-slate-200 dark:border-[#1b1c1e] bg-slate-50 dark:bg-[#111214]/60 flex items-center justify-between text-[11px] text-slate-500 dark:text-[#6a6b6c] font-mono px-5">
           <div className="flex items-center gap-3">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>
           </div>
-          <span>Susil Kumar Nayak Portfolio</span>
+          <span>Raycast Command Palette</span>
         </div>
       </div>
     </div>

@@ -50,7 +50,7 @@ export default function Education() {
             return (
               <SpotlightCard
                 key={edu.institution}
-                className="reveal-scale card-morph-border p-6 group flex flex-col justify-between"
+                className="reveal-scale card-premium p-6 group flex flex-col justify-between bg-white dark:bg-[#07080a] border border-slate-200/80 dark:border-[#1b1c1e] hover:border-slate-300 dark:hover:border-[#2f3031] rounded-2xl transition-all duration-300"
                 style={{ transitionDelay: `${i * 0.1}s` }}
               >
                 <div className="relative z-10 tilt-pop">
@@ -67,18 +67,18 @@ export default function Education() {
                       }}
                       aria-label={`Preview ${edu.institution} image`}
                       title="Click to view full preview"
-                      className="relative w-full h-40 rounded-xl overflow-hidden mb-4 border border-pearl/15 hover:border-pearl/40 transition-all duration-300 group/pic cursor-pointer block bg-obsidian-card"
+                      className="relative w-full h-40 rounded-xl overflow-hidden mb-4 border border-slate-200 hover:border-slate-300 dark:border-[#2f3031] dark:hover:border-[#454647] transition-all duration-200 group/pic cursor-pointer block bg-slate-100 dark:bg-[#040506]"
                     >
                       <SafeImage
                         src={edu.image.thumb}
                         alt={edu.institution}
                         title={certTitle}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover/pic:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover/pic:scale-105"
                       />
 
                       {/* Hover zoom overlay */}
-                      <div className="absolute inset-0 bg-black/0 group-hover/pic:bg-black/35 transition-colors duration-300 flex items-center justify-center">
-                        <span className="opacity-0 group-hover/pic:opacity-100 transition-opacity duration-300 px-3 py-1 rounded-full bg-slate-900/90 border border-white/20 text-white text-[11px] font-mono flex items-center gap-1.5 shadow-lg">
+                      <div className="absolute inset-0 bg-black/0 group-hover/pic:bg-black/40 transition-colors duration-200 flex items-center justify-center">
+                        <span className="opacity-0 group-hover/pic:opacity-100 transition-opacity duration-200 px-3 py-1 rounded-full bg-white/90 dark:bg-[#07080a]/90 border border-slate-200 dark:border-[#2f3031] text-slate-900 dark:text-white text-[11px] font-mono flex items-center gap-1.5 shadow-lg">
                           <svg
                             width="14"
                             height="14"
@@ -101,33 +101,33 @@ export default function Education() {
                   )}
 
                   <div className="flex items-start justify-between gap-4 mb-3">
-                    <span className="text-[11px] font-semibold text-slate font-mono uppercase tracking-[0.12em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-pearl/10 shrink-0">
+                    <span className="text-[11px] font-mono uppercase tracking-[0.12em] text-slate-600 dark:text-[#9c9c9d] bg-slate-100 dark:bg-[#111214] px-3 py-1 rounded border border-slate-200 dark:border-[#2f3031] shrink-0">
                       {edu.period}
                     </span>
                   </div>
 
-                  <h3 className="text-pearl font-semibold text-lg group-hover:text-accent1 transition-colors duration-300 leading-snug">
+                  <h3 className="text-slate-900 dark:text-white font-medium text-lg leading-snug">
                     {edu.institution}
                   </h3>
-                  <p className="text-slate text-xs mt-1">{edu.location}</p>
+                  <p className="text-slate-500 dark:text-[#6a6b6c] text-xs mt-1">{edu.location}</p>
 
                   <div className="mt-3.5 space-y-1 text-xs sm:text-sm">
-                    <p className="text-mist">
-                      <span className="text-pearl/90 font-medium">{edu.degree}</span>
-                      {edu.field && <span className="text-mist"> · {edu.field}</span>}
+                    <p className="text-slate-600 dark:text-[#9c9c9d]">
+                      <span className="text-slate-900 dark:text-white font-normal">{edu.degree}</span>
+                      {edu.field && <span className="text-slate-500 dark:text-[#9c9c9d]"> · {edu.field}</span>}
                     </p>
                   </div>
                 </div>
 
-                <div className="relative z-10 mt-5 pt-3 border-t border-pearl/10 flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-pearl bg-pearl/[0.04] px-3 py-1.5 rounded-lg border border-pearl/15 font-mono">
+                <div className="relative z-10 mt-5 pt-3 border-t border-slate-200 dark:border-[#1b1c1e] flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-800 dark:text-white bg-slate-100 dark:bg-[#111214] px-3 py-1.5 rounded-lg border border-slate-200 dark:border-[#2f3031]">
                     {edu.score}
                   </span>
                   {hasImage && (
                     <button
                       type="button"
                       onClick={() => open(fullSrc, certTitle, edu.image?.thumb)}
-                      className="text-[11px] font-medium text-mist hover:text-pearl transition-colors duration-200 cursor-pointer flex items-center gap-1"
+                      className="text-[11px] font-medium text-slate-500 hover:text-slate-900 dark:text-[#9c9c9d] dark:hover:text-white transition-colors duration-200 cursor-pointer flex items-center gap-1"
                     >
                       <span>Photo preview</span>
                       <span>→</span>

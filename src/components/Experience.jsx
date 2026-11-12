@@ -44,7 +44,7 @@ export default function Experience() {
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px -translate-x-1/2">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.08] to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-300 dark:via-white/[0.08] to-transparent" />
           </div>
 
           <div className="space-y-16">
@@ -58,8 +58,8 @@ export default function Experience() {
                 {/* Timeline dot */}
                 <div className="absolute left-4 md:left-1/2 top-2 -translate-x-1/2 z-10">
                   <div className="relative">
-                    <div className="w-3 h-3 bg-pearl rounded-full ring-4 ring-obsidian" />
-                    <div className="absolute inset-0 w-3 h-3 bg-pearl rounded-full animate-ping-slow opacity-50" />
+                    <div className="w-3 h-3 bg-[#ff6363] rounded-full ring-4 ring-white dark:ring-[#040506]" />
+                    <div className="absolute inset-0 w-3 h-3 bg-[#ff6363] rounded-full animate-ping-slow opacity-40" />
                   </div>
                 </div>
 
@@ -69,22 +69,22 @@ export default function Experience() {
                     i % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'
                   }`}
                 >
-                  <SpotlightCard className="card-morph-border p-6 group hover:border-white/10">
-                    <span className="text-xs font-semibold text-slate font-mono uppercase tracking-[0.15em] bg-pearl/[0.03] px-3 py-1 rounded-full border border-pearl/10">
+                  <SpotlightCard className="card-premium p-6 group rounded-2xl bg-white dark:bg-[#07080a] border border-slate-200/80 dark:border-[#1b1c1e] hover:border-slate-300 dark:hover:border-[#2f3031] transition-all duration-300">
+                    <span className="text-xs font-medium text-slate-600 dark:text-[#9c9c9d] font-mono uppercase tracking-[0.14em] bg-slate-100 dark:bg-[#111214] px-3 py-1 rounded border border-slate-200 dark:border-[#2f3031]">
                       {exp.period}
                     </span>
-                    <h3 className="text-pearl font-semibold text-lg mt-3 group-hover:text-accent1 transition-colors duration-300">
+                    <h3 className="text-slate-900 dark:text-white font-medium text-lg mt-3 transition-colors duration-200">
                       {exp.role}
                     </h3>
-                    <p className="text-mist font-medium text-sm mt-1">{exp.company}</p>
-                    <p className="text-mist text-sm mt-3 leading-relaxed">
+                    <p className="text-slate-600 dark:text-[#9c9c9d] text-sm mt-1">{exp.company}</p>
+                    <p className="text-slate-600 dark:text-[#9c9c9d] text-sm mt-3 leading-relaxed">
                       {exp.description}
                     </p>
                     <div className="flex gap-2 mt-4 flex-wrap">
                       {exp.highlights.map((h) => (
                         <span
                           key={h}
-                          className="text-[10px] font-medium text-slate font-mono bg-pearl/[0.02] px-2 py-0.5 rounded border border-pearl/10"
+                          className="text-[10px] font-mono text-slate-500 dark:text-[#6a6b6c] bg-slate-100 dark:bg-[#111214] px-2 py-0.5 rounded border border-slate-200 dark:border-[#1b1c1e]"
                         >
                           {h}
                         </span>
@@ -116,9 +116,9 @@ export default function Experience() {
                           }}
                           aria-label={`View ${exp.certificateLabel || 'certificate'} for ${exp.company}`}
                           title="Click to preview certificate"
-                          className="mt-5 group/cert flex items-center gap-3 w-full text-left p-2 rounded-xl border border-pearl/15 hover:border-pearl/30 hover:bg-pearl/[0.02] transition-all duration-300"
+                          className="mt-5 group/cert flex items-center gap-3 w-full text-left p-2 rounded-xl border border-slate-200 hover:border-slate-300 hover:bg-slate-50 dark:border-[#2f3031] dark:hover:border-[#454647] dark:hover:bg-[#111214] transition-all duration-200 cursor-pointer"
                         >
-                          <span className="relative w-14 h-14 rounded-lg overflow-hidden border border-pearl/15 shrink-0 bg-obsidian-card">
+                          <span className="relative w-14 h-14 rounded-lg overflow-hidden border border-slate-200 dark:border-[#2f3031] shrink-0 bg-slate-100 dark:bg-[#040506]">
                             <SafeImage
                               src={thumbSrc}
                               alt={`${exp.company} certificate`}
@@ -127,12 +127,12 @@ export default function Experience() {
                             />
                           </span>
                           <span className="min-w-0">
-                            <span className="block text-[10px] font-semibold text-slate font-mono uppercase tracking-[0.12em]">
+                            <span className="block text-[10px] font-mono uppercase tracking-[0.12em] text-slate-500 dark:text-[#6a6b6c]">
                               {exp.certificateLabel || 'Certificate'}
                             </span>
-                            <span className="inline-flex items-center gap-1 text-xs font-medium text-pearl group-hover/cert:text-accent1 transition-colors duration-300">
+                            <span className="inline-flex items-center gap-1 text-xs font-medium text-slate-900 dark:text-white group-hover/cert:text-[#ff6363] transition-colors duration-200">
                               View certificate
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover/cert:translate-x-0.5">
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover/cert:translate-x-0.5">
                                 <line x1="5" y1="12" x2="19" y2="12" />
                                 <polyline points="12 5 19 12 12 19" />
                               </svg>

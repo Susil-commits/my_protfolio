@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import ParticlesBackground from './components/ParticlesBackground';
+import RaycastBackground from './components/RaycastBackground';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
@@ -97,11 +97,11 @@ export default function App() {
 
   return (
     <ErrorBoundary>
-      <div className="relative min-h-screen bg-obsidian transition-colors duration-300">
+      <div className="relative min-h-screen bg-obsidian text-pearl selection:bg-[#ff6363]/30 selection:text-pearl transition-colors duration-300">
         {loading && <Loader onComplete={() => setLoading(false)} />}
         
-        {/* Hardware-accelerated lightweight particles */}
-        <ParticlesBackground />
+        {/* Raycast Deep-Space & Coral Neon Command Center Background */}
+        <RaycastBackground />
         <CustomCursor />
         <ScrollProgress />
 

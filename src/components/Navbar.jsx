@@ -52,7 +52,7 @@ function MagneticSocialLink({ url, label, icon }) {
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
-      className="w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300"
+      className="w-8 h-8 rounded-lg border border-slate-200 dark:border-[#2f3031] bg-slate-100/80 dark:bg-[#111214] flex items-center justify-center text-slate-600 dark:text-[#9c9c9d] hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-[#454647] hover:bg-slate-200/80 dark:hover:bg-[#1b1c1e] transition-all duration-200"
       ref={magnetic.ref}
     >
       {icon}
@@ -67,7 +67,7 @@ function SocialLinks({ className = '' }) {
   ].filter((s) => s.url);
 
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
+    <div className={`flex items-center gap-1.5 ${className}`}>
       {items.map((s) => (
         <MagneticSocialLink key={s.label} {...s} />
       ))}
@@ -134,28 +134,28 @@ function CvButton({ className = '', onClick }) {
           open ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' : 'opacity-0 scale-95 -translate-y-1 pointer-events-none'
         }`}
       >
-        <div className="rounded-2xl border border-pearl/15 bg-obsidian/90 backdrop-blur-xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)] p-2 overflow-hidden">
-          <p className="px-3 pt-2 pb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate">
+        <div className="rounded-xl border border-slate-200 dark:border-[#2f3031] bg-white/95 dark:bg-[#07080a]/95 backdrop-blur-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.8)] p-1.5 overflow-hidden">
+          <p className="px-3 pt-2 pb-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-slate-500 dark:text-[#6a6b6c]">
             Select resume
           </p>
           {personal.resumes.map((r) => {
             const disabled = !r.url;
             const content = (
               <>
-                <span className="w-9 h-9 shrink-0 rounded-lg bg-pearl/[0.04] border border-pearl/10 flex items-center justify-center text-pearl/60 group-hover:text-pearl group-hover:border-pearl/20 transition-colors duration-300">
+                <span className="w-8 h-8 shrink-0 rounded-lg bg-slate-100 dark:bg-[#111214] border border-slate-200 dark:border-[#2f3031] flex items-center justify-center text-slate-600 dark:text-[#9c9c9d] group-hover:text-slate-900 dark:group-hover:text-white group-hover:border-slate-300 dark:group-hover:border-[#454647] transition-colors duration-200">
                   <ResumeIcon name={r.icon} />
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-semibold text-pearl truncate">{r.role}</span>
-                  <span className="block text-[11px] text-slate truncate">{r.subtitle}</span>
+                  <span className="block text-xs font-medium text-slate-900 dark:text-white truncate">{r.role}</span>
+                  <span className="block text-[11px] text-slate-500 dark:text-[#6a6b6c] truncate">{r.subtitle}</span>
                 </span>
                 {disabled ? (
-                  <span className="shrink-0 text-[9px] font-bold uppercase tracking-wider text-amber-700 bg-amber-500/10 border border-amber-500/20 px-2 py-1 rounded-full">
+                  <span className="shrink-0 text-[9px] font-mono uppercase tracking-wider text-slate-500 dark:text-[#9c9c9d] bg-slate-100 dark:bg-[#1b1c1e] border border-slate-200 dark:border-[#2f3031] px-2 py-0.5 rounded">
                     Soon
                   </span>
                 ) : (
-                  <span className="shrink-0 text-mist group-hover:text-pearl transition-colors duration-300">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-0.5">
+                  <span className="shrink-0 text-slate-400 dark:text-[#6a6b6c] group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-200">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover:translate-x-0.5">
                       <line x1="5" y1="12" x2="19" y2="12" />
                       <polyline points="12 5 19 12 12 19" />
                     </svg>
@@ -168,7 +168,7 @@ function CvButton({ className = '', onClick }) {
                 key={r.role}
                 role="menuitem"
                 aria-disabled="true"
-                className="group flex items-center gap-3 px-3 py-2.5 rounded-xl opacity-60 cursor-not-allowed"
+                className="group flex items-center gap-2.5 px-2.5 py-2 rounded-lg opacity-50 cursor-not-allowed"
               >
                 {content}
               </div>
@@ -180,7 +180,7 @@ function CvButton({ className = '', onClick }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                className="group flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-pearl/[0.04] transition-colors duration-300"
+                className="group flex items-center gap-2.5 px-2.5 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/[0.05] transition-colors duration-200"
               >
                 {content}
               </a>
@@ -237,17 +237,17 @@ function MobileCv({ onNavigate }) {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="rounded-2xl border border-pearl/15 bg-obsidian/80 backdrop-blur-xl p-2 space-y-1">
+          <div className="rounded-2xl border border-slate-200 dark:border-[#2f3031] bg-slate-50 dark:bg-[#111214] backdrop-blur-xl p-2 space-y-1">
             {personal.resumes.map((r) => {
               const disabled = !r.url;
               const content = (
                 <>
-                  <span className="w-9 h-9 shrink-0 rounded-lg bg-pearl/[0.04] border border-pearl/10 flex items-center justify-center text-pearl/60">
+                  <span className="w-9 h-9 shrink-0 rounded-lg bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-white/60">
                     <ResumeIcon name={r.icon} />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block text-sm font-semibold text-pearl truncate">{r.role}</span>
-                    <span className="block text-[11px] text-slate truncate">{r.subtitle}</span>
+                    <span className="block text-sm font-semibold text-slate-900 dark:text-white truncate">{r.role}</span>
+                    <span className="block text-[11px] text-slate-500 dark:text-[#6a6b6c] truncate">{r.subtitle}</span>
                   </span>
                   {disabled ? (
                     <span className="shrink-0 text-[9px] font-bold uppercase tracking-wider text-amber-700 bg-amber-500/10 border border-amber-500/20 px-2 py-1 rounded-full">
@@ -270,7 +270,7 @@ function MobileCv({ onNavigate }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={onNavigate}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-pearl/[0.04] transition-colors duration-300"
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/[0.04] transition-colors duration-300"
                 >
                   {content}
                 </a>
@@ -291,11 +291,11 @@ function ThemeToggle({ className = '' }) {
     <button
       onClick={toggleTheme}
       aria-label="Toggle Theme"
-      className={`w-9 h-9 rounded-full border border-pearl/15 flex items-center justify-center text-mist hover:text-pearl hover:border-pearl/30 hover:bg-pearl/[0.04] transition-all duration-300 ${className}`}
+      className={`w-8 h-8 rounded-lg border border-slate-200 dark:border-[#2f3031] bg-slate-100/80 dark:bg-[#111214] flex items-center justify-center text-slate-600 dark:text-[#9c9c9d] hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-[#454647] hover:bg-slate-200/80 dark:hover:bg-[#1b1c1e] transition-all duration-200 cursor-pointer ${className}`}
       ref={magnetic.ref}
     >
       {theme === 'dark' ? (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
           <line x1="12" y1="21" x2="12" y2="23"/>
@@ -307,7 +307,7 @@ function ThemeToggle({ className = '' }) {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
       ) : (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       )}
@@ -348,10 +348,10 @@ function MoreDropdown({ activeSection, onNavigate }) {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="true"
         aria-expanded={open}
-        className={`relative px-2.5 py-1.5 2xl:px-3 2xl:py-2 text-[11px] 2xl:text-xs font-semibold transition-all duration-300 tracking-wider uppercase rounded-full flex items-center gap-1 cursor-pointer ${
+        className={`relative px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 rounded-lg flex items-center gap-1 cursor-pointer ${
           isMoreActive || open
-            ? 'text-pearl bg-pearl/[0.08]'
-            : 'text-mist hover:text-pearl hover:bg-pearl/[0.03]'
+            ? 'text-slate-900 bg-slate-100 dark:text-white dark:bg-white/[0.08]'
+            : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 dark:text-[#9c9c9d] dark:hover:text-white dark:hover:bg-white/[0.04]'
         }`}
       >
         <span>More</span>
@@ -366,9 +366,6 @@ function MoreDropdown({ activeSection, onNavigate }) {
         >
           <polyline points="6 9 12 15 18 9" />
         </svg>
-        {isMoreActive && (
-          <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-pearl rounded-full animate-pulse" />
-        )}
       </button>
 
       {/* Dropdown Menu */}
@@ -377,7 +374,7 @@ function MoreDropdown({ activeSection, onNavigate }) {
           open ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' : 'opacity-0 scale-95 -translate-y-1 pointer-events-none'
         }`}
       >
-        <div className="rounded-2xl border border-pearl/15 bg-obsidian/95 backdrop-blur-xl shadow-2xl p-1.5 space-y-0.5">
+        <div className="rounded-xl border border-slate-200 dark:border-[#2f3031] bg-white/95 dark:bg-[#07080a]/95 backdrop-blur-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.8)] p-1.5 space-y-0.5">
           {moreItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -388,10 +385,10 @@ function MoreDropdown({ activeSection, onNavigate }) {
                   setOpen(false);
                   onNavigate?.(e, item.id);
                 }}
-                className={`flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-xl transition-all ${
+                className={`flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-lg transition-colors ${
                   isActive
-                    ? 'bg-pearl text-obsidian font-semibold shadow-sm'
-                    : 'text-mist hover:text-pearl hover:bg-pearl/[0.06]'
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-[#111214] font-semibold'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-[#9c9c9d] dark:hover:text-white dark:hover:bg-white/[0.05]'
                 }`}
               >
                 <span>{item.icon}</span>
@@ -412,13 +409,13 @@ function CommandPaletteButton({ className = '' }) {
       onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
       aria-label="Open Command Palette (Ctrl+K)"
       title="Quick Search & Navigation (Ctrl+K)"
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-pearl/15 bg-pearl/[0.04] hover:bg-pearl/10 text-mist hover:text-pearl text-xs font-mono transition-all duration-300 cursor-pointer ${className}`}
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-[#2f3031] bg-slate-100/80 dark:bg-[#111214] hover:bg-slate-200/80 dark:hover:bg-[#1b1c1e] text-slate-600 dark:text-[#9c9c9d] hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-[#454647] text-xs font-mono transition-all duration-200 cursor-pointer ${className}`}
     >
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8" />
         <line x1="21" y1="21" x2="16.65" y2="16.65" />
       </svg>
-      <span className="hidden sm:inline text-[10px] text-slate font-bold">⌘K</span>
+      <span className="hidden sm:inline text-[10px] text-slate-500 dark:text-[#6a6b6c] font-bold">⌘K</span>
     </button>
   );
 }
@@ -493,30 +490,33 @@ export default function Navbar() {
 
   return (
     <>
-    <nav
-      ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'nav-blur py-2.5 sm:py-3' : 'bg-transparent py-4 sm:py-5'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
-        {/* Left: Logo with animation */}
+    <div className="fixed top-3 sm:top-5 inset-x-0 mx-auto w-[calc(100%-1.5rem)] sm:w-[calc(100%-2.5rem)] max-w-5xl z-50 pointer-events-none transition-all duration-300">
+      <nav
+        ref={navRef}
+        className="pointer-events-auto w-full rounded-2xl border border-slate-200/90 dark:border-[#2f3031]/80 bg-white/85 dark:bg-[#07080a]/80 backdrop-blur-[48px] px-4 sm:px-5 py-2.5 sm:py-3 shadow-[0_16px_40px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.06)] flex items-center justify-between gap-2 sm:gap-4 transition-all duration-300"
+      >
+        {/* Left: Logo with Raycast Coral Diamond Mark */}
         <div className="flex items-center justify-start shrink-0">
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, 'home')}
-            className="text-lg sm:text-xl font-bold tracking-tight text-pearl group relative shrink-0"
+            className="flex items-center text-sm sm:text-base font-medium tracking-tight text-slate-900 dark:text-white group relative shrink-0"
           >
-            <span className="relative z-10 transition-all duration-300 group-hover:text-accent1">
-              {personal.logo}<span className="text-mist group-hover:text-pearl/70 transition-colors duration-300">.</span>
+            {/* Raycast Coral Diamond Mark with Diagonal Slash */}
+            <span className="w-5 h-5 rounded-[5px] bg-[#ff6363] mr-2.5 flex items-center justify-center shadow-[0_0_12px_rgba(255,99,99,0.5)] transition-transform duration-300 group-hover:scale-105 shrink-0 overflow-hidden relative">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#040506" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="4" y1="20" x2="20" y2="4" />
+                <polyline points="15 4 20 4 20 9" />
+              </svg>
             </span>
-            {/* Logo glow on hover */}
-            <span className="absolute inset-0 blur-xl bg-pearl/10 rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <span className="text-slate-900 dark:text-white font-medium tracking-tight text-[14px] sm:text-[15px]">
+              {personal.logo}<span className="text-[#ff6363]">.</span>
+            </span>
           </a>
         </div>
 
-        {/* Center: Desktop Links (Never collides with right icons) */}
-        <div className="hidden lg:flex items-center justify-center gap-0.5 xl:gap-1 shrink-0">
+        {/* Center: Desktop Navigation Links (Inter 13px Ash -> Pure White) */}
+        <div className="hidden lg:flex items-center justify-center gap-1 xl:gap-1.5 shrink-0">
           {desktopPrimaryLinks.map((l) => {
             const sectionId = l.toLowerCase();
             const isActive = activeSection === sectionId;
@@ -525,16 +525,13 @@ export default function Navbar() {
                 key={l}
                 href={`#${sectionId}`}
                 onClick={(e) => handleNavClick(e, sectionId)}
-                className={`relative px-2.5 py-1.5 2xl:px-3 2xl:py-2 text-[11px] 2xl:text-xs font-semibold transition-all duration-300 tracking-wider uppercase rounded-full ${
+                className={`relative px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 rounded-lg ${
                   isActive
-                    ? 'text-pearl bg-pearl/[0.08]'
-                    : 'text-mist hover:text-pearl hover:bg-pearl/[0.03]'
+                    ? 'text-slate-900 bg-slate-100 dark:text-white dark:bg-white/[0.08]'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 dark:text-[#9c9c9d] dark:hover:text-white dark:hover:bg-white/[0.04]'
                 }`}
               >
                 {l}
-                {isActive && (
-                  <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-pearl rounded-full animate-pulse" />
-                )}
               </a>
             );
           })}
@@ -546,23 +543,20 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, 'contact')}
-            className={`relative px-2.5 py-1.5 2xl:px-3 2xl:py-2 text-[11px] 2xl:text-xs font-semibold transition-all duration-300 tracking-wider uppercase rounded-full ${
+            className={`relative px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 rounded-lg ${
               activeSection === 'contact'
-                ? 'text-pearl bg-pearl/[0.08]'
-                : 'text-mist hover:text-pearl hover:bg-pearl/[0.03]'
+                ? 'text-slate-900 bg-slate-100 dark:text-white dark:bg-white/[0.08]'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 dark:text-[#9c9c9d] dark:hover:text-white dark:hover:bg-white/[0.04]'
             }`}
           >
             Contact
-            {activeSection === 'contact' && (
-              <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-pearl rounded-full animate-pulse" />
-            )}
           </a>
         </div>
 
-        {/* Right: Actions (Desktop socials + CV, Mobile toggle) */}
-        <div className="flex items-center justify-end gap-2 2xl:gap-3 shrink-0">
-          {/* Desktop actions: socials + CV */}
-          <div className="hidden lg:flex items-center gap-2 2xl:gap-3 shrink-0">
+        {/* Right: Actions (Command Palette, Theme, Socials, Mist Download Button) */}
+        <div className="flex items-center justify-end gap-1.5 sm:gap-2.5 shrink-0">
+          {/* Desktop actions */}
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
             <CommandPaletteButton />
             <ThemeToggle />
             <SocialLinks />
@@ -570,45 +564,43 @@ export default function Navbar() {
           </div>
 
           {/* Mobile / Tablet toggle actions (< lg) */}
-          <div className="flex lg:hidden items-center gap-2 shrink-0">
+          <div className="flex lg:hidden items-center gap-1.5 shrink-0">
             <CommandPaletteButton />
             <ThemeToggle />
             <button
-              className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 group cursor-pointer"
+              className="relative w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-slate-200 dark:border-[#2f3031] bg-slate-100 dark:bg-[#111214] text-slate-700 dark:text-[#e6e6e6] hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-[#454647] cursor-pointer transition-colors"
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
             >
-              <span className="block w-6 h-[2px] bg-pearl rounded-full" />
-              <span className="block w-5 h-[2px] bg-pearl rounded-full self-start ml-0.5 opacity-70" />
-              <span className="block w-6 h-[2px] bg-pearl rounded-full" />
-              {/* Ripple effect */}
-              <span className="absolute inset-0 rounded-full bg-pearl/0 group-hover:bg-pearl/5 transition-colors duration-300" />
+              <span className="block w-4 h-[1.5px] bg-current rounded-full" />
+              <span className="block w-3.5 h-[1.5px] bg-current rounded-full self-start ml-2 opacity-80" />
+              <span className="block w-4 h-[1.5px] bg-current rounded-full" />
             </button>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     {/* Fullscreen Mobile Menu Overlay - OUTSIDE <nav> so <nav> stays strictly 56px and never blurs the landing page */}
     {mobileOpen && (
       <div
-        className="fixed inset-0 z-[60] bg-obsidian/95 backdrop-blur-2xl flex flex-col lg:hidden animate-fade-in"
+        className="fixed inset-0 z-[60] bg-white/95 dark:bg-[#040506]/95 backdrop-blur-2xl flex flex-col lg:hidden animate-fade-in"
         style={{ animationDuration: '180ms' }}
       >
         {/* Mobile Header with Logo & single Cross (✕) button */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-pearl/10">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-white/10">
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, 'home')}
-            className="text-lg font-bold tracking-tight text-pearl"
+            className="text-lg font-bold tracking-tight text-slate-900 dark:text-white"
           >
-            {personal.logo}<span className="text-mist">.</span>
+            {personal.logo}<span className="text-[#ff6363]">.</span>
           </a>
 
           {/* Single Cross icon */}
           <button
             type="button"
-            className="w-10 h-10 flex items-center justify-center rounded-full border border-pearl/15 bg-pearl/[0.04] hover:bg-pearl/10 hover:border-pearl/30 text-pearl transition-all duration-200 cursor-pointer"
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-white/15 bg-slate-100 dark:bg-white/[0.04] hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-white transition-all duration-200 cursor-pointer"
             onClick={() => setMobileOpen(false)}
             aria-label="Close menu"
           >
@@ -640,12 +632,14 @@ export default function Navbar() {
                   href={`#${sectionId}`}
                   onClick={(e) => handleNavClick(e, sectionId)}
                   className={`text-xl font-bold tracking-tight uppercase transition-colors duration-150 flex items-center justify-between py-2 ${
-                    isActive ? 'text-pearl pl-3 border-l-2 border-pearl' : 'text-mist hover:text-pearl'
+                    isActive
+                      ? 'text-slate-900 pl-3 border-l-2 border-slate-900 dark:text-white dark:border-white'
+                      : 'text-slate-600 hover:text-slate-900 dark:text-[#9c9c9d] dark:hover:text-white'
                   }`}
                 >
                   <span>{l}</span>
                   {isActive && (
-                    <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-pearl/10 text-pearl/80">
+                    <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-white/80">
                       Active
                     </span>
                   )}
@@ -655,9 +649,9 @@ export default function Navbar() {
           </div>
 
           {/* Mobile bottom actions */}
-          <div className="mt-6 pt-5 border-t border-pearl/10 flex flex-col gap-4">
+          <div className="mt-6 pt-5 border-t border-slate-200 dark:border-white/10 flex flex-col gap-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-slate font-medium">Appearance & Socials</span>
+              <span className="text-xs text-slate-500 dark:text-[#6a6b6c] font-medium">Appearance & Socials</span>
               <div className="flex items-center gap-2">
                 <ThemeToggle />
                 <SocialLinks />

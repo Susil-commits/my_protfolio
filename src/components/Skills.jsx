@@ -89,15 +89,15 @@ export default function Skills() {
               >
                 {/* Icon */}
                 <div className="flex items-center justify-between mb-3">
-                  <div className="text-2xl text-pearl/70 group-hover:text-pearl transition-colors duration-500">
+                  <div className="text-2xl text-slate-800 dark:text-white/80 group-hover:scale-105 transition-all duration-200">
                     {group.icon}
                   </div>
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-slate group-hover:text-emerald-400 transition-colors duration-300">
+                  <span className="text-[10px] uppercase font-mono tracking-widest text-slate-500 dark:text-[#6a6b6c] group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-200">
                     {group.items.length} Tools
                   </span>
                 </div>
 
-                <h3 className="text-pearl font-semibold text-base sm:text-lg mb-3 group-hover:text-accent1 transition-colors duration-300">
+                <h3 className="text-slate-900 dark:text-white font-medium text-base sm:text-lg mb-3 transition-colors duration-200">
                   {group.category}
                 </h3>
 
@@ -107,7 +107,7 @@ export default function Skills() {
                   ))}
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-pearl/[0.06] flex items-center justify-between text-[11px] text-slate group-hover:text-pearl transition-colors duration-300">
+                <div className="mt-4 pt-3 border-t border-slate-200 dark:border-[#1b1c1e] flex items-center justify-between text-[11px] text-slate-500 dark:text-[#6a6b6c] group-hover:text-slate-700 dark:group-hover:text-[#9c9c9d] transition-colors duration-200">
                   <span>{isSelected ? 'Hide Production Scope' : 'View Production Scope'}</span>
                   <span>{isSelected ? '↑' : '→'}</span>
                 </div>
@@ -118,31 +118,31 @@ export default function Skills() {
 
         {/* Selected Category Production Scope Drawer */}
         {activeCategory && SKILL_APPLICATIONS[activeCategory] && (
-          <div className="p-6 rounded-3xl border border-pearl/15 bg-obsidian/90 backdrop-blur-2xl animate-fade-in space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-pearl/10">
+          <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#2f3031] bg-white dark:bg-[#07080a] animate-fade-in space-y-4 shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-[#1b1c1e]">
               <div className="flex items-center gap-2">
-                <span className="text-emerald-400 font-mono font-bold text-xs">● PRODUCTION IMPACT</span>
-                <h4 className="text-sm font-bold text-pearl">{activeCategory}</h4>
+                <span className="text-[#ff6363] font-mono font-medium text-xs">● PRODUCTION IMPACT</span>
+                <h4 className="text-sm font-medium text-slate-900 dark:text-white">{activeCategory}</h4>
               </div>
               <button
                 onClick={() => setActiveCategory(null)}
-                className="text-xs text-slate hover:text-pearl cursor-pointer font-mono"
+                className="text-xs text-slate-500 hover:text-slate-900 dark:text-[#6a6b6c] dark:hover:text-white cursor-pointer font-mono"
               >
                 [✕ Close]
               </button>
             </div>
 
-            <p className="text-xs text-mist leading-relaxed font-medium">
+            <p className="text-xs text-slate-600 dark:text-[#9c9c9d] leading-relaxed font-normal">
               {SKILL_APPLICATIONS[activeCategory].lead}
             </p>
 
             <div className="grid sm:grid-cols-2 gap-3 pt-2">
               {SKILL_APPLICATIONS[activeCategory].projects.map((pr) => (
-                <div key={pr.name} className="p-4 rounded-2xl border border-pearl/10 bg-pearl/[0.02] space-y-1">
-                  <span className="text-xs font-bold text-emerald-400 font-mono block">
+                <div key={pr.name} className="p-4 rounded-xl border border-slate-200 dark:border-[#1b1c1e] bg-slate-50 dark:bg-[#111214] space-y-1">
+                  <span className="text-xs font-medium text-slate-900 dark:text-white font-mono block">
                     {pr.name}
                   </span>
-                  <p className="text-xs text-mist leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-[#9c9c9d] leading-relaxed">
                     {pr.desc}
                   </p>
                 </div>
