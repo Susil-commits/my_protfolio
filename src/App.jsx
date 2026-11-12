@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 import Loader from './components/Loader';
 import ErrorBoundary from './components/ErrorBoundary';
 import CommandPalette from './components/CommandPalette';
+import { sound } from './services/sound';
 
 // Code-split heavy interactive assistants to accelerate initial page load
 const Chatbot = lazy(() => import('./components/Chatbot'));
@@ -79,6 +80,19 @@ export default function App() {
     const handleOpenPalette = () => setCommandPaletteOpen(true);
     window.addEventListener('open-command-palette', handleOpenPalette);
     return () => window.removeEventListener('open-command-palette', handleOpenPalette);
+  }, []);
+
+  // Subtle tactile feedback on button and interactive element clicks
+  useEffect(() => {
+    const handleGlobalClick = (e) => {
+      const target = e.target.closest('button, .btn-primary, .btn-outline, [role="button"]');
+      if (target) {
+        sound.playClick();
+      }
+    };
+
+    window.addEventListener('click', handleGlobalClick, { capture: true, passive: true });
+    return () => window.removeEventListener('click', handleGlobalClick, { capture: true });
   }, []);
 
   return (

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useTransition } from 'react';
 import { sendChatMessage, getContextualSuggestions } from '../services/geminiService';
 import { personal } from '../data/portfolio';
+import { sound } from '../services/sound';
 
 // Initial pre-suggestions categorized for quick selection
 const INITIAL_CATEGORIES = [
@@ -310,6 +311,7 @@ export default function Chatbot() {
   useEffect(() => {
     const popTimer = setTimeout(() => {
       setCloudVisible(true);
+      sound.playJulePop();
     }, 2200);
 
     const stepTimer = setTimeout(() => {
@@ -399,6 +401,7 @@ export default function Chatbot() {
       setIsOpen(true);
       setIsMinimized(false);
       dismissCloud();
+      sound.playJulePop();
       if (e.detail?.query) {
         setTimeout(() => {
           handleSend(e.detail.query);
@@ -618,9 +621,15 @@ export default function Chatbot() {
 
         <button
           onClick={() => {
-            setIsOpen(!isOpen);
+            const next = !isOpen;
+            setIsOpen(next);
             setIsMinimized(false);
             dismissCloud();
+            if (next) {
+              sound.playJulePop();
+            } else {
+              sound.playClose();
+            }
           }}
           aria-label="Open Jule AI Assistant"
           className="relative group p-3.5 sm:p-4 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 text-white shadow-2xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer border border-white/20"
