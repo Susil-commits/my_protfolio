@@ -53,6 +53,14 @@ import reactBootcampFull from '../assets/optimized/reactbootcamp.webp';
 import restNodeExpressBootcampThumb from '../assets/thumbs/restwithnodeexpressbootcamp.webp';
 import restNodeExpressBootcampFull from '../assets/optimized/restwithnodeexpressbootcamp.webp';
 
+// Academic / Education images
+import giftThumb from '../assets/thumbs/gift.webp';
+import giftFull from '../assets/optimized/gift.webp';
+import gbistThumb from '../assets/thumbs/gbist.webp';
+import gbistFull from '../assets/optimized/gbist.webp';
+import ssvmThumb from '../assets/thumbs/ssvm.webp';
+import ssvmFull from '../assets/optimized/ssvm.webp';
+
 export const personal = {
   name: 'Susil Kumar Nayak',
   firstName: 'Susil',
@@ -327,6 +335,11 @@ export const education = [
     field: 'Computer Science & Engineering',
     period: 'Dec 2022 – Jun 2026',
     score: 'CGPA: 7.77',
+    image: {
+      thumb: giftThumb,
+      full: giftFull,
+      title: 'Gandhi Institute for Technology (GIFT), Bhubaneswar',
+    },
   },
   {
     institution: 'Gyan Bharti Institute of Science & Technology',
@@ -335,6 +348,11 @@ export const education = [
     field: 'Higher Secondary',
     period: 'Apr 2020 – Mar 2022',
     score: 'Aggregate: 75.83%',
+    image: {
+      thumb: gbistThumb,
+      full: gbistFull,
+      title: 'Gyan Bharti Institute of Science & Technology (GBIST)',
+    },
   },
   {
     institution: 'Saraswati Shishu Vidya Mandir',
@@ -343,6 +361,11 @@ export const education = [
     field: 'Secondary',
     period: '2020',
     score: 'Aggregate: 71.83%',
+    image: {
+      thumb: ssvmThumb,
+      full: ssvmFull,
+      title: 'Saraswati Shishu Vidya Mandir (SSVM), Banki',
+    },
   },
 ];
 
