@@ -65,7 +65,7 @@ export const personal = {
     {
       role: 'AI / ML & Cloud Infrastructure',
       subtitle: 'Engineering',
-      url: 'https://drive.google.com/file/d/1i8YK3XQLwm5e_ow4Hq5ypD0TxwoLzS0O/view?usp=sharing',
+      url: 'https://drive.google.com/file/d/1z8z45lWVZR7NpLrhflG8PLT02Gn-SKoX/view?usp=sharing',
       icon: 'ai',
     },
   ],
