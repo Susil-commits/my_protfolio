@@ -447,24 +447,52 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Lock background scroll completely when mobile menu is active
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
+  // Auto-close on viewport expansion
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && mobileOpen) {
+        setMobileOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [mobileOpen]);
+
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
+    // Immediately unlock body scroll and close the mobile overlay
+    document.body.style.overflow = '';
     setMobileOpen(false);
 
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.querySelectorAll('.reveal-on-scroll, .reveal-left, .reveal-right, .reveal-scale, .char-stagger')
-        .forEach((child) => child.classList.add('revealed'));
+    requestAnimationFrame(() => {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.querySelectorAll('.reveal-on-scroll, .reveal-left, .reveal-right, .reveal-scale, .char-stagger')
+          .forEach((child) => child.classList.add('revealed'));
 
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.history.pushState(null, '', `#${sectionId}`);
-    }
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.pushState(null, '', `#${sectionId}`);
+      }
+    });
   };
 
   const desktopPrimaryLinks = ['Home', 'About', 'Skills', 'Projects', 'Experience'];
   const allLinks = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Education', 'Achievements', 'Certifications', 'Contact'];
 
   return (
+    <>
     <nav
       ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -547,40 +575,63 @@ export default function Navbar() {
             <ThemeToggle />
             <button
               className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 group cursor-pointer"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Menu"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open menu"
             >
-              <span
-                className={`block w-6 h-[2px] bg-pearl rounded-full transition-all duration-300 origin-center ${
-                  mobileOpen ? 'rotate-45 translate-y-[3px]' : ''
-                }`}
-              />
-              <span
-                className={`block w-6 h-[2px] bg-pearl rounded-full transition-all duration-300 ${
-                  mobileOpen ? 'opacity-0 scale-x-0' : ''
-                }`}
-              />
-              <span
-                className={`block w-6 h-[2px] bg-pearl rounded-full transition-all duration-300 origin-center ${
-                  mobileOpen ? '-rotate-45 -translate-y-[3px]' : ''
-                }`}
-              />
+              <span className="block w-6 h-[2px] bg-pearl rounded-full" />
+              <span className="block w-5 h-[2px] bg-pearl rounded-full self-start ml-0.5 opacity-70" />
+              <span className="block w-6 h-[2px] bg-pearl rounded-full" />
               {/* Ripple effect */}
               <span className="absolute inset-0 rounded-full bg-pearl/0 group-hover:bg-pearl/5 transition-colors duration-300" />
             </button>
           </div>
         </div>
       </div>
+    </nav>
 
-      {/* Mobile Menu Overlay */}
+    {/* Fullscreen Mobile Menu Overlay - OUTSIDE <nav> so <nav> stays strictly 56px and never blurs the landing page */}
+    {mobileOpen && (
       <div
-        className={`fixed inset-0 z-40 bg-obsidian/95 backdrop-blur-2xl transition-all duration-500 flex flex-col lg:hidden ${
-          mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className="fixed inset-0 z-[60] bg-obsidian/95 backdrop-blur-2xl flex flex-col lg:hidden animate-fade-in"
+        style={{ animationDuration: '180ms' }}
       >
-        <div className="flex-1 flex flex-col px-6 sm:px-8 pt-24 pb-8 overflow-y-auto justify-between">
-          <div className="flex flex-col gap-3 sm:gap-4">
-            {allLinks.map((l, i) => {
+        {/* Mobile Header with Logo & single Cross (✕) button */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-pearl/10">
+          <a
+            href="#home"
+            onClick={(e) => handleNavClick(e, 'home')}
+            className="text-lg font-bold tracking-tight text-pearl"
+          >
+            {personal.logo}<span className="text-mist">.</span>
+          </a>
+
+          {/* Single Cross icon */}
+          <button
+            type="button"
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-pearl/15 bg-pearl/[0.04] hover:bg-pearl/10 hover:border-pearl/30 text-pearl transition-all duration-200 cursor-pointer"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close menu"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Links list */}
+        <div className="flex-1 flex flex-col px-6 sm:px-8 py-6 overflow-y-auto justify-between">
+          <div className="flex flex-col gap-2.5">
+            {allLinks.map((l) => {
               const sectionId = l.toLowerCase();
               const isActive = activeSection === sectionId;
               return (
@@ -588,12 +639,9 @@ export default function Navbar() {
                   key={l}
                   href={`#${sectionId}`}
                   onClick={(e) => handleNavClick(e, sectionId)}
-                  className={`text-xl sm:text-2xl font-bold tracking-tight uppercase transition-all duration-300 flex items-center justify-between py-1 transform ${
-                    mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-                  } ${
-                    isActive ? 'text-pearl pl-2 border-l-2 border-pearl' : 'text-mist hover:text-pearl'
+                  className={`text-xl font-bold tracking-tight uppercase transition-colors duration-150 flex items-center justify-between py-2 ${
+                    isActive ? 'text-pearl pl-3 border-l-2 border-pearl' : 'text-mist hover:text-pearl'
                   }`}
-                  style={{ transitionDelay: `${mobileOpen ? i * 0.03 + 0.05 : 0}s` }}
                 >
                   <span>{l}</span>
                   {isActive && (
@@ -607,11 +655,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile bottom actions */}
-          <div 
-            className={`mt-6 pt-6 border-t border-pearl/10 flex flex-col gap-4 transition-all duration-500 delay-300 transform ${
-              mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-            }`}
-          >
+          <div className="mt-6 pt-5 border-t border-pearl/10 flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate font-medium">Appearance & Socials</span>
               <div className="flex items-center gap-2">
@@ -623,6 +667,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </nav>
+    )}
+    </>
   );
 }

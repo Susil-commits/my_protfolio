@@ -1,123 +1,271 @@
 import { useEffect, useRef, useState } from 'react';
 import { personal } from '../data/portfolio';
 
-const SYSTEM_BOOT_STEPS = [
-  'INITIALIZING SYSTEM ARCHITECTURE',
-  'SYNCING DISTRIBUTED KAFKA STREAMS',
-  'CALIBRATING ML RISK SURROGATES',
-  'OPTIMIZING B-TREE COMPOUND INDEXES',
-  'ENGINEERING READY · LAUNCHING MISSION CONTROL',
+const LOAD_STEPS = [
+  'Initializing portfolio',
+  'Loading projects',
+  'Connecting assets',
+  'Applying design system',
+  'Ready',
 ];
+
+const CIRCUMFERENCE = 2 * Math.PI * 45; // r=45
 
 export default function Loader({ onComplete }) {
   const [progress, setProgress] = useState(0);
   const [stepIdx, setStepIdx] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
-  // Stable ref so the effect doesn't restart if the parent re-renders
   const onCompleteRef = useRef(onComplete);
   useEffect(() => { onCompleteRef.current = onComplete; }, [onComplete]);
 
   useEffect(() => {
-    // Preload key assets while loader is active
     if (personal?.avatar) {
       const img = new Image();
       img.src = personal.avatar;
     }
 
     const startTime = performance.now();
-    const duration = 1900; // ~1.9s smooth, cinematic loading experience
+    const duration = 2000;
 
     const updateInterval = setInterval(() => {
       const elapsed = performance.now() - startTime;
       const rawProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
 
-      // Ease out progress smoothly
       setProgress(rawProgress);
-
-      const stepNumber = Math.min(
-        SYSTEM_BOOT_STEPS.length - 1,
-        Math.floor((rawProgress / 100) * SYSTEM_BOOT_STEPS.length)
+      setStepIdx(
+        Math.min(LOAD_STEPS.length - 1, Math.floor((rawProgress / 100) * LOAD_STEPS.length))
       );
-      setStepIdx(stepNumber);
 
       if (rawProgress >= 100) {
         clearInterval(updateInterval);
         setTimeout(() => {
           setIsExiting(true);
-          setTimeout(() => {
-            onCompleteRef.current();
-          }, 500); // Wait for exit animation
+          setTimeout(() => { onCompleteRef.current(); }, 600);
         }, 200);
       }
-    }, 25);
+    }, 20);
 
     return () => clearInterval(updateInterval);
-  // Run only once on mount — onComplete is accessed via stable ref
   }, []);
+
+  // SVG ring offset: full circle = 283, empty = 0
+  const ringOffset = CIRCUMFERENCE - (progress / 100) * CIRCUMFERENCE;
+
+  // Name letter stagger
+  const nameLetters = personal.name.split('').map((ch, i) => (
+    <span
+      key={i}
+      className="loader-char"
+      style={{
+        animationDelay: `${0.1 + i * 0.045}s`,
+        display: ch === ' ' ? 'inline-block' : undefined,
+        width: ch === ' ' ? '0.4em' : undefined,
+      }}
+    >
+      {ch === ' ' ? '\u00A0' : ch}
+    </span>
+  ));
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#07090e] text-pearl select-none transition-all duration-500 ease-in-out ${
-        isExiting ? 'opacity-0 scale-105 pointer-events-none' : 'opacity-100 scale-100'
-      }`}
+      className="fixed inset-0 flex flex-col items-center justify-center select-none"
+      style={{
+        zIndex: 99999,
+        background: '#030712',
+        transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+        opacity: isExiting ? 0 : 1,
+        transform: isExiting ? 'scale(1.04) translateY(-12px)' : 'scale(1) translateY(0)',
+        pointerEvents: isExiting ? 'none' : 'auto',
+      }}
     >
-      {/* Background ambient lighting */}
-      <div className="absolute w-[500px] h-[500px] rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none animate-pulse" />
-      <div className="absolute w-[300px] h-[300px] rounded-full bg-purple-500/10 blur-[100px] pointer-events-none -top-10 -right-10" />
-
-      {/* Cybernetic grid overlay */}
+      {/* Background morphing blobs */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        className="absolute rounded-full pointer-events-none"
         style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
+          width: '70vmax',
+          height: '70vmax',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          background: 'radial-gradient(circle at 40% 40%, oklch(70% 0.2 240 / 0.07) 0%, transparent 60%), radial-gradient(circle at 70% 70%, oklch(65% 0.25 290 / 0.06) 0%, transparent 55%)',
+          animation: 'blob-morph 10s ease-in-out infinite',
+          filter: 'blur(60px)',
+        }}
+      />
+      <div
+        className="absolute rounded-full pointer-events-none"
+        style={{
+          width: '40vmax',
+          height: '40vmax',
+          top: '20%',
+          right: '10%',
+          background: 'radial-gradient(circle, oklch(65% 0.25 290 / 0.06) 0%, transparent 65%)',
+          animation: 'blob-morph 15s ease-in-out infinite reverse',
+          filter: 'blur(80px)',
         }}
       />
 
-      <div className="relative z-10 flex flex-col items-center max-w-sm w-full px-6">
-        {/* Animated Brand Emblem */}
-        <div className="relative mb-8 flex items-center justify-center">
-          <div className="w-16 h-16 rounded-2xl bg-white/[0.04] border border-white/15 flex items-center justify-center backdrop-blur-md shadow-[0_0_30px_rgba(56,189,248,0.15)] relative group">
-            {/* Rotating border glow */}
-            <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-tr from-cyan-400 via-purple-500 to-emerald-400 opacity-60 blur-[2px] animate-spin-slow" />
-            <div className="relative w-full h-full rounded-2xl bg-[#07090e] flex items-center justify-center">
-              <span className="text-xl font-bold tracking-tighter bg-gradient-to-br from-white via-pearl to-slate bg-clip-text text-transparent font-mono">
-                SN
-              </span>
-            </div>
+      {/* Grid overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(oklch(70% 0.2 240 / 0.3) 1px, transparent 1px), linear-gradient(90deg, oklch(70% 0.2 240 / 0.3) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+        }}
+      />
+
+      {/* Main content */}
+      <div className="relative flex flex-col items-center gap-8 max-w-xs w-full px-8">
+        {/* SVG Ring Progress */}
+        <div className="relative flex items-center justify-center" style={{ width: 120, height: 120 }}>
+          <svg
+            width="120"
+            height="120"
+            viewBox="0 0 100 100"
+            style={{ transform: 'rotate(-90deg)' }}
+          >
+            {/* Track ring */}
+            <circle
+              cx="50" cy="50" r="45"
+              fill="none"
+              stroke="oklch(70% 0.2 240 / 0.08)"
+              strokeWidth="2"
+            />
+            {/* Progress ring */}
+            <circle
+              cx="50" cy="50" r="45"
+              fill="none"
+              stroke="url(#loaderGrad)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeDasharray={CIRCUMFERENCE}
+              strokeDashoffset={ringOffset}
+              style={{ transition: 'stroke-dashoffset 0.08s linear' }}
+            />
+            <defs>
+              <linearGradient id="loaderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="oklch(70% 0.2 240)" />
+                <stop offset="50%" stopColor="oklch(65% 0.25 290)" />
+                <stop offset="100%" stopColor="oklch(75% 0.18 160)" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          {/* Center: percentage */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <span
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.6rem',
+                fontWeight: 700,
+                lineHeight: 1,
+                color: '#f8fafc',
+                letterSpacing: '-0.03em',
+              }}
+            >
+              {progress}
+            </span>
+            <span
+              style={{
+                fontSize: '0.65rem',
+                color: 'oklch(70% 0.2 240)',
+                letterSpacing: '0.15em',
+                fontFamily: 'var(--font-mono)',
+              }}
+            >
+              %
+            </span>
           </div>
         </div>
 
-        {/* Name and Role Subtitle */}
-        <div className="text-center mb-6">
-          <h2 className="text-lg font-bold tracking-wider text-pearl uppercase">
-            {personal.name}
-          </h2>
-          <p className="text-[11px] font-mono tracking-[0.25em] text-cyan-400/80 mt-1 uppercase">
-            Distributed Systems · AI/ML
+        {/* Name with staggered letter reveal */}
+        <div className="text-center">
+          <h1
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.1rem, 4vw, 1.4rem)',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              color: '#f8fafc',
+              lineHeight: 1.2,
+              textTransform: 'uppercase',
+            }}
+          >
+            {nameLetters}
+          </h1>
+          <p
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.65rem',
+              letterSpacing: '0.25em',
+              color: 'oklch(70% 0.2 240)',
+              marginTop: '0.4rem',
+              textTransform: 'uppercase',
+            }}
+          >
+            Full-Stack Developer
           </p>
         </div>
 
-        {/* Progress Bar Container */}
-        <div className="w-full bg-white/[0.06] h-[3px] rounded-full overflow-hidden relative mb-4 border border-white/5">
+        {/* Progress bar track */}
+        <div className="w-full">
           <div
-            className="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-emerald-400 transition-all duration-75 ease-out shadow-[0_0_12px_rgba(56,189,248,0.8)]"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+            className="w-full rounded-full overflow-hidden"
+            style={{
+              height: '2px',
+              background: 'oklch(70% 0.2 240 / 0.1)',
+              border: '1px solid oklch(70% 0.2 240 / 0.08)',
+            }}
+          >
+            <div
+              className="h-full rounded-full"
+              style={{
+                width: `${progress}%`,
+                background: 'linear-gradient(90deg, oklch(70% 0.2 240), oklch(65% 0.25 290), oklch(75% 0.18 160))',
+                boxShadow: '0 0 12px oklch(70% 0.2 240 / 0.6)',
+                transition: 'width 0.08s linear',
+              }}
+            />
+          </div>
 
-        {/* Telemetry Status Line */}
-        <div className="w-full flex items-center justify-between text-[11px] font-mono text-mist">
-          <span className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
-            <span className="truncate max-w-[200px] text-pearl/80">
-              {SYSTEM_BOOT_STEPS[stepIdx]}
+          {/* Step label */}
+          <div className="flex items-center justify-between mt-2.5">
+            <div className="flex items-center gap-2">
+              <span
+                className="rounded-full"
+                style={{
+                  width: '5px',
+                  height: '5px',
+                  background: 'oklch(70% 0.2 240)',
+                  boxShadow: '0 0 8px oklch(70% 0.2 240 / 0.8)',
+                  animation: 'pingSlow 1.5s ease-in-out infinite',
+                  display: 'inline-block',
+                  flexShrink: 0,
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.62rem',
+                  color: 'oklch(70% 0.2 240 / 0.7)',
+                  letterSpacing: '0.06em',
+                }}
+              >
+                {LOAD_STEPS[stepIdx]}
+              </span>
+            </div>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.6rem',
+                color: 'var(--theme-slate)',
+                letterSpacing: '0.08em',
+              }}
+            >
+              v2.0
             </span>
-          </span>
-          <span className="font-bold text-pearl font-mono">
-            {progress}%
-          </span>
+          </div>
         </div>
       </div>
     </div>
